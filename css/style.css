@@ -5,3 +5,33 @@ body{
     padding:0;
 }
 
+#wrapper{
+    min-width:100%;
+    min-height:100%;
+    padding:0;
+    margin:0 auto;
+}
+
+header{
+    display:flex;
+    flex-direction:column;
+    background-color: #afafff;
+    padding:0;
+     z-index:2;
+}
+
+
+main{
+    min-height:1000px;
+}
+
+
+footer{
+    width:100%;
+    min-height:300px;
+    display:flex;
+    align-items:center;
+    position:abosulte;
+    bottom:0;
+    background-color: #afafff;
+}
