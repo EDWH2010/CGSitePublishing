@@ -85,10 +85,12 @@ main .work-display{
 }
 
 footer{
+    color:#fff;
     width:100%;
     min-height:200px;
     display:flex;
-    align-items:center;
+    justify-content:center;
+    align-items:flex-end;
     position:abosulte;
     bottom:0;
     background-color: #12551d;
@@ -96,4 +98,127 @@ footer{
 
 footer .footer-block{
     
+}
+
+
+/*new member added page*/
+
+.form-block{
+    background-color:rgba(100,220,50,0.5);
+    width:450px;
+    color:#fff;
+
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+    padding:50px;
+    margin:100px auto;
+}
+
+.form-block h2{
+    font-size:24px;
+    text-align:center;
+}
+
+.form-block table{
+    table-layout:auto;
+}
+
+#main-form table{
+    border-collapse:separate;
+    border-spacing:5px 10px;
+}
+
+/*watch page*/
+
+div.watch-article{
+    margin:0 auto;
+    display:flex;
+    flex-direction: wrap;
+    justify-content:space-between;
+}
+
+div.work-list{
+    display:flex;
+    flex-direction:row;
+}
+
+div.work-item{
+    display:inline-block;
+    border:1px solid #fff;
+    width:225px;
+    height:225px;
+}
+
+div.work-item img{
+    width:100%;
+    height:100%;
+}
+
+div.watch-article img{
+
+}
+
+
+
+/*refer page*/
+
+.read-article{
+    margin:auto;
+    background-color:rgb(150,225,150);
+    width:70%;
+    height:600px;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-around;
+
+}
+
+.read-article div{
+    margin-top:20px;
+}
+
+.read-article div.work-readLeft{ 
+    background-color: #fff;
+    width:60%;
+    height:90%
+}
+
+.read-article div.work-readRight{
+    background-color:#faf;
+    width:30%;
+    height:90%;
+}
+
+div.work-readRight ul.work-infoList{
+    list-style-type:none;
+}
+
+/*rogin page*/
+
+
+
+
+/*chatroomPage*/
+.chat-article{
+    background-color:rgb(150,225,150);
+    margin:0 auto;
+    width:50%;
+    height:50%;
+}
+
+div.chat-header{
+    display:flex;
+    justify-content: right;
+}
+
+form#main-form div{
+    margin:auto;
+}
+
+/*chatroomCreatorPage*/
+
+div.form-inputBlock{
+     margin-bottom:10px;   
+
 }
