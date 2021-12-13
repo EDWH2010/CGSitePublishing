@@ -57,6 +57,7 @@ main{
     min-height:1000px;
     display:flex;
     justify-content:center;
+    align-items:flex-start;
 }
 
 main .main-visual{
@@ -131,12 +132,13 @@ footer .footer-block{
 
 /*watch page*/
 
-div.watch-article{
-    margin:0 auto;
+div.watch-main{
     display:flex;
-    flex-direction: wrap;
-    justify-content:space-between;
+    flex-direction:column;
+    justify-content:center;
 }
+
+
 
 div.work-list{
     display:flex;
@@ -195,6 +197,8 @@ div.work-readRight ul.work-infoList{
 }
 
 /*rogin page*/
+
+
 
 
 
