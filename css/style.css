@@ -60,6 +60,11 @@ main{
     align-items:flex-start;
 }
 
+div#top-main{
+    width:100%;
+    
+}
+
 main .main-visual{
     height:550px;
     background-color:#000;
@@ -167,7 +172,7 @@ div.watch-article img{
 
 .read-article{
     margin:auto;
-    background-color:rgb(150,225,150);
+    background-color:rgb(150,225,150,0.5);
     width:70%;
     height:600px;
     display:flex;
