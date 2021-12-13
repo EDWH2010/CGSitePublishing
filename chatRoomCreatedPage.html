@@ -27,34 +27,32 @@
             </div>
         </header>
         <main>
-            <div class="main-visual">
-                <img src="images/mainVisualTest01.jpg" alt="mainVisual" />
-            </div>
-            <div class="work-read">
-                <p>WorkRead</p>
-                <div><h3>Jackpury</h3></div>
-                <div class="work-list">
-                    <div class="work-item">
-                        <div class="work-image"><img src="" alt="dummy" /></div>
-                    </div>
-
-                     <div class="work-item">
-                        <div class="work-image"><img src="" alt="dummy" /></div>
-                    </div>
-
-                     <div class="work-item">
-                        <div class="work-image"><img src="" alt="dummy" /></div>
-                    </div>
-                    
-                     <div class="work-item">
-                        <div class="work-image"><img src="" alt="dummy" /></div>
-                    </div>
+          <div class="form-block">
+            <form name="chatroom-creatorForm" class="main-form" onsubmit="alert('チャットルーム作成完了')">
+                <div class="form-inputBlock">
+                    <label for="chatroom-name"><p>チャットルームネーム</p></label>
+                    <p><input name="chatroom-name" type="text" /> </p>
                 </div>
 
-            </div>
-            <div class="work-display">
-                <p>WorkDisplay</p>
-            </div>
+                 <div class="form-inputBlock">
+                    <label for="chatroom-peopleCount"><p>人数設定</p></label>
+                    <p><input name="chatroom-peopleCount" type="text" /> </p>
+                </div>
+
+                 <div class="form-inputBlock">
+                    <label for="chatroom-invitation"><p>ユーザを招待する</p></label>
+                    <p><select name="chatroom-invitation" onchange="alert('changed');">
+                       <option value="friend-list">フレンドリストから選択</option>
+                       <option value="search-username">ユーザーネームのサーチ</option> 
+                    </select></p>
+                    
+                    <div style="display:none;"></div>
+                    <div style="display:none;"></div>
+                </div>
+
+
+            </form>
+          </div>
         </main>
         <footer>
             <div class="footer-block">

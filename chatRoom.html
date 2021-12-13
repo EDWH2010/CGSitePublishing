@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <link rel="stylesheet" href="css/style.css" />
+        <script type="text/javascript" src="lib/jquery-1.10.1.min.js"></script>
+        <script src="lib/ChatData.js"></script>
+        <script src="lib/excelTest.js"></script>
+        <script src="lib/PageLoading.js"></script>
+        <title>CGSharingCite(HOME)</title>
+    </head>
+    <body id="wrapper">
+        <header id="header-list">
+            <div class="logo"><a href="index.html"><img src="images/logo.png" alt="LOGO" /></a></div>
+            <div class="header-selection">
+                <nav class="selection-list">
+                    <ul>
+                        <li name="select-read" onclick="alert('閲覧');">閲覧</li>
+                        <li name="select-search" onclick="alert('捜索')">捜索</li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="user-selection">
+               
+            </div>
+        </header>
+        <main>
+            <article class="chat-article">
+                <div class="chat-header">
+                    <div class="chat-buttonGroup">
+                        <button onmouseover="this.style.cursor='pointer'" onclick="">button1</button>
+                        <button onmouseover="this.style.cursor='pointer'" onclick="">button2</button>
+                    </div>
+                    <div class="chatroom-memberListButton">
+                        <button onmouseover="this.style.cursor='pointer'" name="memeberList" onclick="alert('会員リスト表示');">会員リスト</button>
+                    </div>
+                </div>
+                 <div class="chat-main">
+                    <div class="chat-content">
+                        <div class="chat-display">
+                            <div class="other-userChat">
+                                <div class="user-chatDisplay">
+                                    dsaffdsfasddasfdfasafsvsdfsadfdsaddsgadssadfsffffffffffffffffffffffffffasadsfdsasvgasgdsa
+                                </div>
+                            </div>
+                            <div class="self-userChat">
+                                <div class="user-chatDisplay">
+                                    desking host
+                                </div>
+                            </div>
+                        </div>
+
+                       <form id="main-form" onsubmit="return;"> 
+                            <div class="chat-inputArea">
+                                <textarea name="chat-area" rows="10" cols="80"></textarea>
+                            </div>
+                            <div class="chat-submitButton">
+                                <input name="main-formButton" type="submit" value="送信" />
+                            </div>
+                        </form>
+                    </div>
+                    <div>
+
+                    </div>
+                </div>
+            </article>
+        </main>
+
+        <footer>
+            <div class="footer-block">
+                <small>Copy Rights Reserved</small>
+            </div>
+        </footer>
+    </body>
+</html>

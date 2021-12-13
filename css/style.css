@@ -56,7 +56,7 @@ body{
 main{
     min-height:1000px;
     display:flex;
-    flex-direction:column;
+    justify-content:center;
 }
 
 main .main-visual{
@@ -107,7 +107,6 @@ footer .footer-block{
     background-color:rgba(100,220,50,0.5);
     width:450px;
     color:#fff;
-
     display:flex;
     justify-content:center;
     flex-direction:column;
@@ -123,6 +122,7 @@ footer .footer-block{
 .form-block table{
     table-layout:auto;
 }
+
 
 #main-form table{
     border-collapse:separate;
@@ -201,24 +201,92 @@ div.work-readRight ul.work-infoList{
 
 /*chatroomPage*/
 .chat-article{
-    background-color:rgb(150,225,150);
-    margin:0 auto;
-    width:50%;
-    height:50%;
+    background-color:rgb(150,225,150,0.5);
+    margin:auto;
+    padding:0;
+
+    display:flex;
+    align-content:center;
+    justify-content:center;
+    flex-direction: column;
+
+    width:70%;
+    height:100%;
 }
 
 div.chat-header{
     display:flex;
-    justify-content: right;
+    flex-direction:row;
+    justify-content: space-between;
 }
 
-form#main-form div{
+div.chat-content{
+    display:flex;
+    flex-direction: column;
+    align-content:center;
+
+}
+
+div.chat-display{
+    background-color:#fff;
+    margin:5px auto 50px auto;
+    width:80%;
+    height:500px;
+    overflow:scroll;
+    font-size:20px;
+}
+
+div.chat-display .other-userChat{
+    background-color:#8F9;
+    border-radius:5px;
+    width:90%;
+    margin:15px auto;
+
+}
+
+div.chat-display .self-userChat{
+    background-color:#5F5;
+    border-radius:5px;
+    width:90%;
+    margin:15px auto;
+}
+
+div.chat-display .user-chatDisplay{
+
+}
+
+
+form#main-form{
+    position:relative;
     margin:auto;
+    padding:0;
+}
+
+form#main-form .chat-submitButton{
+    position:absolute;
+    left:50%;
+    top:100%;
+}
+
+form#main-form .chat-submitButton 
+input[type='submit']{
+    width:80px;
+    height:30px;
+    border-width:0;
+
+    transition:0.5s;
+}
+
+form#main-form .chat-submitButton 
+input[type='submit']:hover{
+    background-color:#aaa;
 }
 
 /*chatroomCreatorPage*/
 
 div.form-inputBlock{
      margin-bottom:10px;   
-
+    
 }
+
+

@@ -4,6 +4,10 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <link rel="stylesheet" href="css/style.css" />
+        <script type="text/javascript" src="lib/jquery-1.10.1.min.js"></script>
+        <script src="lib/ChatData.js"></script>
+        <script src="lib/excelTest.js"></script>
+        <script src="lib/PageLoading.js"></script>
         <title>ログインページ</title>
     </head>
     <body id="wrapper">
@@ -14,7 +18,6 @@
                     <ul>
                         <li>捜索</li>
                         <li>das</li>
-                        <li>af</li>
                     </ul>
                 </nav>
             </div>
@@ -23,11 +26,51 @@
             </div>
         </header>
         <main>
-            <div class="newMemAdded-block">
-                <form name="main-form" method="post">
-                        
-
-
+            <div class="form-block">
+                <h2>新規会員登録</h2>
+                <form id="main-form" name="main-form">
+                    <table name="newformtable">
+                        <tr>
+                            <td>ニックネーム</td>
+                            <td><input name="nickname" type="text" /></td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td><input name="email" type="email" /></td>
+                        <tr>
+                            <td>確認Email</td>
+                            <td><input name="email" type="email" /></td>
+                        <tr>
+                            <td>パスワード</td>
+                            <td><input name="password" type="password" maxlength="12" /></td>
+                        <tr>
+                            <td>確認パスワード</td>
+                            <td><input name="password" type="password" maxlength="12" /></td>
+                        </tr>
+                        <tr>
+                            <td>職種</td>
+                            <td>
+                            <select name="career">
+                                <option value="ウェブデザイナー">ウェブデザイナー</option>
+                                <option value="システムエンジニア">システムエンジニア</option>
+                                <option value="プログラマー">プログラマー</option>
+                                <option value="学生">学生</option>
+                                <option value="その他">その他</option>
+                            </select>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>使用目的</td>
+                           <td> 
+                            <select name="usedtarget">
+                                <option value="個人の趣味で使用">個人の趣味で使用</option>
+                                <option value="自分の作品で投稿してほかのユーザーとシェアするため">自分の作品で投稿してほかのユーザーとシェアするため</option>
+                                <option value="純粋にいろんな作者の作品を閲覧するため">純粋にいろんな作者の作品を閲覧するため</option>
+                            </select>
+                        </td>
+                        </tr>
+                    </table>
+                    <p><input type="submit" value="新規登録" /></p>
                 </form>
             </div>
         </main>

@@ -15,7 +15,6 @@
                     <ul>
                         <li>捜索</li>
                         <li>das</li>
-                        <li>af</li>
                     </ul>
                 </nav>
             </div>
@@ -24,17 +23,26 @@
             </div>
         </header>
         <main>
-            <div class="rogin-block">
-                <form name="main-form" method="post">
-                        
-
-
+            <div class="form-block">
+                <div><h2>ユーザーログイン</h2></div>
+                <form name="main-form" method="post" onsubmit="alert('submitted')">
+                       <table>
+                            <tr>
+                                <td>ユーザーネーム</td>
+                                <td><input type="text" name="username" /></td>
+                            </tr>
+                            <tr>
+                                <td>パスワード</td>
+                                <td><input type="password" name="password" /></td>
+                            </tr>
+                       </table> 
+                       <div><button name="roginbutton" type="submit">ログイン</button></div>
                 </form>
             </div>
         </main>
         <footer>
             <div>
-                <small></small>
+                <small>All Rights Are Reseved</small>
             </div>
         </footer>
     </body>
