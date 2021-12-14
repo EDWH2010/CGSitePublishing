@@ -12,18 +12,19 @@
     </head>
     <body id="wrapper">
         <header id="header-list">
-            <div class="logo"><a href="index.html"><img src="images/logo.png" alt="LOGO" /></a></div>
+            <div class="logo"><a href="index.html"><img id="home_logo" src="images/sample_logo001.png" title="メインロゴ" alt="LOGO" /></a></div>
             <div class="header-selection">
                 <nav class="selection-list">
                     <ul>
-                        <li name="select-read" onclick="alert('閲覧');">閲覧</li>
-                        <li name="select-search" onclick="alert('捜索')">捜索</li>
+                        <li name="select-read" onclick="alert('閲覧');changePage('referPage.html')">閲覧</li>
+                        <li name="select-search" onclick="alert('捜索');changePage('watchPage.html')">捜索</li>
                     </ul>
                 </nav>
             </div>
             <div class="user-selection">
-                <button onclick="javascript:window.location.href='rogin.html'">ログイン</button>
-                <button onclick="javascript:window.location.href='newMemAdded.html'">新規会員登録</button>
+                <button class="guest-button" onclick="javascript:window.location.href='rogin.html'">ログイン</button>
+                <button class="guest-button" onclick="javascript:window.location.href='newMemAdded.html'">新規会員登録</button>
+                <div id="user-login" style="display:none;"><p>ED0401</p></div>
             </div>
         </header>
         <main>
@@ -56,7 +57,7 @@
         </main>
         <footer>
             <div class="footer-block">
-                <small>Copy Rights Reserved</small>
+                <small>Copy Rights &copy Reserved</small>
             </div>
         </footer>
     </body>

@@ -13,7 +13,7 @@
     </head>
     <body id="wrapper">
         <header id="header-list">
-            <div class="logo"><a href="index.html"><img id="home_logo" src="images/sample_logo001.png" width="75" height="75" alt="LOGO" /></a></div>
+            <div class="logo"><a href="index.html"><img id="home_logo" src="images/sample_logo001.png" alt="LOGO" title="メインロゴ" /></a></div>
             <div class="header-selection">
                 <nav class="selection-list">
                     <ul>
@@ -23,65 +23,38 @@
                 </nav>
             </div>
             <div class="user-selection">
-                
+                <div id="user-login" style="display:none;"><p>ED0401</p></div>
             </div>
         </header>
         <main>
             <div class="form-block">
-                <h2>新規会員登録</h2>
-                <form id="main-form" name="main-form" onsubmit="getNewMemberData(this);">
-                    <table name="newformtable">
+                <h2>作品投稿</h2>
+                <form id="main-form" name="main-form" onsubmit="alert('作品アップロード完了');">
+                    <table name="work-uploadTable" align="center" border="0">
                         <tr>
-                            <td>ニックネーム</td>
-                            <td><input name="nickname" type="text" /></td>
+                            <td>作品名</td>
+                            <td><input type="text" name="worknname" /></td>
                         </tr>
                         <tr>
-                            <td>Email</td>
-                            <td><input name="email" type="email" /></td>
-                        <tr>
-                            <td>確認Email</td>
-                            <td><input name="cemail" type="email" onchange="detectRightEmail(document.forms[0]);" />
-                                <p id="email-error" style="color:red;display:none;">値が一致していません</p>
-                            </td>
-                        <tr>
-                            <td>パスワード</td>
-                            <td><input name="password" type="password" maxlength="12" /></td>
-                        <tr>
-                            <td>確認パスワード</td>
-                            <td><input name="cpassword" type="password" maxlength="12" onchange="detectRightPassword(document.forms[0]);" />
-                                <p id="pass-error" style="color:red;display:none;">値が一致していません</p>
-                            </td>
+                            <td>作品説明文</td>
+                            <td><textarea name="description">
+                                
+                            </textarea></td>
                         </tr>
                         <tr>
-                            <td>職種</td>
+                            <td>ファイルの選択</td>
                             <td>
-                            <select name="career">
-                                <option value="ウェブデザイナー">ウェブデザイナー</option>
-                                <option value="システムエンジニア">システムエンジニア</option>
-                                <option value="プログラマー">プログラマー</option>
-                                <option value="学生">学生</option>
-                                <option value="その他">その他</option>
-                            </select>
-                        </td>
-                        </tr>
-                        <tr>
-                            <td>使用目的</td>
-                           <td> 
-                            <select name="usedtarget">
-                                <option value="個人の趣味で使用">個人の趣味で使用</option>
-                                <option value="自分の作品で投稿してほかのユーザーとシェアするため">自分の作品で投稿してほかのユーザーとシェアするため</option>
-                                <option value="純粋にいろんな作者の作品を閲覧するため">純粋にいろんな作者の作品を閲覧するため</option>
-                            </select>
-                        </td>
+                                <input type="file" name="file-selection" />
+                            </td>
                         </tr>
                     </table>
-                    <p><input type="submit" value="新規登録" /></p>
+                    <p><input type="submit" value="アップロード" /></p>
                 </form>
             </div>
         </main>
         <footer>
             <div>
-                <small></small>
+                <small>Copy Rights &copy Reserved</small>
             </div>
         </footer>
     </body>

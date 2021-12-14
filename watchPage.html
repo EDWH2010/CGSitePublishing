@@ -12,66 +12,95 @@
     </head>
     <body id="wrapper">
         <header id="header-list">
-            <div class="logo"><a href="index.html"><img src="images/logo.png" alt="LOGO" /></a></div>
+            <div class="logo"><a href="index.html"><img id="home_logo" src="images/sample_logo001.png" alt="LOGO" title="メインロゴ" /></a></div>
             <div class="header-selection">
                 <nav class="selection-list">
                     <ul>
-                        <li name="select-read" onclick="alert('閲覧');">閲覧</li>
-                        <li name="select-search" onclick="alert('捜索')">捜索</li>
+                        <li name="select-read" onclick="alert('閲覧');changePage('referPage.html')">閲覧</li>
+                        <li name="select-search" onclick="alert('捜索');changePage('watchPage.html')">捜索</li>
                     </ul>
                 </nav>
             </div>
             <div class="user-selection">
-                <button onclick="javascript:window.location.href='rogin.html'">ログイン</button>
-                <button onclick="javascript:window.location.href='newMemAdded.html'">新規会員登録</button>
+                <button class="guest-button" onclick="javascript:window.location.href='rogin.html'">ログイン</button>
+                <button class="guest-button" onclick="javascript:window.location.href='newMemAdded.html'">新規会員登録</button>
+                <div id="user-login" style="display:none;"><p>ED0401</p></div>
             </div>
         </header>
         <main>
             <div class="watch-main">
                 <div class="main-search">
-                    <input type="search" name="search" />
-                    <input type="button" value="サーチ" />
+                    <input id="keyword-search" type="search" name="search" placeholder="キーワードを入力" />
+                    <input type="button" value="サーチ" onclick="" />
                 </div>
                 <article class="watch-article">
-                <table name="watch-table" class="watch-table">
+                    <table name="watch-table" class="watch-table">
                         <tr>
                             <td>
                                 <figure>
-                                    <img src="" alt="dummy" />
-                                    <figcaption></figcaption>
+                                    <img src="images/sample_images002.jpg" alt="dummy" />
+                                    <figcaption>fasfds</figcaption>
                                 </figure>
                             </td>
                             <td>
                                 <figure>
-                                    <img src="" alt="dummy" />
-                                    <figcaption></figcaption>
+                                     <img src="images/sample_images002.jpg" alt="dummy" />
+                                    <figcaption>fasfds</figcaption>
                                 </figure>
                             </td>
                             <td>
                                 <figure>
-                                    <img src="" alt="dummy" />
-                                    <figcaption></figcaption>
+                                    <img src="images/sample_images002.jpg" alt="dummy" />
+                                    <figcaption>fasfds</figcaption>
                                 </figure>
                             </td>
                             <td>
                                 <figure>
-                                    <img src="" alt="dummy" />
-                                    <figcaption></figcaption>
+                                    <img src="images/sample_images002.jpg" alt="dummy" />
+                                    <figcaption>fasfds</figcaption>
                                 </figure>
                             </td>
                         </tr>
 
-                </table>
-                
+                        <tr>
+                            <td>
+                                <figure>
+                                    <img src="images/sample_images002.jpg" alt="dummy" />
+                                    <figcaption></figcaption>
+                                </figure>
+                            </td>
+                            <td>
+                                <figure>
+                                    <img src="images/sample_images002.jpg" alt="dummy" />
+                                    <figcaption></figcaption>
+                                </figure>
+                            </td>
+                            <td>
+                                <figure>
+                                    <img src="images/sample_images002.jpg" alt="dummy" />
+                                    <figcaption></figcaption>
+                                </figure>
+                            </td>
+                            <td>
+                                <figure>
+                                    <img src="images/sample_images002.jpg" alt="dummy" />
+                                    <figcaption></figcaption>
+                                </figure>
+                            </td>
+                        </tr>
+                    </table>
                 </article>
             </div>
-            <div class="numbers-list">
 
+            <div class="numbers-list">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
             </div>
         </main>
         <footer>
             <div class="footer-block">
-                <small>Copy Rights Reserved</small>
+                <small>Copy Rights &copy Reserved</small>
             </div>
         </footer>
     </body>
