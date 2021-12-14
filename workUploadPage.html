@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <link rel="stylesheet" href="css/style.css" />
+        <script type="text/javascript" src="lib/jquery-1.10.1.min.js"></script>
+        <script src="lib/ChatData.js"></script>
+        <script src="lib/Member.js"></script>
+        <script src="lib/excelTest.js"></script>
+        <script src="lib/PageLoading.js"></script>
+        <title>作品投稿画面</title>
+    </head>
+    <body id="wrapper">
+        <header id="header-list">
+            <div class="logo"><a href="index.html"><img id="home_logo" src="images/sample_logo001.png" width="75" height="75" alt="LOGO" /></a></div>
+            <div class="header-selection">
+                <nav class="selection-list">
+                    <ul>
+                        <li name="select-read" onclick="alert('閲覧');changePage('referPage.html')">閲覧</li>
+                        <li name="select-search" onclick="alert('捜索');changePage('watchPage.html')">捜索</li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="user-selection">
+                
+            </div>
+        </header>
+        <main>
+            <div class="form-block">
+                <h2>新規会員登録</h2>
+                <form id="main-form" name="main-form" onsubmit="getNewMemberData(this);">
+                    <table name="newformtable">
+                        <tr>
+                            <td>ニックネーム</td>
+                            <td><input name="nickname" type="text" /></td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td><input name="email" type="email" /></td>
+                        <tr>
+                            <td>確認Email</td>
+                            <td><input name="cemail" type="email" onchange="detectRightEmail(document.forms[0]);" />
+                                <p id="email-error" style="color:red;display:none;">値が一致していません</p>
+                            </td>
+                        <tr>
+                            <td>パスワード</td>
+                            <td><input name="password" type="password" maxlength="12" /></td>
+                        <tr>
+                            <td>確認パスワード</td>
+                            <td><input name="cpassword" type="password" maxlength="12" onchange="detectRightPassword(document.forms[0]);" />
+                                <p id="pass-error" style="color:red;display:none;">値が一致していません</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>職種</td>
+                            <td>
+                            <select name="career">
+                                <option value="ウェブデザイナー">ウェブデザイナー</option>
+                                <option value="システムエンジニア">システムエンジニア</option>
+                                <option value="プログラマー">プログラマー</option>
+                                <option value="学生">学生</option>
+                                <option value="その他">その他</option>
+                            </select>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>使用目的</td>
+                           <td> 
+                            <select name="usedtarget">
+                                <option value="個人の趣味で使用">個人の趣味で使用</option>
+                                <option value="自分の作品で投稿してほかのユーザーとシェアするため">自分の作品で投稿してほかのユーザーとシェアするため</option>
+                                <option value="純粋にいろんな作者の作品を閲覧するため">純粋にいろんな作者の作品を閲覧するため</option>
+                            </select>
+                        </td>
+                        </tr>
+                    </table>
+                    <p><input type="submit" value="新規登録" /></p>
+                </form>
+            </div>
+        </main>
+        <footer>
+            <div>
+                <small></small>
+            </div>
+        </footer>
+    </body>
+</html>
