@@ -81,7 +81,7 @@ img#home_logo{
 
 
 main{
-    width:90%;
+    width:100%;
     background-color:rgba(0,0,0,0.3);
     margin:0 auto;
 
@@ -116,12 +116,13 @@ main .main-visual img{
 
 main .work-read{
     text-align:center;
-    height:300px;
+    height:450px;
     background-color:rgba(125,255,125,0.5);
     margin-bottom:75px;
 }
 
 main .work-display{
+    display:block;
     text-align:center;
     padding:0;
     height:300px;
@@ -129,9 +130,14 @@ main .work-display{
     margin-bottom:75px;
 }
 
-main .work-display{
-    display:block;
+.work-display .work-image{
+    overflow:hidden;
+}
 
+main .work-item p{
+    color:#fff;
+    font-size:16px;
+    font-weight:bold;
 }
 
 
@@ -205,6 +211,11 @@ div.work-item{
     border:5px solid #fff;
     width:250px;
     height:225px;
+}
+
+div.work-image{
+    width:100%;
+    height:100%;
 }
 
 div.work-item img{
