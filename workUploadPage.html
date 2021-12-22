@@ -23,6 +23,8 @@
                 </nav>
             </div>
             <div class="user-selection">
+                <button class="guest-button" onclick="javascript:window.location.href='rogin.html'">ログイン</button>
+                <button class="guest-button" onclick="javascript:window.location.href='newMemAdded.html'">新規会員登録</button>
                 <div id="user-login" style="display:none;"><p>ED0401</p></div>
             </div>
         </header>
@@ -37,9 +39,7 @@
                         </tr>
                         <tr>
                             <td>作品説明文</td>
-                            <td><textarea name="description">
-                                
-                            </textarea></td>
+                            <td><textarea name="description" cols="30" rows="5"></textarea></td>
                         </tr>
                         <tr>
                             <td>ファイルの選択</td>
@@ -48,7 +48,8 @@
                             </td>
                         </tr>
                     </table>
-                    <p><input type="submit" value="アップロード" /></p>
+
+                    <p align="center"><input type="submit" value="アップロード" /></p>
                 </form>
             </div>
         </main>
