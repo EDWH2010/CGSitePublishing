@@ -346,26 +346,15 @@ div.chat-display{
     height:500px;
     overflow:scroll;
     font-size:20px;
-}
-
-div.chat-display .other-userChat{
-    background-color:#8F9;
-    border-radius:5px;
-    margin:15px;
-    float:right;
 
 }
 
-div.chat-display .self-userChat{
-    background-color:#5F5;
-    border-radius:5px;
-    margin:15px;
-    float:left;
+div.chat-display ul.chat-list{
+    list-style-type:none;
+    margin:0;
+    padding:0;
 }
 
-div.chat-display .user-chatDisplay{
-
-}
 
 
 form#main-form{
