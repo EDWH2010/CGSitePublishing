@@ -1,10 +1,9 @@
 body{
     background-image:url("../images/natual_scene01.jpg");
     background-repeat:no-repeat;
-    background-size: cover;
+    background-size:cover;
     background-color:#fff;
     background-position:60% 50%;
-
     margin:0;
     padding:0;
 }
@@ -94,14 +93,9 @@ div#top-main{
 }
 
 main .main-visual{
-    height:550px;
+    height:600px;
     background-color:#000;
     margin-bottom:75px;
-}
-
-main div.work-list{
-    display:flex;
-    justify-content:space-between;
 }
 
 main .main-visual img{
@@ -111,9 +105,16 @@ main .main-visual img{
     margin:auto;
 }
 
+main div.work-list{
+    display:flex;
+    justify-content:space-between;
+}
+
+
 main .work-read{
     text-align:center;
-    height:450px;
+    height:auto;
+    padding-bottom:30px;
     background-color:rgba(125,255,125,0.5);
     margin-bottom:75px;
 }
@@ -121,8 +122,8 @@ main .work-read{
 main .work-display{
     display:block;
     text-align:center;
-    padding:0;
-    height:300px;
+    padding:0 0 30px 0;
+    height:auto;
     background-color:rgba(100,255,100,0.5);
     margin-bottom:75px;
 }
@@ -135,6 +136,12 @@ main .work-item p{
     color:#fff;
     font-size:16px;
     font-weight:bold;
+}
+
+main #other-info-block{
+    background-color:#afa;
+    width:100%;
+    color: #181;
 }
 
 

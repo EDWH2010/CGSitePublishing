@@ -24,6 +24,10 @@
   background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
 }
 
+#workOutBlock{
+  padding: 0; /**/
+  
+}
 
 
 /* Modal Content (Image) */
@@ -32,6 +36,11 @@
   display: block;
   width: 80%;
   max-width: 700px;
+}
+
+#workImage{
+  width:50%;
+
 }
 
 /* Caption of Modal Image (Image Text) - Same Width as the Image */
@@ -44,6 +53,10 @@
   color: #ccc;
   padding: 10px 0;
   height: 150px;
+}
+
+.display-title{
+  
 }
 
 #workDiscription{

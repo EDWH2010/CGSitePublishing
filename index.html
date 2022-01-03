@@ -4,6 +4,8 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/Modal.css" />
+        <link rel="stylesheet" href="css/sliderStyle.css" />
         <script type="text/javascript" src="lib/jquery-1.10.1.min.js"></script>
         <script src="lib/ChatData.js"></script>
         <script src="lib/excelTest.js"></script>
@@ -11,6 +13,36 @@
         <title>CGSharingCite(HOME)</title>
     </head>
     <body id="wrapper">
+        <div class="modal read">
+            <!-- The Close Button -->
+            <span class="prev prev-add">&larr;</span>
+            <span class="next next-add">&rarr;</span>
+
+            <span class="close">&times;</span>
+            <div id="workOutBlock">
+                <div id="caption">Caption Test</div>
+                <div class="modal-content">
+                    <img id="workImage" src="#" alt="modalImage" />
+                </div>
+                <div id="workDiscription">
+                    Heffdgs
+                </div>
+            </div>
+        </div>
+<!--
+        <div class="modal display">
+             <span class="close">&times;</span>
+
+            <div class="display-title"><h2>Display Title</h2></div>
+            <div class="display-image">
+                <img src="" alt="displayImage" />
+            </div>
+            <div class="display-discription">
+
+            </div>
+        </div> -->
+
+
         <header id="header-list">
             <div class="logo"><a href="index.html"><img id="home_logo" src="images/sample_logo001.png" alt="LOGO" title="メインロゴ" /></a></div>
             <div class="header-selection">
@@ -30,46 +62,48 @@
         </header>
         <main>
             <div id="top-main">
-                <div class="main-visual">
-                    <img src="images/mainVisualTest01.jpg" alt="mainVisual" />
+                <div class="main-visual">   
+                    <img src="images/mainVisualTest01.jpg" alt="mainVisual" />              
                 </div>
+                
                 <div class="work-read">
                     <div><h3>Jackpury</h3></div>
-                    <div class="work-list">
-                        <div class="work-item">
-                            <div class="work-image"><img src="images/sample_image001.jpg" alt="dummy" /></div>
+                    <div class="work-list read">
+                        <div class="work-item imgSelector">
+                            <div class="work-image"><img src="images/sample_image001.jpg" alt="dummy1" /></div>
                         </div>
 
-                        <div class="work-item">
-                            <div class="work-image"><img src="images/sample_image001.jpg" alt="dummy" /></div>
+                        <div class="work-item imgSelector">
+                            <div class="work-image"><img src="images/sample_image001.jpg" alt="dummy2" /></div>
                         </div>
 
-                        <div class="work-item">
-                            <div class="work-image"><img src="images/sample_image001.jpg" alt="dummy" /></div>
+                        <div class="work-item imgSelector">
+                            <div class="work-image"><img src="images/sample_image001.jpg" alt="dummy3" /></div>
                         </div>
                         
-                        <div class="work-item">
-                            <div class="work-image"><img src="images/sample_image001.jpg" alt="dummy" /></div>
+                        <div class="work-item imgSelector">
+                            <div class="work-image"><img src="images/sample_image001.jpg" alt="dummy4" /></div>
                         </div>
                     </div>
                 </div>
+
                 <div class="work-display">
-                     <div class="work-list">
-                        <div class="work-item">
+                     <div class="work-list display">
+                        <div class="work-item imgSelector">
                             <div class="work-image">
                                 <img src="images/material_image001.png" alt="dummy" />
                             </div>
                             <p>マテリアル</p>
                         </div>
 
-                        <div class="work-item">
+                        <div class="work-item imgSelector">
                             <div class="work-image">
                                 <img src="images/3dmodel-sample001.jpg" alt="dummy" />
                             </div>
                             <p>3Dモデル</p>
                         </div>
 
-                        <div class="work-item">
+                        <div class="work-item imgSelector">
                             <div class="work-image">
                                 <img src="images/textureMap_sample002.jpg" alt="dummy" />
                             </div>
