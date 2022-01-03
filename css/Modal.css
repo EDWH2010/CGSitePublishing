@@ -24,6 +24,8 @@
   background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
 }
 
+
+
 /* Modal Content (Image) */
 .modal-content {
   margin: auto;
@@ -44,6 +46,12 @@
   height: 150px;
 }
 
+#workDiscription{
+  position:absolute;
+  bottom:20%;
+  left:50%;
+}
+
 /* Add Animation - Zoom in the Modal */
 .modal-content, #caption ,.prev-add,.next-add{
   animation-name: zoom;
@@ -51,8 +59,8 @@
 }
 
 @keyframes zoom {
-  from {transform:scale(0)}
-  to {transform:scale(1)}
+  from {transform:scale(0);opacity:0;}
+  to {transform:scale(1);opacity:1}
 }
 
 /* The Close Button */
