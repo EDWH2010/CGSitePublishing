@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/Modal.css" />
+        <link rel="stylesheet" href="css/sliderStyle.css" />
+        <script type="text/javascript" src="lib/jquery-1.10.1.min.js"></script>
+        <script src="lib/ChatData.js"></script>
+        <script src="lib/excelTest.js"></script>
+        <script src="src/Member.js"></script>
+        <script src="lib/PageLoading.js"></script>
+        <title>CGSharingCite(HOME)</title>
+    </head>
+    <body id="wrapper">
+
+        <header id="header-list">
+            <div class="logo"><a href="index.html"><img id="home_logo" src="images/sample_logo001.png" alt="LOGO" title="メインロゴ" /></a></div>
+            <div class="header-selection">
+                <nav class="selection-list">
+                    <ul id="navSelection">
+                        <li name="select-read" onclick="changePage('referPage.html')">閲覧</li>
+                        <li name="select-search" onclick="changePage('watchPage.html')">捜索</li>
+                        <li name="select-upload" onclick="changePage('workUploadPage.html');">作品投稿</li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <div class="user-selection">
+                <div id="user-icon">
+                    <img src="" alt="UserIcon" id="user-image" style="width:5px;height:5px;border-radius:50%;" />
+                    <span id="user-name">ED0401</span>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div id="user-property">
+                
+            </div>
+
+        </main>
+        <footer>
+            <div class="footer-block">
+                <small>Copy Rights &copy Reserved</small>
+            </div>
+        </footer>
+    </body>
+</html>
