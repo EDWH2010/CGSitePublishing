@@ -32,8 +32,7 @@ img#home_logo{
 }
 
 .header-selection{
-    width:60%;
-    
+    width:70%;
 }
 
 .selection-list ul{
@@ -47,12 +46,12 @@ img#home_logo{
     color:#fff;
     font-size:20px;
     font-weight:bold;
-
     transition:0.5s;
 }
 
 .selection-list ul li:hover{
     color:#aaa;
+    cursor:pointer;
 }
 
 .user-selection{
@@ -136,6 +135,63 @@ main .work-item p{
     color:#fff;
     font-size:16px;
     font-weight:bold;
+}
+
+.work-read .work-expand{
+    background-color:#666;
+    border:1px solid #aaa;
+    margin:auto;
+    width:5%;
+    display:flex;
+    justify-content:center;
+
+    transition:background-color .5s,border 1s;
+}
+
+.work-expand:hover{
+    background-color:#fff;
+    border-color:rgb(33, 68, 33);
+    border-width:3px;
+}
+
+.work-read .work-expand div{
+    width:10px;
+    height:10px;
+    margin:10px 2px;
+    background-color:rgb(30,30,30);
+    border-color:#fff;
+    border-width:1px;
+    border-radius:50%;
+}
+
+.number-list{
+    display:inline-block;
+    padding:0;
+    margin:15px auto 0 auto;
+}
+
+.number-list .circle-number{
+    width:20px;
+    height:20px;
+    background-color:#fff;
+    border-radius:50%;
+    margin:0 5px;
+
+    cursor:pointer;
+    transition:.5s;
+}
+
+.number-list .circle-number.selected{
+    border:1px solid #000;
+}
+
+.number-list .circle-number.selected:hover{
+    border-color:#fff;
+}
+
+.number-list .circle-number:hover{
+    background-color:#555;
+    color:#fff;
 }
 
 main #other-info-block{
