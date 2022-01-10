@@ -31,7 +31,16 @@
             <div class="watch-main">
                 <div class="main-search">
                     <input id="keyword-search" type="search" name="search" placeholder="キーワードを入力" />
-                    <input type="button" value="サーチ" onclick="" />
+                    <input id="search-button" type="button" value="サーチ" onclick="" />
+                    <button id="filterBox-show" value="boxShow" onclick="filterEventEmit(this);">サーチ条件On</button>
+                    <div name="filterBox" id="search-filter" style="display:none;">
+                        <input type="checkbox" name="texture" onchange="" />
+                        <label for="texture">Texture</label>
+                        <input type="checkbox" name="material" onchange="" />
+                        <label for="material">Material</label>
+                        <input type="checkbox" name="model" onchange="" />
+                        <label for="model">Model</label>
+                    </div>
                 </div>
                 <article class="watch-article">
                     <table name="watch-table" class="watch-table">
@@ -66,25 +75,25 @@
                             <td>
                                 <figure>
                                     <img src="images/sample_images002.jpg" alt="dummy" />
-                                    <figcaption></figcaption>
+                                    <figcaption>fasfds</figcaption>
                                 </figure>
                             </td>
                             <td>
                                 <figure>
                                     <img src="images/sample_images002.jpg" alt="dummy" />
-                                    <figcaption></figcaption>
+                                    <figcaption>fasfds</figcaption>
                                 </figure>
                             </td>
                             <td>
                                 <figure>
                                     <img src="images/sample_images002.jpg" alt="dummy" />
-                                    <figcaption></figcaption>
+                                    <figcaption>fasfds</figcaption>
                                 </figure>
                             </td>
                             <td>
                                 <figure>
                                     <img src="images/sample_images002.jpg" alt="dummy" />
-                                    <figcaption></figcaption>
+                                    <figcaption>fasfds</figcaption>
                                 </figure>
                             </td>
                         </tr>
@@ -92,10 +101,10 @@
                 </article>
             </div>
 
-            <div class="numbers-list">
-                <div class="circle"></div>
-                <div class="circle"></div>
-                <div class="circle"></div>
+            <div class="number-list">
+                <div class="circle-number"></div>
+                <div class="circle-number"></div>
+                <div class="circle-number"></div>
             </div>
         </main>
         <footer>

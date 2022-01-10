@@ -168,6 +168,7 @@ main .work-item p{
     display:inline-block;
     padding:0;
     margin:15px auto 0 auto;
+    text-align:center;
 }
 
 .number-list .circle-number{
@@ -256,6 +257,23 @@ div.watch-main{
     justify-content:center;
 }
 
+.main-search{
+    margin:10px auto;
+}
+
+#search-filter{
+    padding:5px 10px;
+    margin-top:5px;
+    margin-bottom:5px;
+    background-color:#585;
+    border:1px solid #040;
+    color:#fff;
+}
+
+table.watch-table figcaption{
+    color:#fff;
+    text-align:center;
+}
 
 div.work-list{
     display:flex;
