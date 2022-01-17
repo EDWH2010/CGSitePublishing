@@ -9,10 +9,13 @@
         <script type="text/javascript" src="lib/jquery-1.10.1.min.js"></script>
         <script src="lib/ChatData.js"></script>
         <script src="lib/excelTest.js"></script>
+        <script src="lib/PageMemberFunction.js"></script>
         <script src="lib/PageLoading.js"></script>
         <title>CGSharingCite(HOME)</title>
     </head>
     <body id="wrapper">
+        <div id="testBlock" name="testBlock"></div>
+
         <div class="modal read">
             <!-- The Close Button -->
             <span class="prev prev-add">&larr;</span>
@@ -29,18 +32,6 @@
                 </div>
             </div>
         </div>
-<!--
-        <div class="modal display">
-             <span class="close">&times;</span>
-
-            <div class="display-title"><h2>Display Title</h2></div>
-            <div class="display-image">
-                <img src="" alt="displayImage" />
-            </div>
-            <div class="display-discription">
-
-            </div>
-        </div> -->
 
 
         <header id="header-list">
@@ -50,17 +41,17 @@
                     <ul id="navSelection">
                         <li name="select-read" onclick="changePage('referPage.html')">閲覧</li>
                         <li name="select-search" onclick="changePage('watchPage.html')">捜索</li>
-                        <li name="select-upload" onclick="changePage('workUploadPage.html');">作品投稿</li>
+                       <li name="select-upload" onclick="changePage('workUploadPage.html');" style="display:none;">作品投稿</li>
                     </ul>
                 </nav>
             </div>
             
             <div class="user-selection">
                 <div id="user-icon">
-                    <img src="" alt="UserIcon" id="user-image" style="width:5px;height:5px;border-radius:50%;" />
+                    <img src="" alt="UserIcon" id="user-image" />
                     <span id="user-name">ED0401</span>
                 </div>
-                
+                <button class="member-button" onclick="rogout()" style="display:none;">ログアウト</button>
                 <button class="guest-button" onclick="javascript:window.location.href='rogin.html'">ログイン</button>
                 <button class="guest-button" onclick="javascript:window.location.href='newMemAdded.html'">新規会員登録</button>
             </div>
@@ -134,5 +125,6 @@
                 <small>Copy Rights &copy Reserved</small>
             </div>
         </footer>
+
     </body>
 </html>

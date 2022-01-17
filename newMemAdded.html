@@ -8,6 +8,7 @@
         <script src="lib/ChatData.js"></script>
         <script src="lib/Member.js"></script>
         <script src="lib/excelTest.js"></script>
+        <script src="lib/PageMemberFunction.js"></script>
         <script src="lib/PageLoading.js"></script>
         <title>新規登録画面</title>
     </head>
@@ -16,22 +17,27 @@
             <div class="logo"><a href="index.html"><img id="home_logo" src="images/sample_logo001.png" alt="LOGO" title="メインロゴ" /></a></div>
             <div class="header-selection">
                 <nav class="selection-list">
-                    <ul>
-                        <li name="select-read" onclick="alert('閲覧');changePage('referPage.html')">閲覧</li>
-                        <li name="select-search" onclick="alert('捜索');changePage('watchPage.html')">捜索</li>
+                    <ul id="navSelection">
+                        <li name="select-read" onclick="changePage('referPage.html')">閲覧</li>
+                        <li name="select-search" onclick="changePage('watchPage.html')">捜索</li>
+                        <li name="select-upload" onclick="changePage('workUploadPage.html');" style="display:none;">作品投稿</li>
                     </ul>
                 </nav>
             </div>
             <div class="user-selection">
                  <button class="guest-button" onclick="javascript:window.location.href='rogin.html'">ログイン</button>
                 <button class="guest-button" onclick="javascript:window.location.href='newMemAdded.html'">新規会員登録</button>
-                <div id="user-login" style="display:none;"><p>ED0401</p></div>
+                <div id="user-icon">
+                    <img src="" alt="UserIcon" id="user-image" />
+                    <span id="user-name">ED0401</span>
+                </div>
             </div>
         </header>
         <main>
             <div class="form-block">
                 <h2>新規会員登録</h2>
-                <form id="main-form" name="main-form" onsubmit="getNewMemberData(this);">
+                <button onclick="getMembers();">Member</button>
+                <form id="main-form" name="main-form">
                     <table name="newformtable">
                         <tr>
                             <td>ニックネーム</td>
@@ -77,7 +83,7 @@
                         </td>
                         </tr>
                     </table>
-                    <p><input id="new-registerButton" type="submit" value="新規登録" /></p>
+                    <p><input id="new-registerButton" type="button" value="新規登録" onclick="getNewMemberData(document.forms['main-form']);changePage('index.html');" /></p>
                 </form>
             </div>
         </main>

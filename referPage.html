@@ -15,16 +15,23 @@
             <div class="logo"><a href="index.html"><img id="home_logo" src="images/sample_logo001.png" alt="LOGO" title="メインロゴ" /></a></div>
             <div class="header-selection">
                 <nav class="selection-list">
-                    <ul>
+                    <ul id="navSelection">
                         <li name="select-read" onclick="alert('閲覧');changePage('referPage.html')">閲覧</li>
                         <li name="select-search" onclick="alert('捜索');changePage('watchPage.html')">捜索</li>
+                        <li name="select-upload" onclick="changePage('workUploadPage.html');" style="display:none;">作品投稿</li>
                     </ul>
                 </nav>
             </div>
             <div class="user-selection">
+                
                 <button class="guest-button" onclick="javascript:window.location.href='rogin.html'">ログイン</button>
                 <button class="guest-button" onclick="javascript:window.location.href='newMemAdded.html'">新規会員登録</button>
-                <div id="user-login" style="display:none;"><p>ED0401</p></div>
+                 <div id="user-icon">
+                    <img src="" alt="UserIcon" id="user-image" />
+                    <span id="user-name">ED0401</span>
+                </div>
+
+                 <button class="member-button" onclick="" style="display:none;">ログアウト</button>
             </div>
         </header>
         <main>

@@ -8,6 +8,31 @@ body{
     padding:0;
 }
 
+#testBlock{
+    position:fixed;
+    height:50px;
+    background-color:#fff;
+    z-index:2;
+    left:75%;
+}
+
+#returnTop{
+    color:#fff;
+    text-align:center;
+    width:50px;
+    height:50px;
+
+    font-size:26px;
+
+    background-color:#000;
+    position:fixed;
+    top:95%;
+    left:95%;
+
+    cursor:pointer;
+}
+
+
 #wrapper{
     min-width:100%;
     min-height:100%;
@@ -16,12 +41,14 @@ body{
 }
 
 #header-list{
+    position:absolute;
     width:100%;
     display:flex;
     justify-content: space-between;
     background-color: #12551d;
     padding:0;
 }
+
 
 img#home_logo{
     position:absolute;
@@ -39,6 +66,7 @@ img#home_logo{
     list-style:none;
     display:flex;
     justify-content:space-around;
+    
 }
 
 .selection-list ul li{
@@ -53,6 +81,18 @@ img#home_logo{
     color:#aaa;
     cursor:pointer;
 }
+#user-icon{
+    color:#fff;
+    font-weight:bold;
+}
+
+#user-image{
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    background-color:#fff;
+    padding:3px;
+}
 
 .user-selection{
     margin-top:auto;
@@ -60,7 +100,7 @@ img#home_logo{
     font-size:16px;
 }
 
-.user-selection button.guest-button{
+.user-selection button.guest-button,button.member-button{
     border-width:0;
     margin:0 10px;
     background-color:#000;
@@ -70,7 +110,7 @@ img#home_logo{
     font-weight:bold;
 }
 
-.user-selection button.guest-button:hover{
+.user-selection button.guest-button:hover,button.member-button:hover{
     background-color:#fff;
     color:#000;
 }
@@ -423,3 +463,22 @@ div.form-inputBlock{
 /*workUploadPage*/
 
 
+
+
+
+
+/*success page*/
+
+#successMsg{
+    background-color:rgba(31, 221, 72, 0.534);
+    border:5px double #080;
+    color:#fff;
+    font-size:30px;
+    font-weight:bold;
+    width:150px;
+    height:75px;
+    padding:30px;
+    text-align:center;
+    margin:5px auto 5px auto;
+
+}

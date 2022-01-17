@@ -8,6 +8,8 @@
         <script type="text/javascript" src="lib/jquery-1.10.1.min.js"></script>
         <script src="lib/ChatData.js"></script>
         <script src="lib/excelTest.js"></script>
+        <script src="lib/Member.js"></script>
+        <script src="lib/PageMemberFunction.js"></script>
         <script src="lib/PageLoading.js"></script>
         <title>ログインページ</title>
     </head>
@@ -16,9 +18,10 @@
             <div class="logo"><a href="index.html"><img id="home_logo" src="images/sample_logo001.png" title="メインロゴ" alt="LOGO" /></a></div>
             <div class="header-selection">
                 <nav class="selection-list">
-                    <ul>
+                    <ul id="navSelection">
                         <li name="select-read" onclick="alert('閲覧');changePage('referPage.html')">閲覧</li>
                         <li name="select-search" onclick="alert('捜索');changePage('watchPage.html')">捜索</li>
+                        <li name="select-upload" onclick="changePage('workUploadPage.html');" style="display:none;">作品投稿</li>
                     </ul>
                 </nav>
             </div>
@@ -26,12 +29,13 @@
                  <button class="guest-button" onclick="javascript:window.location.href='rogin.html'">ログイン</button>
                 <button class="guest-button" onclick="javascript:window.location.href='newMemAdded.html'">新規会員登録</button>
                 <div id="user-login" style="display:none;"><p>ED0401</p></div>
+                 <button class="member-button" onclick="" style="display:none;">ログアウト</button>
             </div>
         </header>
         <main>
             <div class="form-block">
                 <div><h2>ユーザーログイン</h2></div>
-                <form id="main-form" name="main-form" method="post" onsubmit="alert('submitted')">
+                <form id="main-form" name="main-form">
                        <table>
                             <tr>
                                 <td>ユーザーネーム</td>
@@ -42,7 +46,9 @@
                                 <td><input type="password" name="password" /></td>
                             </tr>
                        </table> 
-                       <div id="rogin-block"><button id="roginbutton" name="roginbutton" type="submit">ログイン</button></div>
+                       <div id="rogin-block">
+                           <input id="roginbutton" name="roginbutton" type="button" value="ログイン" onclick="rogin(document.forms['main-form']);" />
+                        </div>
                 </form>
             </div>
         </main>
