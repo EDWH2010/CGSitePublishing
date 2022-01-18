@@ -48,9 +48,9 @@
                         <button onmouseover="this.style.cursor='pointer'" name="memeberList" onclick="alert('会員リスト表示');">会員リスト</button>
                     </div>
                 </div>
-                 <div class="chat-main">
-                    <div class="chat-content">
-                        <div class="chat-display">
+                 <div id="chat-main">
+                    <div id="chat-content">
+                        <div id="chat-display">
                           	<div class="bubbleWrapper">
                                 <div class="inlineContainer">
                                     <img class="inlineIcon" src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png">
@@ -95,10 +95,10 @@
 
                        <form id="main-form"> 
                             <div class="chat-inputArea">
-                                <textarea name="chat-area" rows="10" cols="80"></textarea>
+                                <textarea id="input-chatArea" name="chat-area" rows="10" cols="80"></textarea>
                             </div>
-                            <div class="chat-submitButton">
-                                <input name="main-formButton" type="button" value="送信" onclick="" />
+                            <div>
+                                <input class="chat-submitButton" name="main-formButton" type="button" value="送信" onclick="alert('clicked');chatCreator.createMineMsg($('#input-chatArea').val(),'images/'guest.png)" />
                             </div>
                         </form>
                     </div>

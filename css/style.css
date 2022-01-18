@@ -8,13 +8,16 @@ body{
     padding:0;
 }
 
+/*
 #testBlock{
     position:fixed;
     height:50px;
     background-color:#fff;
     z-index:2;
     left:75%;
-}
+}*/
+
+
 
 #returnTop{
     color:#fff;
@@ -31,7 +34,6 @@ body{
 
     cursor:pointer;
 }
-
 
 #wrapper{
     min-width:100%;
@@ -114,7 +116,6 @@ img#home_logo{
     background-color:#fff;
     color:#000;
 }
-
 
 main{
     width:100%;
@@ -350,7 +351,6 @@ div.circle{
 }
 
 /*refer page*/
-
 .read-article{
     margin:auto;
     background-color:rgb(150,225,150,0.5);
