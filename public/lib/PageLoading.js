@@ -14,9 +14,9 @@ window.onload = function(){
     $('#testBlock').html(this.scrollY);
   });
 
-  
+  alert(window.location.href);
     userSelectionInit();
-  //alert(getPageName());
+  alert(getPageName());
  switch(getPageName()){
         case 'index':
             //alert('index');
@@ -110,6 +110,9 @@ function changePageByTime(pname,time){
 function getPageName(){
     let tarr = window.location.href.split('/');
     let fname = tarr[tarr.length-1];
+    if(fname == ''){
+      return 'index';
+    }
 
     return fname.split('.')[0];
 }
@@ -203,7 +206,7 @@ function workItemListInit(){
     $('.modal').hide();
   });
 
-  expandWorkItem();
+ // expandWorkItem();
   
 }
 
