@@ -50,6 +50,9 @@ window.onload = function(){
         case 'UserProperty':
        
           break;
+        case 'RegisterSuccess':
+
+          break;
         default:
             alert('not found page');
             break;
@@ -57,15 +60,22 @@ window.onload = function(){
 
 }
 
-function chatRoomInit(){
-  chatCreator = new ChatMessageCreator('testChat',document.getElementById('chat-display'));
-  
+function addWorkItem(block,src,alt){
+  let wBlock = document.createElement('div');
+  wBlock.className = 'work-item imgSelector';
+
+  let wImgBlock = document.createElement('div');
+  wImgBlock.className = 'work-image';
+  let img = document.createElement('img');
+  img.setAttribute('src',src);
+  img.setAttribute('alt',alt);
+
+  wImgBlock.appendChild(img);
+  wBlock.appendChild(wImgBlock);
+
+  block.appendChild(wBlock);
 }
 
-
-function referPageInit(){
-
-}
 
 function createReturnTopButton(){
   let btn = document.createElement('div');
@@ -192,8 +202,16 @@ function workItemListInit(){
   $('span.close').click(function(){
     $('.modal').hide();
   });
+
+  expandWorkItem();
   
 }
+
+function expandWorkItem(){
+  addWorkItem($('.work-list.read:first'),"images/sample_image001.jpg",'dummy');
+}
+
+
 
 function displayItemListInit(){
 
@@ -375,8 +393,43 @@ function filterEventEmit(element){
     }
 }
 
+function addWatchBlockTable(table,isrc,dis){
+  let tr = table.insertRow();
+  let cnt = table.rows[0].cells.length;
+
+  for(let i=0;i<cnt;i++){
+    let cell = tr.insertCell();
+    let wBlk = document.createElement('figure');
+    wBlk.className = 'watch-block';
+
+    let img = document.createElement('img');
+    img.setAttribute('src',isrc);
+
+    let caption = document.createElement('figcaption');
+    caption.className = 'watch-dis';
+    caption.innerHTML = dis;
+
+    wBlk.appendChild(img);
+    wBlk.appendChild(caption);
+  }
+
+}
+
 
 //ChatRoomFunction
 function chatSendMsg(){
   
+}
+
+
+
+
+function chatRoomInit(){
+  chatCreator = new ChatMessageCreator('testChat',document.getElementById('chat-display'));
+  
+}
+
+
+function referPageInit(){
+
 }

@@ -1,8 +1,9 @@
 class WorkData{
     
-    constructor(title,userName,discription){
+    constructor(title,userName,src,discription){
         this.title=title;
         this.userName = userName;
+        this.src = src;
         this.discription = discription;
     }
 }
