@@ -8,6 +8,9 @@ body{
     padding:0;
 }
 
+*{
+    box-sizing:border-box;
+}
 /*
 #testBlock{
     position:fixed;
@@ -49,6 +52,8 @@ body{
     justify-content: space-between;
     background-color: #12551d;
     padding:0;
+
+    z-index:2;
 }
 
 
@@ -132,18 +137,6 @@ div#top-main{
     width:100%;
 }
 
-main .main-visual{
-    height:600px;
-    background-color:#000;
-    margin-bottom:75px;
-}
-
-main .main-visual img{
-    display:block;
-    width:80%;
-    height:100%;
-    margin:auto;
-}
 
 main div.work-list{
     display:flex;
@@ -481,4 +474,20 @@ div.form-inputBlock{
     text-align:center;
     margin:5px auto 5px auto;
 
+}
+
+
+/*user Property*/
+
+#user-property{
+    background-color:rgba(100,255,100,0.5);
+    width:30%;
+    height:500px;
+    color:#fff;
+    margin:auto;
+    padding:15px;
+}
+
+#user-property .user-pblock{
+    
 }
