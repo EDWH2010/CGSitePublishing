@@ -6,11 +6,9 @@
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="css/Modal.css" />
         <link rel="stylesheet" href="css/sliderStyle.css" />
-        <script type="text/javascript" src="lib/jquery-1.10.1.min.js"></script>
-        <script src="lib/ChatData.js"></script>
-        <script src="lib/excelTest.js"></script>
-        <script src="lib/PageMemberFunction.js"></script>
-        <script src="lib/PageLoading.js"></script>
+        <link rel="stylesheet" href="lib/slick/slick.css" />
+        <link rel="stylesheet" href="lib/slick/slick-theme.css" />
+        
         <title>CGSharingCite(HOME)</title>
     </head>
     <body id="wrapper">
@@ -18,7 +16,7 @@
             <!-- The Close Button -->
             <span class="prev prev-add">&larr;</span>
             <span class="next next-add">&rarr;</span>
-            
+
             <span class="close">&times;</span>
             <div id="workOutBlock">
                 <div id="caption">Caption Test</div>
@@ -57,7 +55,11 @@
         <main>
             <div id="top-main">
                 <div class="main-visual">   
-                    <img src="images/mainVisualTest01.jpg" alt="mainVisual" />              
+                    <div class="prev">H</div>
+                    <div class="next">H</div>
+                    <div id="main_slider autoplay">
+                         <img class="slider_item" src="images/mainVisualTest01.jpg" alt="mainVisual" />
+                    </div>    
                 </div>
                 
                 <div class="work-read">
@@ -123,6 +125,12 @@
                 <small>Copy Rights &copy Reserved</small>
             </div>
         </footer>
+        <script type="text/javascript" src="lib/jquery-1.10.1.min.js"></script>
+        <script src="lib/ChatData.js"></script>
+        <script src="lib/excelTest.js"></script>
+        <script src="lib/PageMemberFunction.js"></script>
+        <script type="text/javascript"> src="lib/slick/slick.js"></script>
 
+        <script src="lib/PageLoading.js"></script>
     </body>
 </html>
