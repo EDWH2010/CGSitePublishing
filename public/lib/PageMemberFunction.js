@@ -65,15 +65,16 @@ function getMembers(){
 
             list.forEach(function(value){
                 alert(value.name);
+
             });
             return list;
         }
-
         return null;
     }
-
     return null;
 }
+
+
 
 function createMemberWindow(url){
 

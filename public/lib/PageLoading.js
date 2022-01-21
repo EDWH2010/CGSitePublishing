@@ -13,10 +13,10 @@ window.onload = function(){
     }
     $('#testBlock').html(this.scrollY);
   });
-
-  alert(window.location.href);
+  
+  //alert(window.location.href);
     userSelectionInit();
-  alert(getPageName());
+ // alert(getPageName());
  switch(getPageName()){
         case 'index':
             //alert('index');
