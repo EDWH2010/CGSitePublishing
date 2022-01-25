@@ -4,6 +4,7 @@ body{
     background-size:cover;
     background-color:#fff;
     background-position:60% 50%;
+
     margin:0;
     padding:0;
 }
@@ -20,7 +21,22 @@ body{
     left:75%;
 }*/
 
+#workDiscription{
+    position:absolute;
+    text-align:center;
+    left:25%;
+    bottom:10%;
 
+}
+
+
+#threeScene{
+    position:fixed;
+    left:50%;
+    top:50%;
+    width:50%;
+    height:50%;
+}
 
 #returnTop{
     color:#fff;
@@ -52,10 +68,9 @@ body{
     justify-content: space-between;
     background-color: #12551d;
     padding:0;
-
+    
     z-index:2;
 }
-
 
 img#home_logo{
     position:absolute;
