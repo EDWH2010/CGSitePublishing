@@ -9,6 +9,14 @@
         <link rel="stylesheet" href="lib/slick/slick.css" />
         <link rel="stylesheet" href="lib/slick/slick-theme.css" />
         
+         <script type="text/javascript" src="lib/jquery-1.10.1.min.js"></script>
+        <script src="lib/ChatData.js"></script>
+        <script type="text/javascript" src="lib/Three/three.js"></script>
+        <script src="lib/PageMemberFunction.js"></script>
+        <script type="text/javascript" src="lib/slick/slick.js"></script>
+        <script src="lib/WorkData.js"></script>
+        <script src="lib/ThreeTest.js"></script>
+        <script src="lib/PageLoading.js"></script>
         <title>CGSharingCite(HOME)</title>
     </head>
     <body id="wrapper">
@@ -23,12 +31,14 @@
                 <div class="modal-content">
                     <img id="workImage" src="#" alt="modalImage" />
                 </div>
-                <div id="workDiscription">
+                <div id="workDiscription" style="text-align:center;">
                     Heffdgs
                 </div>
+                
             </div>
         </div>
 
+        <div id="threeScene" style="display:none;"></div>
 
         <header id="header-list">
             <div class="logo"><a href="index.html"><img id="home_logo" src="images/sample_logo001.png" alt="LOGO" title="メインロゴ" /></a></div>
@@ -57,13 +67,13 @@
                 <div class="main-visual">   
                     <div class="prev">H</div>
                     <div class="next">H</div>
-                    <div id="main_slider autoplay">
+                    <div id="main_slider">
                          <img class="slider_item" src="images/mainVisualTest01.jpg" alt="mainVisual" />
                     </div>    
                 </div>
                 
                 <div class="work-read">
-                    <div><h3>Jackpury</h3></div>
+                    <div><h3>Works</h3></div>
                     <div class="work-list read">
                         <div class="work-item imgSelector">
                             <div class="work-image"><img src="images/sample_image001.jpg" alt="dummy1" /></div>
@@ -97,21 +107,21 @@
                      <div class="work-list display">
                         <div class="work-item imgSelector">
                             <div class="work-image">
-                                <img src="images/material_image001.png" alt="dummy" />
+                                <img id="dis-material" src="images/material_image001.png" alt="dummy" />
                             </div>
                             <p>マテリアル</p>
                         </div>
 
                         <div class="work-item imgSelector">
                             <div class="work-image">
-                                <img src="images/3dmodel-sample001.jpg" alt="dummy" />
+                                <img id="dis-3Dmodel" src="images/3dmodel-sample001.jpg" alt="dummy" />
                             </div>
                             <p>3Dモデル</p>
                         </div>
 
                         <div class="work-item imgSelector">
                             <div class="work-image">
-                                <img src="images/textureMap_sample002.jpg" alt="dummy" />
+                                <img id="dis-texture" src="images/textureMap_sample002.jpg" alt="dummy" />
                             </div>
                             <p>テクスチャマップ</p>
                         </div>  
@@ -122,15 +132,9 @@
         </main>
         <footer>
             <div class="footer-block">
+                <div id="container"></div>
                 <small>Copy Rights &copy Reserved</small>
             </div>
         </footer>
-        <script type="text/javascript" src="lib/jquery-1.10.1.min.js"></script>
-        <script src="lib/ChatData.js"></script>
-        <script src="lib/excelTest.js"></script>
-        <script src="lib/PageMemberFunction.js"></script>
-        <script type="text/javascript"> src="lib/slick/slick.js"></script>
-
-        <script src="lib/PageLoading.js"></script>
     </body>
 </html>
