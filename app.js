@@ -2,7 +2,6 @@ const  express = require('express');
 const mysql = require('mysql');
 const path = require('path');
 const url = require('url');
-const bodyParse = require('body-parser');
 
 const http = require('http');
 
@@ -23,7 +22,6 @@ connection.connect(function(err){
 
 app.use(express.static('public'));
 app.use(express.json());
-app.use(bodyParser.urlencoded({extended:true}));
 
 
 app.get('/', (req, res) => {
