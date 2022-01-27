@@ -481,7 +481,10 @@ div.form-inputBlock{
     border:5px solid #fff;
 }
 
-
+.watch-block h3{
+    color:#fff;
+    text-align:center;
+}
 
 /*success page*/
 
