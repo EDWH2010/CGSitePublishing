@@ -2,19 +2,28 @@ const  express = require('express');
 const mysql = require('mysql');
 const path = require('path');
 const url = require('url');
+const bodyParse = require('body-parser');
+
+const http = require('http');
 
 const app = express();
-/*const connection = mysql.createConnection({
+const server = http.createServer(app);
+
+const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
+    port:3306,
     password:'servant2697950',
-    database:'CGSiteBase'
+    database:'cgsitebase'
 });
 
-*/
+connection.connect(function(err){
+    console.error(err);
+});
 
 app.use(express.static('public'));
 app.use(express.json());
+app.use(bodyParser.urlencoded({extended:true}));
 
 
 app.get('/', (req, res) => {
