@@ -3,6 +3,8 @@ const mysql = require('mysql');
 const path = require('path');
 const url = require('url');
 
+const ejs = require('ejs');
+
 const http = require('http');
 
 const app = express();
@@ -16,68 +18,77 @@ const connection = mysql.createConnection({
     database:'cgsitebase'
 });
 
+
+
 connection.connect(function(err){
     console.error(err);
 });
 
+app.engine('ejs',ejs.renderFile);
+
+app.set('views',path.join(__dirname,'views'));
+app.set('view engine','ejs');
+
 app.use(express.static('public'));
 app.use(express.json());
-
+app.use(express.urlencoded({extended:false}));
 
 app.get('/', (req, res) => {
     console.log('Protocals : '+req.protocol);
     console.log('moved to ' + req.url);
-    res.sendFile(__dirname + '/index.html');
+
+    res.render('./index.ejs');
 });
 
 
-app.get('/index.html', (req, res) => {
+app.get('/index.ejs', (req, res) => {
     console.log('Protocals : '+req.protocol);
     console.log('moved to ' + req.url);
-    res.sendFile(__dirname + '/index.html');
+   res.render('./index.ejs');
 });
 
-app.get('/rogin.html',(req,res)=>{
+app.get('/rogin.ejs',(req,res)=>{
     console.log('moved to ' + req.url);
-    res.sendFile(__dirname + '/rogin.html');
+    res.render('./rogin.ejs');
 })
 
-app.get('/newMemAdded.html',(req,res)=>{
+app.get('/newMemAdded.ejs',(req,res)=>{
      console.log('moved to ' + req.url);
-    res.sendFile(__dirname + '/newMemAdded.html');
+    res.render('./newMemAdded.ejs');
 });
 
-app.get('/chatRoom.html',(req,res)=>{
+app.get('/chatRoom.ejs',(req,res)=>{
      console.log('moved to ' + req.url);
-    res.sendFile(__dirname + '/chatRoom.html');
+    res.render('./chatRoom.ejs');
 });
-app.get('/chatRoomCreatedPage.html',(req,res)=>{
+app.get('/chatRoomCreatedPage.ejs',(req,res)=>{
      console.log('moved to ' + req.url);
-    res.sendFile(__dirname + '/chatRoomCreatedPage.html');
+    res.render('./chatRoomCreatedPage.ejs');
 });
-app.get('/referPage.html',(req,res)=>{
+app.get('/referPage.ejs',(req,res)=>{
      console.log('moved to ' + req.url);
-    res.sendFile(__dirname + '/referPage.html');
+    res.render('./referPage.ejs');
 });
-app.get('/RigisterSuccess.html',(req,res)=>{
+app.get('/RigisterSuccess.ejs',(req,res)=>{
      console.log('moved to ' + req.url);
-    res.sendFile(__dirname + '/RigisterSuccess.html');
+    res.render('./RigisterSuccess.ejs');
 });
-app.get('/UserProperty.html',(req,res)=>{
+app.get('/UserProperty.ejs',(req,res)=>{
      console.log('moved to ' + req.url);
-    res.sendFile(__dirname + '/UserProperty.html');
+    res.render('./UserProperty.ejs');
 });
-app.get('/watchPage.html',(req,res)=>{
+app.get('/watchPage.ejs',(req,res)=>{
      console.log('moved to ' + req.url);
-    res.sendFile(__dirname + '/watchPage.html');
+    res.render('./watchPage.ejs');
 });
-app.get('/workUploadPage.html',(req,res)=>{
+app.get('/workUploadPage.ejs',(req,res)=>{
      console.log('moved to ' + req.url);
-    res.sendFile(__dirname + '/workUploadPage.html');
+    res.render('./workUploadPage.ejs');
 });
 
 
-app.listen(3000,()=>{
+
+server.listen(3000,()=>{
     console.log('server running on port 3000');
 });
 
