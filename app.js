@@ -7,6 +7,10 @@ const ejs = require('ejs');
 
 const http = require('http');
 
+const chatRoot = require('./routes/ChatRoomSetting.js');
+const rogRoot = require('./routes/RogInOutRoute.js');
+
+
 const app = express();
 const server = http.createServer(app);
 
@@ -19,10 +23,14 @@ const connection = mysql.createConnection({
 });
 
 
-
 connection.connect(function(err){
-    console.error(err);
+    if(err){
+        throw err;
+    }
+    console.log('connected');
 });
+
+
 
 app.engine('ejs',ejs.renderFile);
 
@@ -33,9 +41,20 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
+app.use('/',chatRoot);
+app.use('/',rogRoot);
+
+
 app.get('/', (req, res) => {
     console.log('Protocals : '+req.protocol);
     console.log('moved to ' + req.url);
+
+    const sql = 'select * from account';
+    connection.query(sql,(err,result,fields)=>{
+        if(err) throw err;
+
+        console.log(result);
+    });
 
     res.render('./index.ejs');
 });
@@ -47,6 +66,7 @@ app.get('/index.ejs', (req, res) => {
    res.render('./index.ejs');
 });
 
+/*
 app.get('/rogin.ejs',(req,res)=>{
     console.log('moved to ' + req.url);
     res.render('./rogin.ejs');
@@ -57,6 +77,10 @@ app.get('/newMemAdded.ejs',(req,res)=>{
     res.render('./newMemAdded.ejs');
 });
 
+*/
+
+
+/*
 app.get('/chatRoom.ejs',(req,res)=>{
      console.log('moved to ' + req.url);
     res.render('./chatRoom.ejs');
@@ -65,6 +89,10 @@ app.get('/chatRoomCreatedPage.ejs',(req,res)=>{
      console.log('moved to ' + req.url);
     res.render('./chatRoomCreatedPage.ejs');
 });
+
+*/
+
+
 app.get('/referPage.ejs',(req,res)=>{
      console.log('moved to ' + req.url);
     res.render('./referPage.ejs');
