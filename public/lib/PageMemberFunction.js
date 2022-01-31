@@ -1,6 +1,29 @@
+const SAVETYPE = {
+  Local:0,
+  Server:1
+}
+
 
 //new member added function
 const MEMBERLIST = 'memberList';
+
+function sendDataServer(form){
+
+     let name = form.nickname.value;
+  let email = form.email.value;
+  let password = form.password.value;
+  let career = form.career.value;
+    let usedtarget = form.usedtarget.value;
+
+    let data = new Member(name,email,password,career,usedtarget);
+
+    $.ajax({
+      url:``
+    });
+
+}
+
+
 
 function getNewMemberData(form){
   let name = form.nickname.value;

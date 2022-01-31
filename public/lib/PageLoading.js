@@ -33,6 +33,7 @@ window.onload = function(){
            alert('chatRoom init');
             break;
         case 'newMemAdded':
+          NewMemAddedPageInit();
             break;
         case 'referPage':
            // alert('referPage');
@@ -59,6 +60,19 @@ window.onload = function(){
     }
 
 }
+
+
+function NewMemAddedPageInit(){
+    $('#main-form').on('submit',function(e){
+      e.preventDefault();
+
+      
+      //alert('submit');
+
+    });
+}
+
+
 
 function addWorkItem(block,src,alt){
   let wBlock = document.createElement('div');
@@ -430,11 +444,16 @@ function chatSendMsg(){
 function chatRoomInit(){
   chatCreator = new ChatMessageCreator('testChat',document.getElementById('chat-display'));
   
+
+
 }
 
+function chatRoomCreatedPageInit(){
+
+}
 
 function referPageInit(){
-  
+
 }
 
 
