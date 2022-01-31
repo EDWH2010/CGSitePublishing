@@ -1,5 +1,6 @@
 const route = require('express').Router();
 
+const io = require('socket.io');
 
 route.get('/chatRoom.ejs',(req,res)=>{
     console.log('move to chatRoomPage'); 

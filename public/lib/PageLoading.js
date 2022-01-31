@@ -13,7 +13,7 @@ window.onload = function(){
     }
     $('#testBlock').html(this.scrollY);
   });
-  
+
   //alert(window.location.href);
     userSelectionInit();
  // alert(getPageName());
@@ -434,5 +434,8 @@ function chatRoomInit(){
 
 
 function referPageInit(){
-
+  
 }
+
+
+
