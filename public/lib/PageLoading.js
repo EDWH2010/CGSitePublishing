@@ -66,7 +66,7 @@ function NewMemAddedPageInit(){
     $('#main-form').on('submit',function(e){
       e.preventDefault();
 
-      
+
       //alert('submit');
 
     });
@@ -444,6 +444,9 @@ function chatSendMsg(){
 function chatRoomInit(){
   chatCreator = new ChatMessageCreator('testChat',document.getElementById('chat-display'));
   
+  if(chatcreator == null){
+    alert('chat creator existed');
+  }
 
 
 }
@@ -453,7 +456,7 @@ function chatRoomCreatedPageInit(){
 }
 
 function referPageInit(){
-
+  
 }
 
 

@@ -18,7 +18,9 @@ function sendDataServer(form){
     let data = new Member(name,email,password,career,usedtarget);
 
     $.ajax({
-      url:``
+      type:'GET',
+      url:``,
+      
     });
 
 }
