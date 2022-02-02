@@ -188,8 +188,6 @@ main .work-item p{
     color:#fff;
     font-size:16px;
     font-weight:bold;
-
-    
 }
 
 .work-read .work-expand{
@@ -448,7 +446,7 @@ form#main-form{
 
 form#main-form div.chat-submitButton{
     float:right;
-    margin-bottom:20px;
+    margin-bottom:50px;
 }
 
 form#main-form .chat-submitButton 
@@ -486,6 +484,17 @@ div.form-inputBlock{
     text-align:center;
 }
 
+
+#work-uploadTypeBlock{
+    display:flex;
+    justify-content:center;
+}
+
+#work-uploadCount{
+    display:flex;
+    justify-content:center;
+}
+
 /*success page*/
 
 #successMsg{
@@ -512,8 +521,4 @@ div.form-inputBlock{
     color:#fff;
     margin:auto;
     padding:15px;
-}
-
-#user-property .user-pblock{
-    
 }

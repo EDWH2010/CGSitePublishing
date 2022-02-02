@@ -40,7 +40,24 @@
             <div class="form-block">
                 <h2>作品投稿</h2>
                 <form id="main-form" name="main-form" onsubmit="alert('作品アップロード完了');">
-                    <table name="work-uploadTable" align="center" border="0">
+                    <div id="work-uploadTypeBlock">
+                        単数<input type="radio" name="fileSelect" value="単数" checked />
+                        複数<input type="radio" name="fileSelect" value="複数" />
+                    </div>
+
+                    <div id="work-uploadCount">
+                        <p>数量</p>
+                        <select>
+                            <option value="0">0</option>
+                            <option value="1" selected>1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+
+                    <table class="file-selectTable" name="work-uploadTable" align="center" border="0">
                         <tr>
                             <td>作品名</td>
                             <td><input type="text" name="workname" /></td>
@@ -52,7 +69,13 @@
                         <tr>
                             <td>ファイルの選択</td>
                             <td>
-                                <input type="file" name="file-selection" />
+                                <input type="file" id="file-selection" name="file-selection" />
+                               
+                                <ul id="file-imageList">
+                                    <li class="file-imageItem">
+                                        
+                                    </li>
+                                </ul>
                             </td>
                         </tr>
                     </table>

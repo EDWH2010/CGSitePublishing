@@ -7,10 +7,10 @@
         <link rel="stylesheet" href="css/chatRoomStyle.css" />
         <script type="text/javascript" src="lib/jquery-1.10.1.min.js"></script>
          <script src="lib/Three/three.js"></script>
+         <script src="lib/ChatRoomFunction.js"></script>
         <script src="lib/ChatRoomCreater.js" />
         <script src="lib/ChatRoom.js"></script>
         <script src="lib/ChatData.js"></script>
-        <script src="lib/excelTest.js"></script>
         <script src="lib/PageMemberFunction.js"></script>
         <script src="lib/PageLoading.js"></script>
         <title>CGSharingCite(HOME)</title>
@@ -95,12 +95,12 @@
                             </div>
                         </div>
 
-                       <form id="main-form"> 
+                       <form id="main-form" name = "chatForm"> 
                             <div class="chat-inputArea">
                                 <textarea id="input-chatArea" name="chat-area" rows="10" cols="80"></textarea>
                             </div>
                             <div>
-                                <input class="chat-submitButton" name="main-formButton" type="button" value="送信" onclick="alert('clicked');chatCreator.createMineMsg($('#input-chatArea').val(),'images/'guest.png)" />
+                                <input class="chat-submitButton" name="main-formButton" type="submit" value="送信" />
                             </div>
                         </form>
                     </div>
