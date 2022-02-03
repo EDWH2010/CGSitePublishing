@@ -281,6 +281,7 @@ footer{
     flex-direction:column;
     padding:50px;
     margin:100px auto;
+
 }
 
 .form-block h2{
@@ -300,8 +301,29 @@ footer{
 
 /*watch page*/
 
+.watch-article{
+
+}
+
 table.watch-table{
-    border:1px solid #3a3;
+    
+}
+
+table.watch-table div.work-image{
+    position:relative;
+    width:350px;
+    height:250px;
+    border:10px double #383;
+    box-shadow:0 0 10px 5px #fff;
+     overflow:hidden;
+}
+
+table.watch-table div.work-image img{
+    width:500px;
+    height:350px;
+   position:absolute;
+   left:-30%;
+   top:-20%;
 }
 
 div.watch-main{
@@ -470,8 +492,6 @@ div.form-inputBlock{
     
 }
 
-
-
 /*workUploadPage*/
 
 
@@ -508,7 +528,6 @@ div.form-inputBlock{
     padding:30px;
     text-align:center;
     margin:5px auto 5px auto;
-
 }
 
 
