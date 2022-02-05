@@ -26,15 +26,13 @@ app.use(express.urlencoded({extended:true}));
 app.use('/',chatRoot);
 app.use('/',rogRoot);
 
-
 const connector = require('./public/lib/backend/MysqlConnector.js');
 
 app.get('/', (req, res) => {
     console.log('Protocals : '+req.protocol);
     console.log('moved to ' + req.url);
-    res.render('./index.ejs');
+    res.render('./index.ejs',{like:3});
 });
-
 
 app.get('/index.ejs', (req, res) => {
     console.log('Protocals : '+req.protocol);
