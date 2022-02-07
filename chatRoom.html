@@ -16,13 +16,25 @@
         <title>CGSharingCite(HOME)</title>
     </head>
     <body id="wrapper">
+
+        <div id="members-block" style="display:none;" >
+            <div id="members-headerList"></div>
+            <table id="members-table" border="1" width="450px">
+                <caption><b>チャットルームメンバー</b></caption>
+                <tr>
+                    <th>ナンバー</th>
+                    <th>ネーム</th>
+                </tr>
+            </table>
+        </div>
+
         <header id="header-list">
             <div class="logo"><a href="index.html"><img id="home_logo" src="images/sample_logo001.png" title="メインロゴ" alt="LOGO" /></a></div>
             <div class="header-selection">
                 <nav class="selection-list">
                     <ul id="navSelection">
-                        <li name="select-read" onclick="alert('閲覧');changePage('referPage.html')">閲覧</li>
-                        <li name="select-search" onclick="alert('捜索');changePage('watchPage.html')">捜索</li>
+                        <li name="select-read" onclick="changePage('referPage.html')">閲覧</li>
+                        <li name="select-search" onclick="changePage('watchPage.html')">捜索</li>
                         <li name="select-upload" onclick="changePage('workUploadPage.html');">作品投稿</li>
                     </ul>
                 </nav>
@@ -47,7 +59,7 @@
                         <button onmouseover="this.style.cursor='pointer'" onclick="">button2</button>
                     </div>
                     <div class="chatroom-memberListButton">
-                        <button onmouseover="this.style.cursor='pointer'" name="memeberList" onclick="alert('会員リスト表示');">会員リスト</button>
+                        <button onmouseover="this.style.cursor='pointer'" name="memeberList" onclick="displayMemberList();">会員リスト</button>
                     </div>
                 </div>
                  <div id="chat-main">
