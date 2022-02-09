@@ -284,7 +284,6 @@ footer{
 
     border:3px solid rgba(30,220,30,1);
     box-shadow:0 0 10px 2px rgba(20,150,20,1);
-
 }
 
 .form-block h2{
@@ -467,6 +466,8 @@ div.work-readRight ul.work-infoList li p:nth-child(0){
     font-weight:bold;
     border-width:0;
 }
+
+
 
 /*rogin page*/
 

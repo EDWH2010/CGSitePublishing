@@ -95,7 +95,6 @@
 
 #main_slider{
   height:100%;
-  z-index:1;
 }
 
 main .main-visual{
@@ -110,4 +109,14 @@ main .main-visual img{
     width:100%;
     height:100%;
     margin:auto;
+}
+
+.work-slider{
+  height:200px;
+  width:100%;
+  margin-bottom:100px;
+}
+
+.slider_item{
+  height:200px;
 }
