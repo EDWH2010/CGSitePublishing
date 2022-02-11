@@ -39,26 +39,31 @@
         </header>
         <main>
           <div class="form-block">
-            <form name="chatroom-creatorForm" class="main-form" onsubmit="alert('チャットルーム作成完了')">
+              <div style="margin:auto;"><h3>チャットルーム作成</h3></div>
+            <form id="main-form" name="chatroom-creatorForm"  onsubmit="">
                 <div class="form-inputBlock">
-                    <label for="chatroom-name"><p>チャットルームネーム</p></label>
-                    <p><input name="chatroom-name" type="text" /> </p>
+                    <label for="chatroomName"><p>チャットルームネーム</p></label>
+                    <p><input name="chatroomName" type="text" /> </p>
                 </div>
 
                  <div class="form-inputBlock">
-                    <label for="chatroom-peopleCount"><p>人数設定</p></label>
-                    <p><input name="chatroom-peopleCount" type="text" /> </p>
+                    <label for="chatroomPeopleCount"><p>人数設定</p></label>
+                    <p><input name="chatroomPeopleCount" type="text" /> </p>
                 </div>
 
                  <div class="form-inputBlock">
-                    <label for="chatroom-invitation"><p>ユーザを招待する</p></label>
-                    <p><select name="chatroom-invitation" onchange="alert('changed');">
-                       <option value="friend-list">フレンドリストから選択</option>
-                       <option value="search-username">ユーザーネームのサーチ</option> 
+                    <label for="chatroomInvitation"><p>ユーザを招待する</p></label>
+                    <p><select name="chatroomInvitation" onchange="alert('changed');">
+                       <option value="フレンドリストから選択">フレンドリストから選択</option>
+                       <option value="ユーザーネームのサーチ">ユーザーネームのサーチ</option> 
                     </select></p>
                     
                     <div style="display:none;"></div>
                     <div style="display:none;"></div>
+                </div>
+
+                <div>
+                    <input type="submit" value="チャットルーム作成" />
                 </div>
             </form>
           </div>

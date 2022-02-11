@@ -12,6 +12,8 @@ body{
 *{
     box-sizing:border-box;
 }
+
+
 /*
 #testBlock{
     position:fixed;
@@ -150,6 +152,10 @@ div#top-main{
     width:100%;
 }
 
+.worker-slider{
+    margin-bottom:50px;
+}
+
 
 main div.work-list{
     display:flex;
@@ -183,7 +189,7 @@ main .work-display{
     margin-left:30px;
     margin-right:30px;
     margin-bottom:15px;
-}
+} 
 
 main .work-item p{
     color:#fff;
