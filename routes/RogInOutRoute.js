@@ -3,16 +3,16 @@ const router = require('express').Router();
 
 router.get('/rogin.ejs',(req,res)=>{
     console.log('move to roginPage');
-    res.render('./rogin.ejs');
+    res.render('./rogin');
 
 }).get('/newMemAdded.ejs',(req,res)=>{
     console.log('move to newMemAddedPage');
-    res.render('./newMemAdded.ejs');
+    res.render('./newMemAdded');
 });
 
 router.get('/RigisterSuccess.ejs',(req,res)=>{
     console.log('move to RigisterSuccessPage');
-    res.render('./RigisterSuccess.ejs');
+    res.render('./RigisterSuccess');
 });
 
 

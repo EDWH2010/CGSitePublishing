@@ -1,5 +1,4 @@
 const  express = require('express');
-const mysql = require('mysql');
 const path = require('path');
 const url = require('url');
 
@@ -31,36 +30,36 @@ const connector = require('./public/lib/backend/MysqlConnector.js');
 app.get('/', (req, res) => {
     console.log('Protocals : '+req.protocol);
     console.log('moved to ' + req.url);
-    res.render('./index.ejs',{like:3});
+    res.render('./index',{like:3});
 });
 
 app.get('/index.ejs', (req, res) => {
     console.log('Protocals : '+req.protocol);
     console.log('moved to ' + req.url);
-   res.render('./index.ejs');
+   res.render('./index');
 });
 
 
 app.get('/referPage.ejs',(req,res)=>{
      console.log('moved to ' + req.url);
-    res.render('./referPage.ejs');
+    res.render('./referPage');
 });
 app.get('/RigisterSuccess.ejs',(req,res)=>{
      console.log('moved to ' + req.url);
-    res.render('./RigisterSuccess.ejs');
+    res.render('./RigisterSuccess');
 });
 
 app.get('/UserProperty.ejs',(req,res)=>{
      console.log('moved to ' + req.url);
-    res.render('./UserProperty.ejs');
+    res.render('./UserProperty');
 });
 app.get('/watchPage.ejs',(req,res)=>{
      console.log('moved to ' + req.url);
-    res.render('./watchPage.ejs');
+    res.render('./watchPage');
 });
 app.get('/workUploadPage.ejs',(req,res)=>{
      console.log('moved to ' + req.url);
-    res.render('./workUploadPage.ejs');
+    res.render('./workUploadPage');
 });
 
 
