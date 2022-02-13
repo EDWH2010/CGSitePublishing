@@ -1,16 +1,12 @@
-const  express = require('express');
 const path = require('path');
 const url = require('url');
-
+const express = require('express');
 const ejs = require('ejs');
-
-const http = require('http');
 
 const chatRoot = require('./routes/ChatRoomSetting.js');
 const rogRoot = require('./routes/RogInOutRoute.js');
 
-const app = express();
-const server = http.createServer(app);
+const app = require('./routes/Server.js');
 
 app.engine('ejs',ejs.renderFile);
 
@@ -60,11 +56,5 @@ app.get('/watchPage.ejs',(req,res)=>{
 app.get('/workUploadPage.ejs',(req,res)=>{
      console.log('moved to ' + req.url);
     res.render('./workUploadPage');
-});
-
-
-
-server.listen(3000,()=>{
-    console.log('server running on port 3000');
 });
 
