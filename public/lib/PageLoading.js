@@ -24,15 +24,8 @@ window.onload = function(){
     }
     $('#testBlock').html(this.scrollY);
   });
-<<<<<<< HEAD:lib/PageLoading.js
   
     userSelectionInit();
-=======
-
-  //alert(window.location.href);
-    userSelectionInit();
- // alert(getPageName());
->>>>>>> nodejsRout:public/lib/PageLoading.js
  switch(getPageName()){
         case 'index':
           slickInit();
@@ -77,45 +70,9 @@ window.onload = function(){
             alert('not found page');
             break;
     }
-<<<<<<< HEAD:lib/PageLoading.js
 }
 
 
-=======
-
-}
-
-
-function NewMemAddedPageInit(){
-    $('#main-form').on('submit',function(e){
-      e.preventDefault();
-
-
-      //alert('submit');
-
-    });
-}
-
-
-
-function addWorkItem(block,src,alt){
-  let wBlock = document.createElement('div');
-  wBlock.className = 'work-item imgSelector';
-
-  let wImgBlock = document.createElement('div');
-  wImgBlock.className = 'work-image';
-  let img = document.createElement('img');
-  img.setAttribute('src',src);
-  img.setAttribute('alt',alt);
-
-  wImgBlock.appendChild(img);
-  wBlock.appendChild(wImgBlock);
-
-  block.appendChild(wBlock);
-}
-
-
->>>>>>> nodejsRout:public/lib/PageLoading.js
 function createReturnTopButton(){
   let btn = document.createElement('div');
   btn.id='returnTop';
@@ -193,88 +150,6 @@ function resetImageTable(table){
       cell.removeChild(cell.childNodes[0]);
       let img = document.createElement('img');
       cell.appendChild(img);
-<<<<<<< HEAD:lib/PageLoading.js
-=======
-    }
-  }
-}
-
-let readIndex=0;
-
-function workItemListInit(){
-
-  let $modal = $('.modal:eq(0)');
-   let $cap = $('#caption');
-
-  if($modal != null && $cap != null){
-    $('.work-list.read .imgSelector').bind('click',function(){
-        
-        $('.prev.prev-add').show();
-          $('.next.next-add').show();
-
-        var $imgBlock = $(this);
-        var $img = $imgBlock.find('img');
-        //alert($img.attr('src'));
-        changeModal($img.attr('src'),$img.attr('alt'),'Discription Test','read');
-    });
-  }
-
-  $('.prev.prev-add').click(function(){
-  //  alert('prev!');
-    prevImage($('.work-list.read'),readIndex);
-});
-
-  $('.next.next-add').click(function(){
-    nextImage($('.work-list.read'),readIndex);
-  });
-
-  $('span.close').click(function(){
-    $('.modal').hide();
-  });
-
- // expandWorkItem();
-  
-}
-
-function expandWorkItem(){
-  addWorkItem($('.work-list.read:first'),"images/sample_image001.jpg",'dummy');
-}
-
-
-
-function displayItemListInit(){
-
-  let $list = $('.work-list.display');
-  if($list != null){
-    let children = $list.children();
-    $(children).each(function(i,item){
-      $(item).bind('click',function(){
-          $('.prev.prev-add').hide();
-          $('.next.next-add').hide();
-
-          let img = $(this).find('img');
-          let pho = $(this).find('p');
-        changeModal($(img).attr('src'),$(pho).html(),'WorkDiscription','display');
-      })
-    })
-  }
-}
-
-function nextImage($iList,cur){
-  let target = cur+1;
-  let children = $iList.children();
-
-  if(target > children.length-1){
-    target=0;
-  }
-  readIndex=target;
-  //alert('readIndex : ' + readIndex);
-
-    let img = getReadImage($iList,readIndex);
-    changeModal($(img).attr('src'),$(img).attr('alt')
-    ,'Discription Test','read');
-}
->>>>>>> nodejsRout:public/lib/PageLoading.js
 
     }
   }
@@ -325,57 +200,3 @@ function referPageInit(){
 
 
 
-<<<<<<< HEAD:lib/PageLoading.js
-=======
-function addWatchBlockTable(table,isrc,dis){
-  let tr = table.insertRow();
-  let cnt = table.rows[0].cells.length;
-
-  for(let i=0;i<cnt;i++){
-    let cell = tr.insertCell();
-    let wBlk = document.createElement('figure');
-    wBlk.className = 'watch-block';
-
-    let img = document.createElement('img');
-    img.setAttribute('src',isrc);
-
-    let caption = document.createElement('figcaption');
-    caption.className = 'watch-dis';
-    caption.innerHTML = dis;
-
-    wBlk.appendChild(img);
-    wBlk.appendChild(caption);
-  }
-
-}
-
-
-//ChatRoomFunction
-function chatSendMsg(){
-  
-}
-
-
-
-
-function chatRoomInit(){
-  chatCreator = new ChatMessageCreator('testChat',document.getElementById('chat-display'));
-  
-  if(chatcreator == null){
-    alert('chat creator existed');
-  }
-
-
-}
-
-function chatRoomCreatedPageInit(){
-
-}
-
-function referPageInit(){
-  
-}
-
-
-
->>>>>>> nodejsRout:public/lib/PageLoading.js

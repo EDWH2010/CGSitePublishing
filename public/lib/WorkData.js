@@ -6,11 +6,7 @@ const WorkType = {
 
 class WorkData{
     
-<<<<<<< HEAD:lib/WorkData.js
     constructor(title,src,userName,discription,type){
-=======
-    constructor(title,userName,src,discription){
->>>>>>> nodejsRout:public/lib/WorkData.js
         this.title=title;
         this.src = src;
         this.userName = userName;
