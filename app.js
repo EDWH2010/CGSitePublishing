@@ -6,7 +6,9 @@ const ejs = require('ejs');
 const chatRoot = require('./routes/ChatRoomSetting.js');
 const rogRoot = require('./routes/RogInOutRoute.js');
 
-const app = require('./routes/Server.js');
+const pool = require('./public/lib/backend/MysqlConnectorPool.js');
+
+const app = require('./routes/Server.js').App;
 
 app.engine('ejs',ejs.renderFile);
 
