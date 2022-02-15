@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <link rel="stylesheet" href="css/style.css" />
+        <script type="text/javascript" src="lib/jquery-1.10.1.min.js"></script>
+         <script src="lib/Three/three.js"></script>
+         <script src="lib/slick/slick.js"></script>
+        <script src="lib/ChatData.js"></script>
+        <script src="lib/Member.js"></script>
+        <script src="lib/excelTest.js"></script>
+        <script src="lib/PageWorkFunction.js"></script>
+        <script src="lib/PageMemberFunction.js"></script>
+        <script src="lib/PageLoading.js"></script>
+        <title>作品投稿画面</title>
+    </head>
+    <body id="wrapper">
+        <header id="header-list">
+            <div class="logo"><a href="index.ejs"><img id="home_logo" src="images/sample_logo001.png" alt="LOGO" title="メインロゴ" /></a></div>
+            <div class="header-selection">
+                <nav class="selection-list">
+                    <ul id="navSelection">
+<<<<<<< HEAD:workUploadPage.html
+                        <li name="select-read" onclick="changePage('referPage.html')">閲覧</li>
+                        <li name="select-search" onclick="changePage('watchPage.html')">捜索</li>
+                        <li name="select-upload" onclick="changePage('workUploadPage.html');" style="display:none;">作品投稿</li>
+=======
+                        <li name="select-read" onclick="alert('閲覧');changePage('referPage.ejs')">閲覧</li>
+                        <li name="select-search" onclick="alert('捜索');changePage('watchPage.ejs')">捜索</li>
+                        <li name="select-upload" onclick="changePage('workUploadPage.ejs');" style="display:none;">作品投稿</li>
+>>>>>>> nodejsRout:views/workUploadPage.ejs
+                    </ul>
+                </nav>
+            </div>
+            <div class="user-selection">
+                <!--
+                <button class="guest-button" onclick="javascript:window.location.href='rogin.html'">ログイン</button>
+                <button class="guest-button" onclick="javascript:window.location.href='newMemAdded.html'">新規会員登録</button>-->
+                 <div id="user-icon">
+                    <img src="" alt="UserIcon" id="user-image" />
+                    <span id="user-name">ED0401</span>
+                </div>
+                 <button class="member-button" onclick="" style="display:none;">ログアウト</button>
+            </div>
+        </header>
+        <main>
+            <div class="form-block">
+                <h2>作品投稿</h2>
+                <form id="main-form" name="main-form" onsubmit="alert('作品アップロード完了');">
+                    <div id="work-uploadTypeBlock">
+                        単数<input type="radio" name="fileSelect" value="単数" checked />
+                        複数<input type="radio" name="fileSelect" value="複数" />
+                    </div>
+
+                    <div id="work-uploadCount">
+                        <p>数量</p>
+                        <select>
+                            <option value="0">0</option>
+                            <option value="1" selected>1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+
+                    <table class="file-selectTable" name="work-uploadTable" align="center" border="0">
+                        <tr>
+                            <td>作品名</td>
+                            <td><input type="text" name="workname" /></td>
+                        </tr>
+                        <tr>
+                            <td>作品説明文</td>
+                            <td><textarea name="discription" cols="30" rows="5"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>ファイルの選択</td>
+                            <td>
+                                <input type="file" id="file-selection" name="file-selection" />
+                               
+                                <ul id="file-imageList">
+                                    <li class="file-imageItem">
+                                        
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <p align="center"><input name="uploadButton" type="submit" value="アップロード" /></p>
+                </form>
+            </div>
+        </main>
+        <footer>
+            <div>
+                <small>Copy Rights &copy Reserved</small>
+            </div>
+        </footer>
+    </body>
+</html>

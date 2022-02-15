@@ -8,16 +8,20 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "start index.html"
+    "start": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.1",
+    "ejs": "^3.1.6",
     "express": "^4.17.2",
     "hasha": "^5.2.2",
     "jsdom": "^19.0.0",
+    "moment": "^2.29.1",
     "mysql": "^2.18.1",
+    "socket.io": "^4.4.1",
     "xlsx": "^0.17.4"
   }
 }
