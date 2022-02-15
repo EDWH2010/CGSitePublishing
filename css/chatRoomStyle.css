@@ -101,9 +101,16 @@ span.other{
 /*modal window*/
 
 #members-block{
+  width:500px;
+  height:500px;
+  position:absolute;
+  background-color:#fff;
+  left:15%;
+  top:10%;
   padding:0;
   overflow-y:scroll;
   border:2px solid #000;
+  z-index:3;
 }
 
 #members-headerList{
