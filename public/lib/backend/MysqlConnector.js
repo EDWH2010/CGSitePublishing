@@ -4,8 +4,8 @@ const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     port:3306,
-    password:'servant2697950',
-    database:'cgsitebase'
+    password:'',
+    database:'hew2022_11059'
 });
 
 

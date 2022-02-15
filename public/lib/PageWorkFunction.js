@@ -200,7 +200,7 @@ function watchPageInit(){
       
       sessionStorage.setItem('watchWork',data);
 
-      window.location.href = 'referPage.html';
+      window.location.href = 'referPage.ejs';
     }
   });
 }

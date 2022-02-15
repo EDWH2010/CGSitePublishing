@@ -159,7 +159,7 @@ function getUserName(){
 
 function rogout(){
   localStorage.removeItem('rogin');
-  window.location.href='index.html';
+  window.location.href='index.ejs';
 
   alert('ログアウトしました');
 }
@@ -201,9 +201,9 @@ function rogin(form){
   let data = new RoginData(uname,pass);
   if(localStorage != null && memberExist(data)){
     localStorage.setItem('rogin',JSON.stringify(data));
-    window.location.href='index.html';
+    window.location.href='index.ejs';
   }
-
+  
 }
 
 function detectRoginData(uname,passwd){
