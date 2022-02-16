@@ -71,7 +71,7 @@ function workUploadInit(){
         contentType:'application/x-www-form-urlencoded',
         data:{name:"HelloEdi",sex:"Man"},
         success:function(response){
-          console.log(response.data);
+          console.log(response.name);
         }
       }).fail((err)=>{
         console.log(err);

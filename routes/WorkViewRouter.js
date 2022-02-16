@@ -1,6 +1,8 @@
 
 const router = require('express').Router();
 const hasha = require('hasha');
+const httpMsg = require('http-msgs');
+
 
 router.get('/watchPage.ejs',(req,res)=>{
     console.log('moved to ' + req.url);
@@ -15,8 +17,8 @@ router.get('/workUploadPage.ejs',(req,res)=>{
 
 router.post('/workUploadPage.ejs/upload',(req,res)=>{
     let data = req.body;
-
-    res.render('./workUploadPage',data);
+  
+    res.send(data);
 });
 
 router.get('/referPage.ejs',(req,res)=>{
