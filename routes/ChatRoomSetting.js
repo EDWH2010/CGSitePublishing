@@ -18,6 +18,7 @@ io.on('connection',socket=>{
     
 });
 
+
 route.get('/chatRoom.ejs',(req,res)=>{
     console.log('move to chatRoomPage'); 
     res.render('chatRoom');

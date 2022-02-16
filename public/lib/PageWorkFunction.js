@@ -157,9 +157,6 @@ function addMultiFileSet(){
 }
 
 
-
-
-
 //watchPage Function
 
 function watchPageInit(){
@@ -189,18 +186,31 @@ function watchPageInit(){
         sessionStorage.clear();
       }
 
-      const data = JSON.stringify({
+      const jdata = JSON.stringify({
         workName:$(title).html(),
         src:$(img).attr('src'),
         alt:$(img).attr('alt'),
         exp:$(fcap).html()
       });
 
-      alert(data);
+      alert(jdata);
       
-      sessionStorage.setItem('watchWork',data);
+      $.ajax({
+        method:'POST',
+        url:'/work',
+        contentType:'application/json',
+        data:jdata,
+        success:function(response){
+          let name = response.workName;
+          window.location.href = 'referPage.ejs?'+name;
+        }
+      }).fail(function(err){
+        console.error(err);
+      });
+      
+      sessionStorage.setItem('watchWork',jdata);
 
-      window.location.href = 'referPage.ejs';
+     // window.location.href = 'referPage.ejs';
     }
   });
 }
@@ -276,11 +286,6 @@ function updateNumberList(pName){
   
   $('.number-list div.circle-number:first').addClass('selected');
 }
-
-
-
-
-
 
 
 function workSearch(name){

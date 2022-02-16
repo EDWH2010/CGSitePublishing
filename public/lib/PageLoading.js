@@ -23,8 +23,9 @@ window.onload = function(){
     }
   //  $('#testBlock').html(this.scrollY);
   });
+
   
-    userSelectionInit();
+  userSelectionInit();
  switch(getPageName()){
         case 'index':
           slickInit();
@@ -89,7 +90,6 @@ function createReturnTopButton(){
   document.body.appendChild(btn);
   return btn;
 }
-
 
 function changePage(pname){
   //alert('page loading');

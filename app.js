@@ -3,8 +3,12 @@ const url = require('url');
 const express = require('express');
 const ejs = require('ejs');
 
+const hasha = require('hasha');
+
+const InitRoot = require('./routes/PageInit.js');
 const chatRoot = require('./routes/ChatRoomSetting.js');
 const rogRoot = require('./routes/RogInOutRoute.js');
+const wViewRoot = require('./routes/WorkViewRouter.js');
 
 const pool = require('./public/lib/backend/MysqlConnectorPool.js');
 
@@ -19,16 +23,17 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
-
+app.use('/',InitRoot);
 app.use('/',chatRoot);
 app.use('/',rogRoot);
+app.use('/',wViewRoot);
 
 const connector = require('./public/lib/backend/MysqlConnector.js');
 
 app.get('/', (req, res) => {
     console.log('Protocals : '+req.protocol);
     console.log('moved to ' + req.url);
-    
+
     res.render('./index',{like:3});
 });
 
@@ -39,10 +44,6 @@ app.get('/index.ejs', (req, res) => {
 });
 
 
-app.get('/referPage.ejs',(req,res)=>{
-     console.log('moved to ' + req.url);
-    res.render('./referPage');
-});
 app.get('/RigisterSuccess.ejs',(req,res)=>{
      console.log('moved to ' + req.url);
     res.render('./RigisterSuccess');
@@ -51,13 +52,5 @@ app.get('/RigisterSuccess.ejs',(req,res)=>{
 app.get('/UserProperty.ejs',(req,res)=>{
      console.log('moved to ' + req.url);
     res.render('./UserProperty');
-});
-app.get('/watchPage.ejs',(req,res)=>{
-     console.log('moved to ' + req.url);
-    res.render('./watchPage');
-});
-app.get('/workUploadPage.ejs',(req,res)=>{
-     console.log('moved to ' + req.url);
-    res.render('./workUploadPage');
 });
 
