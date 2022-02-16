@@ -11,12 +11,12 @@ function workUploadInit(){
     if($(e.target).val() == single){
       $('#work-uploadCount').hide();
       clearWorkTable();
-      form.appendChild(createWorkTable());
+      form.appendChild(createWorkTable(0));
     }else if($(e.target).val() == many){
       $('#work-uploadCount').show();
       let count = detectWorkItem($('#work-uploadCount select').val());
       for(let i=0;i<count;i++){
-        form.appendChild(createWorkTable());
+        form.appendChild(createWorkTable(i));
       }
     }
   });
@@ -26,13 +26,16 @@ function workUploadInit(){
       let gCount = 0;
       gCount = detectWorkItem($(e.target).val());
         for(let i=0;i<gCount;i++){
-         form.appendChild(createWorkTable());
+         form.appendChild(createWorkTable(i));
         }
   });
 
 
   form.onsubmit = function(e){
     e.preventDefault();
+    const fileArr = [];
+    var resultData = null;
+
     //alert(e.target.tagName);
     if($('.file-selectTable').length == 0){
       return;
@@ -42,17 +45,37 @@ function workUploadInit(){
 
 
     }else{
-      let wName = this.workname.value;
-      let dis = this.discription.value;
+      
+      $tList.each((index,element)=>{
+       // alert(element.tagName);
+       let wName = $(element).find('input[type="text"]').val();
+       let wDis = $(element).find('textarea').val();
 
-      const workItem = {
-        name:wName,
-        discription:dis
-      };
+       const wData = {
+         name:wName,
+         discription:wDis
+       };
+
+       //alert(JSON.stringify(wData));
+      }); 
+
+      return;
+      resultData = JSON.stringify(fileArr);
     }
 
 
     if(localStorage && localStorage.getItem('workList') == null){
+      $.ajax({
+        url:'/workUploadPage.ejs/upload',
+        method:'POST',
+        contentType:'application/x-www-form-urlencoded',
+        data:{name:"HelloEdi",sex:"Man"},
+        success:function(response){
+          console.log(response.data);
+        }
+      }).fail((err)=>{
+        console.log(err);
+      });
 
     }
   }
@@ -103,17 +126,17 @@ function clearWorkTable(){
   $('#main-form').children('.file-selectTable').remove();
 }
 
-function createWorkTable(){
+function createWorkTable(index){
   let table = document.createElement('table');
   table.className = 'file-selectTable';
-  table.name = 'work-uploadTable';
+  table.name = 'work-uploadTable'+index;
   table.setAttribute('align','center');
 
   let tr1 = table.insertRow();
   tr1.insertCell().innerHTML = '作品名';
   let input = document.createElement('input');
   input.setAttribute('type','text');
-  input.name = 'workname';
+  input.name = 'workname'+index;
   tr1.insertCell().appendChild(input);
 
   let tr2 = table.insertRow();
@@ -121,7 +144,7 @@ function createWorkTable(){
 
   let tArea = document.createElement('textarea');
   $(tArea).attr({
-    name:'discription',
+    name:'discription'+index,
     cols:30,
     rows:5
   });
@@ -135,11 +158,11 @@ function createWorkTable(){
   $(itFile).attr({
     type:'file',
     id:'file-selection',
-    name:'file-selection'
+    name:'file-selection'+index
   });
 
   let ul = document.createElement('ul');
-  $(ul).attr("id","file-imageList");
+  $(ul).attr("class","file-imageList");
 
   let cell = tr3.insertCell();
   cell.appendChild(itFile);
@@ -195,6 +218,7 @@ function watchPageInit(){
 
       alert(jdata);
       
+      
       $.ajax({
         method:'POST',
         url:'/work',
@@ -202,7 +226,7 @@ function watchPageInit(){
         data:jdata,
         success:function(response){
           let name = response.workName;
-          window.location.href = 'referPage.ejs?'+name;
+          window.location.href = 'referPage.ejs';
         }
       }).fail(function(err){
         console.error(err);
@@ -210,7 +234,7 @@ function watchPageInit(){
       
       sessionStorage.setItem('watchWork',jdata);
 
-     // window.location.href = 'referPage.ejs';
+      window.location.href = 'referPage.ejs?name='+$(title).html();
     }
   });
 }

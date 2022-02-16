@@ -12,8 +12,21 @@ router.get('/workUploadPage.ejs',(req,res)=>{
    res.render('./workUploadPage');
 });
 
+
+router.post('/workUploadPage.ejs/upload',(req,res)=>{
+    let data = req.body;
+
+    res.render('./workUploadPage',data);
+});
+
 router.get('/referPage.ejs',(req,res)=>{
    console.log('moved to ' + req.url);
+   /* if(req.query == null){
+        console.log('null');
+    }else{
+        console.log(req.query.name);
+    }
+*/
   res.render('./referPage');
 });
 
