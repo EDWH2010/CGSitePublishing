@@ -19,6 +19,8 @@ function workUploadInit(){
         form.appendChild(createWorkTable(i));
       }
     }
+
+    updateUploadButton();
   });
 
 
@@ -28,6 +30,7 @@ function workUploadInit(){
         for(let i=0;i<gCount;i++){
          form.appendChild(createWorkTable(i));
         }
+        updateUploadButton();
   });
 
 
@@ -109,6 +112,7 @@ function detectWorkItem(value){
           clearWorkTable();
           break;
       }
+      
 
       return count;
 }
@@ -118,8 +122,17 @@ function clearWorkContent(){
 }
 
 function updateUploadButton(){
-  $('input[name="uploadButton"]').remove();
-  $('input[name="uploadButton"]').appendTo(document.getElementById('main-form'));
+  $('p#submitBlock').remove();
+  
+  let p = $('<p id="submitBlock" align="center">');
+  let sBtn = $('<input>',{
+    type:'submit',
+    name:'uploadButton',
+    value:'アップロード'
+  }).appendTo(p);
+
+  $('#main-form').append(p);
+
 }
 
 function clearWorkTable(){
