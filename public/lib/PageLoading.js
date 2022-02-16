@@ -12,7 +12,6 @@ function slickInit(){
 }
 
 
-
 window.onload = function(){
   
   let returnBtn = createReturnTopButton();
@@ -22,7 +21,7 @@ window.onload = function(){
     }else{
       $(returnBtn).fadeOut(500);
     }
-    $('#testBlock').html(this.scrollY);
+  //  $('#testBlock').html(this.scrollY);
   });
   
     userSelectionInit();

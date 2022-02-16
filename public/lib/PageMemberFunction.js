@@ -20,7 +20,10 @@ function sendDataServer(form){
     $.ajax({
       type:'GET',
       url:``,
-      
+      data:'',
+      success:function(value){
+        
+      },
     });
 
 }
