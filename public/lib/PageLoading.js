@@ -43,7 +43,7 @@ window.onload = function(){
            alert('chatRoom init');
             break;
         case 'newMemAdded':
-         // localStorage.clear();
+        //  localStorage.clear();
          // NewMemAddedPageInit();
             break;
         case 'referPage':

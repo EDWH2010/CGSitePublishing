@@ -14,22 +14,19 @@ router.post('/rogin.ejs/:id',(req,res)=>{
    // connector.query()
  //  connector.connect();
    let data = req.body;
-   /*
-    const sData = {};
-    sData.Result = 'OK You';
-    sData.userName = data.userName;
-   res.send(sData);*/
-   let sData = {};
-   connector.query(`SELECT * FROM accounts WHERE Account=${data.userName} AND 
-   PassWord=${data.password}`
-   ,function(err,result,fields){
+   data.exists = false;
+
+   connector.query(`SELECT * FROM accounts WHERE UserName=? AND 
+   PassWord=?`,[data.userName,data.password]
+   ,function(err,result){
         if(err) throw err;
-        res.send(result[0]);
+        if(result.length === 1){
+            data.exists = true;
+        }
     }
    );
-
-   connector.end();
-
+   res.send(data);
+  // connector.end();
 }).post('/newMemAdded.ejs/:id',(req,res)=>{
    // res.send(req.body);
 /*
@@ -37,15 +34,27 @@ router.post('/rogin.ejs/:id',(req,res)=>{
         console.error(err);
     });
     */
-    connector.query('SELECT * from accounts',function(err,result,fields){
+   let sData = req.body;
+   sData.exists = false;
+
+   connector.query('SELECT Account,UserName FROM accounts WHERE Account=? OR UserName=?',[sData.email,sData.name],
+    function(err,result){
         if(err) throw err;
 
-        res.send(result[0]);
-    });
-  
-
+        if(result.length == 0){
+            connector.query(`INSERT INTO accounts (Account,UserName,PassWord) VALUES (?,?,?)`,[sData.email,sData.name,sData.pass],
+            function(err,result){
+                if(err){
+                    console.error(err);
+                }
+                sData.exists=true;
+                res.send(sData);
+            });
+        }else{
+            res.send(sData);
+        }
+   });
    
-
 });
 
 router.get('/RigisterSuccess.ejs',(req,res)=>{

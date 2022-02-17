@@ -28,15 +28,23 @@ function getNewMemberData(form){
   let career = form.career.value === '' ? null : form.career.value;
     let usedtarget = form.usedtarget.value === '' ? null : form.usedtarget.value;
 
+  if(email !== form.cemail.value){
+    alert('メールアドレスが一致していません');
+    return;
+  }
+  if(password !== form.cpassword.value){
+    alert('パスワードが一致していません');
+    return;
+  }
+
   if(name == null || email == null || password == null || career == null || usedtarget == null){
     alert('入力されてない項目があります');
     return;
   }
     let data = new Member(name,email,password,career,usedtarget);
-
-    alert(JSON.stringify(data) + "\n\n送信完了");
-
+    alert(data.name + '   ' + data.email);
     saveMember(data);
+
     return JSON.stringify(data);
 }
 
@@ -45,36 +53,37 @@ function getNewMemberData(form){
 function saveMember(data){
 
   if(localStorage != null){
-    let dataArray=null;
-
-    if(localStorage.getItem('memberList') != null){
-      dataArray =JSON.parse(localStorage.getItem('memberList'));
-      dataArray.forEach(function(i,val){
-        if(val.name === data.name){
-          dataArray.push(data);
-           localStorage.setItem('memberList',JSON.stringify(dataArray)); 
-        }
-      });
-    }else{
-      dataArray = new Array();
+    let dataArray=[];
+    if(localStorage.getItem('memberList') == null){
+      localStorage.setItem('memberList',JSON.stringify(dataArray));
     }
 
-    $.ajax({
-      url:`newMemAdded.ejs/${data.name}`,
-      method:'POST',
-      contentType:'application/json',
-      data:JSON.stringify(data),
-      success:function(response){
-
-        alert("Get Data : " + response);
-        return;
-        window.location.href = '/newMemAdded.ejs/'
-      }
-    }).fail(function(err){
-      console.error(err);
-    });
-
+    if(localStorage.getItem('memberList') != null){
+     // console.log('start searching data');
+     // dataArray =JSON.parse(localStorage.getItem('memberList'));    
+      $.ajax({
+        url:`newMemAdded.ejs/${data.name}`,
+        method:'POST',
+        contentType:'application/json',
+        data:JSON.stringify(data),
+        success:function(response){
+          if(response.exists){
+            alert('登録成功');
+            window.location.href = '/index.ejs/'+response.name;
+          }else{
+            alert('失敗しました');
+            window.location.reload();
+          }
+        }
+      }).fail(function(err){
+        console.error(err);
+      });      
+      
+    }
   }
+}
+
+function isDetectSameUser(data){
 
 }
 

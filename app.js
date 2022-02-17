@@ -43,6 +43,11 @@ app.get('/index.ejs', (req, res) => {
    res.render('./index');
 });
 
+app.get('/index.ejs/:username',(req,res)=>{
+    console.log('moved to ' + req.url);
+
+    res.render('./index',req.params);
+})
 
 app.get('/RigisterSuccess.ejs',(req,res)=>{
      console.log('moved to ' + req.url);
