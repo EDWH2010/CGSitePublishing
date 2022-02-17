@@ -17,28 +17,23 @@ function sendDataServer(form){
 
     let data = new Member(name,email,password,career,usedtarget);
 
-    $.ajax({
-      type:'GET',
-      url:``,
-      data:'',
-      success:function(value){
-        
-      },
-    });
-
 }
 
 
 
 function getNewMemberData(form){
-  let name = form.nickname.value;
-  let email = form.email.value;
-  let password = form.password.value;
-  let career = form.career.value;
-    let usedtarget = form.usedtarget.value;
+  let name = form.nickname.value === '' ? null : form.nickname.value;
+  let email = form.email.value === '' ? null : form.email.value;
+  let password = form.password.value === '' ? null : form.password.value;
+  let career = form.career.value === '' ? null : form.career.value;
+    let usedtarget = form.usedtarget.value === '' ? null : form.usedtarget.value;
 
+  if(name == null || email == null || password == null || career == null || usedtarget == null){
+    alert('入力されてない項目があります');
+    return;
+  }
     let data = new Member(name,email,password,career,usedtarget);
- 
+
     alert(JSON.stringify(data) + "\n\n送信完了");
 
     saveMember(data);
@@ -54,14 +49,33 @@ function saveMember(data){
 
     if(localStorage.getItem('memberList') != null){
       dataArray =JSON.parse(localStorage.getItem('memberList'));
+      dataArray.forEach(function(i,val){
+        if(val.name === data.name){
+          dataArray.push(data);
+           localStorage.setItem('memberList',JSON.stringify(dataArray)); 
+        }
+      });
     }else{
       dataArray = new Array();
     }
 
-    dataArray.push(data);
-    localStorage.setItem('memberList',JSON.stringify(dataArray));
-    
+    $.ajax({
+      url:`newMemAdded.ejs/${data.name}`,
+      method:'POST',
+      contentType:'application/json',
+      data:JSON.stringify(data),
+      success:function(response){
+
+        alert("Get Data : " + response);
+        return;
+        window.location.href = '/newMemAdded.ejs/'
+      }
+    }).fail(function(err){
+      console.error(err);
+    });
+
   }
+
 }
 
 /*
@@ -199,12 +213,24 @@ function rogin(form){
     alert('ユーザーネームあるいはパスワード未入力です');
     return;
   }
+  let rData = new RoginData(uname,pass);
 
+  $.ajax({
+    url:`/rogin.ejs/${rData.userName}`,
+    method:'POST',
+    contentType:'application/json',
+    data:JSON.stringify(rData)
+  }).done(function(response){
+   //alert(response.Result + " \nUser : " + response.userName);
+   // alert(`UserName : ${response.Account}\nPassword : ${response.Password}`);
+
+  }).fail(function(err){
+    console.error(err);
+  });
   
-  let data = new RoginData(uname,pass);
-  if(localStorage != null && memberExist(data)){
-    localStorage.setItem('rogin',JSON.stringify(data));
-    window.location.href='index.ejs';
+
+  if(localStorage != null && memberExist(rData)){
+    localStorage.setItem('rogin',JSON.stringify(rData)); 
   }
   
 }
@@ -220,5 +246,27 @@ function detectRoginData(uname,passwd){
 
   }
 
+
+}
+
+
+
+
+function referPageInit(){
+  //alert('referPage loaded');
+  if(sessionStorage && sessionStorage.getItem('watchWork') != null){
+    let data = JSON.parse(sessionStorage.getItem('watchWork'));
+
+    $('.refer-image img').attr({
+      src:data.src,
+      alt:data.alt
+    });
+
+    $('#work-infoActorName p:nth-child(2)').html(data.workName);
+    $('#work-fileType p:nth-child(2)').html('FILE');
+
+    $('#work-explanation p:nth-child(2)').html(data.exp);
+
+  }
 
 }

@@ -8,5 +8,9 @@ const connection = mysql.createConnection({
     database:'hew2022_11059'
 });
 
+connection.connect(function (err){
+    console.error('Is MsqlConnection Problem? : ' + err);
+});
+
 
 module.exports = connection;

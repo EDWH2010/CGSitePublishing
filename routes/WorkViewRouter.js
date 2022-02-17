@@ -3,6 +3,7 @@ const router = require('express').Router();
 const hasha = require('hasha');
 const httpMsg = require('http-msgs');
 
+const connector = require('../public/lib/backend/MysqlConnector.js');
 
 router.get('/watchPage.ejs',(req,res)=>{
     console.log('moved to ' + req.url);
@@ -23,12 +24,7 @@ router.post('/workUploadPage.ejs/upload',(req,res)=>{
 
 router.get('/referPage.ejs',(req,res)=>{
    console.log('moved to ' + req.url);
-   /* if(req.query == null){
-        console.log('null');
-    }else{
-        console.log(req.query.name);
-    }
-*/
+   
   res.render('./referPage');
 });
 
@@ -39,13 +35,13 @@ router.get('/referPage.ejs/:hname',(req,res)=>{
  });
  
 
-router.post('/work',(req,res)=>{
-    let data = req.body.jdata;
-    res.render('referPage',JSON.parse(data));
+router.post('/watchPage/work',(req,res)=>{
+    let data = req.body;
+    data.workName = hasha(data.workName);
+
+    res.send(data);
     console.log(data);
 })
-
-
 
 
 module.exports = router;

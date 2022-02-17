@@ -229,25 +229,23 @@ function watchPageInit(){
         exp:$(fcap).html()
       });
 
-      alert(jdata);
-      
+      alert('Get WorkData : ' + jdata);
       
       $.ajax({
         method:'POST',
-        url:'/work',
+        url:'/watchPage/work',
         contentType:'application/json',
         data:jdata,
         success:function(response){
-          let name = response.workName;
-          window.location.href = 'referPage.ejs';
+          let wName = response.workName;
+         // console.log(name);
+          window.location.href = 'referPage.ejs?workName='+wName;
         }
       }).fail(function(err){
         console.error(err);
       });
       
       sessionStorage.setItem('watchWork',jdata);
-
-      window.location.href = 'referPage.ejs?name='+$(title).html();
     }
   });
 }

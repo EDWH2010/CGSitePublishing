@@ -24,7 +24,7 @@ window.onload = function(){
   //  $('#testBlock').html(this.scrollY);
   });
 
-  
+
   userSelectionInit();
  switch(getPageName()){
         case 'index':
@@ -43,7 +43,8 @@ window.onload = function(){
            alert('chatRoom init');
             break;
         case 'newMemAdded':
-          NewMemAddedPageInit();
+         // localStorage.clear();
+         // NewMemAddedPageInit();
             break;
         case 'referPage':
            // alert('referPage');
@@ -178,24 +179,7 @@ function userSelectionInit(){
 
 //-------------------------------------------------------------------------------------
 
-function referPageInit(){
-  //alert('referPage loaded');
-  if(sessionStorage && sessionStorage.getItem('watchWork') != null){
-    let data = JSON.parse(sessionStorage.getItem('watchWork'));
 
-    $('.refer-image img').attr({
-      src:data.src,
-      alt:data.alt
-    });
-
-    $('#work-infoActorName p:nth-child(2)').html(data.workName);
-    $('#work-fileType p:nth-child(2)').html('FILE');
-
-    $('#work-explanation p:nth-child(2)').html(data.exp);
-
-  }
-
-}
 
 
 
