@@ -230,17 +230,19 @@ function rogin(form){
     contentType:'application/json',
     data:JSON.stringify(rData)
   }).done(function(response){
-   //alert(response.Result + " \nUser : " + response.userName);
-   // alert(`UserName : ${response.Account}\nPassword : ${response.Password}`);
-
+    if(response.exists === true){
+      alert('ログイン成功しました');
+      if(localStorage != null && memberExist(rData)){
+        localStorage.setItem('rogin',JSON.stringify(rData)); 
+      }
+      window.location.href = 'index.ejs?userName='+response.userName;
+    }else if(response.exists === false){
+      alert('ログイン失敗しました');
+      window.location.reload();
+    }
   }).fail(function(err){
     console.error(err);
   });
-  
-
-  if(localStorage != null && memberExist(rData)){
-    localStorage.setItem('rogin',JSON.stringify(rData)); 
-  }
   
 }
 
@@ -257,8 +259,6 @@ function detectRoginData(uname,passwd){
 
 
 }
-
-
 
 
 function referPageInit(){

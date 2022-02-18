@@ -19,7 +19,7 @@ app.engine('ejs',ejs.renderFile);
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','ejs');
 
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname,'public')));
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
@@ -38,15 +38,20 @@ app.get('/', (req, res) => {
 });
 
 app.get('/index.ejs', (req, res) => {
-    console.log('Protocals : '+req.protocol);
+   // console.log('Protocals : '+req.protocol);
     console.log('moved to ' + req.url);
+    if(req.query){
+        console.log(req.userName);
+    }
    res.render('./index');
 });
 
 app.get('/index.ejs/:username',(req,res)=>{
     console.log('moved to ' + req.url);
+   // let name = req.params.username;
 
-    res.render('./index',req.params);
+    //console.log('get userName : ' + name);
+    res.render('./index');
 })
 
 app.get('/RigisterSuccess.ejs',(req,res)=>{

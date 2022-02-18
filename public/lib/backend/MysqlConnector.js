@@ -10,6 +10,14 @@ const connection = mysql.createConnection({
 
 connection.connect(function (err){
     console.error('Is MsqlConnection Problem? : ' + err);
+
+    if(!err){
+        connection.query('SELECT * FROM accounts',function(err,rows){
+            rows.forEach((e)=>{
+                console.log(e);
+            })
+        })
+    }
 });
 
 

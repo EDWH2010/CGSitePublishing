@@ -20,12 +20,13 @@ router.post('/rogin.ejs/:id',(req,res)=>{
    PassWord=?`,[data.userName,data.password]
    ,function(err,result){
         if(err) throw err;
-        if(result.length === 1){
+        if(result[0]){
             data.exists = true;
         }
+        res.send(data);
     }
    );
-   res.send(data);
+   
   // connector.end();
 }).post('/newMemAdded.ejs/:id',(req,res)=>{
    // res.send(req.body);
