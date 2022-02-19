@@ -251,19 +251,105 @@ function watchPageInit(){
   });
 }
 
+function testUpload(){
+  let itemArray = [];
+  let iCount = $('.watch-block').length;
+  $('.watch-block').each((index,element)=>{
+    let img = $(element).find('img');
+    let fcap = $(element).find('figcaption');
+    let title = $(element).find('h3');
+
+    const tData = {
+      workName:$(title).html(),
+      workDiscription:$(fcap).html(),
+      workSource:$(img).attr('src')
+    };
+
+    itemArray.push(tData);
+  });
+
+  const packet = {};
+
+  $.ajax({
+    url:'/watchPage.ejs/initInsert',
+    method:'POST',
+    contentType:'application/json',
+    data:JSON.stringify(itemArray),
+    success:function(response){
+      alert('insert successful');
+      alert(JSON.stringify(response));
+    }
+  }).fail(function(err){
+    console.error(err);
+  });
+  //alert(JSON.stringify(itemArray));
+}
+
 function fileSearch(e){
   let name= e.target.name;
   
+  $.ajax({
 
-
-}
-
-function insertWatchItem(table){
+  });
 
 }
 
-function clearWatchItem(){
+function catchWorkItems(i1,i2){
+  const sData = {
+    first:i1,
+    last:i2
+  };
 
+  $.ajax({
+    url:'/watchPage.ejs/select',
+    method:'POST',
+    contentType:'application/json',
+    data:JSON.stringify(sData),
+    success:function(response){
+      alert(JSON.stringify(response));
+    }
+  }).fail(function(err){
+    console.error(err);
+  });
+}
+
+function createWatchBlock(data){
+  let figure = document.createElement('figure');
+  figure.className='watch-block';
+
+  let h3 = document.createElement('h3');
+  h3.className = 'watch-title';
+  h3.innerHTML = data.WorkName;
+
+  let dImg = document.createElement('div');
+  dImg.className = 'work-image';
+  let wImg = document.createElement('img');
+  wImg.src = data.WorkSource;
+  wImg.alt = data.WorkName;
+
+  let fDis = document.createElement('figcaption');
+  fDis.className = 'watch-title';
+  fDis.innerHTML = data.WorkDiscription;
+
+  dImg.appendChild(wImg);
+
+  figure.appendChild(h3);
+  figure.appendChild(dImg);
+  figure.appendChild(fDis);
+
+  return figure;
+}
+
+function insertWatchItem(table,rCount,cCount){
+  clearWatchItem(table);
+
+}
+
+function clearWatchItem(table){
+  let count = table.rows.length;
+  for(let i=0;i<count;i++){
+    table.removeChild(table.rows[i]);
+  }
 }
 
 function filterEventEmit(element){
@@ -297,20 +383,14 @@ function createCircleNumber(){
 }
 
 
-function updateNumberList(pName,itemCount){
+function updateNumberList(pName){
   $('div.number-list:first').empty();
   
   let $jTarget = null;
 
   if(pName == 'watchPage'){
-    $jTarget = $('table.watch-table tr:first')
+    $jTarget = $('table.watch-table tr:first');
 
-    let itemArray = [];
-    let iCount = $('.watch-block').length;
-    $('.watch-block').each((index,element)=>{
-      
-    });
-    
   }else if(pName == 'index'){
     $jTarget = $('.work-list.read');
     //alert('index nmberList found');
