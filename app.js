@@ -41,26 +41,10 @@ app.get('/index.ejs', (req, res) => {
    // console.log('Protocals : '+req.protocol);
     console.log('moved to ' + req.url);
     if(req.query){
-        console.log(req.userName);
+        console.log(req.query.userName);
     }
    res.render('./index');
 });
 
-app.get('/index.ejs/:username',(req,res)=>{
-    console.log('moved to ' + req.url);
-   // let name = req.params.username;
 
-    //console.log('get userName : ' + name);
-    res.render('./index');
-})
-
-app.get('/RigisterSuccess.ejs',(req,res)=>{
-     console.log('moved to ' + req.url);
-    res.render('./RigisterSuccess');
-});
-
-app.get('/UserProperty.ejs',(req,res)=>{
-     console.log('moved to ' + req.url);
-    res.render('./UserProperty');
-});
 

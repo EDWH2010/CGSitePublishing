@@ -11,8 +11,7 @@ router.get('/rogin.ejs',(req,res)=>{
 });
 
 router.post('/rogin.ejs/:id',(req,res)=>{
-   // connector.query()
- //  connector.connect();
+
    let data = req.body;
    data.exists = false;
 
@@ -27,7 +26,6 @@ router.post('/rogin.ejs/:id',(req,res)=>{
     }
    );
    
-  // connector.end();
 }).post('/newMemAdded.ejs/:id',(req,res)=>{
    // res.send(req.body);
 /*
@@ -60,8 +58,14 @@ router.post('/rogin.ejs/:id',(req,res)=>{
 
 router.get('/RigisterSuccess.ejs',(req,res)=>{
     console.log('move to RigisterSuccessPage');
-    res.render('./RigisterSuccess');
+    let lCount = 0;
+    if(req.query){
+        console.log(req.query.lastCount);
+        lCount = typeof req.query.lastCount !== 'undefined' ? parseInt(req.query.lastCount) : 10; 
+   }
+    res.render('./RigisterSuccess',{lastCount:lCount});
 });
+
 
 router.get('/RigisterSuccess.ejs/:type',(req,res)=>{
     let type = req.params.type;
@@ -77,5 +81,13 @@ router.get('/RigisterSuccess.ejs/:type',(req,res)=>{
     res.render('RigisterSuccess',{Type:type,Message:msg});
 });
 
+
+router.get('/UserProperty.ejs',(req,res)=>{
+    console.log('moved to ' + req.url);
+    if(req.query){
+
+    }
+   res.render('./UserProperty');
+});
 
 module.exports = router;

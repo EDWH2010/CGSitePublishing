@@ -59,8 +59,7 @@ function saveMember(data){
     }
 
     if(localStorage.getItem('memberList') != null){
-     // console.log('start searching data');
-     // dataArray =JSON.parse(localStorage.getItem('memberList'));    
+     
       $.ajax({
         url:`newMemAdded.ejs/${data.name}`,
         method:'POST',
@@ -69,9 +68,13 @@ function saveMember(data){
         success:function(response){
           if(response.exists){
             alert('登録成功');
-            window.location.href = '/index.ejs/'+response.name;
+            let array = JSON.parse(localStorage.getItem('memberList'));
+            array.push(data);
+
+            localStorage.getItem('memberList',array);
+            window.location.href = 'RigisterSuccess.ejs?lastCount='+3;
           }else{
-            alert('失敗しました');
+            alert('会員の加入失敗しました');
             window.location.reload();
           }
         }
@@ -164,7 +167,7 @@ function isMember(uname){
     let members = JSON.toJSON(localStorage.getItem('memberList'));
     members.forEach(function(data){
 
-      alert(data.name);
+      //alert(data.name);
       if(data.name == uname){
         return true;
       }
@@ -232,10 +235,10 @@ function rogin(form){
   }).done(function(response){
     if(response.exists === true){
       alert('ログイン成功しました');
-      if(localStorage != null && memberExist(rData)){
+      if(localStorage != null){
         localStorage.setItem('rogin',JSON.stringify(rData)); 
       }
-      window.location.href = 'index.ejs?userName='+response.userName;
+      window.location.href = 'RigisterSuccess.ejs?lastCount='+(3).toString();
     }else if(response.exists === false){
       alert('ログイン失敗しました');
       window.location.reload();
@@ -246,6 +249,9 @@ function rogin(form){
   
 }
 
+
+
+/*
 function detectRoginData(uname,passwd){
   if(localStorage == null){
     return false;
@@ -259,8 +265,14 @@ function detectRoginData(uname,passwd){
 
 
 }
+*/
+
+function roginPageInit(){
+  
+}
 
 
+/* ---------------------------------------------------------------referSetting------------------------------------------------*/ 
 function referPageInit(){
   //alert('referPage loaded');
   if(sessionStorage && sessionStorage.getItem('watchWork') != null){

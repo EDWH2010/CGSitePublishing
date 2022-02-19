@@ -315,10 +315,6 @@ footer{
 
 /*watch page*/
 
-table.watch-table{
-    
-}
-
 table.watch-table div.work-image{
     position:relative;
     width:350px;
@@ -546,10 +542,7 @@ div.form-inputBlock{
     background-color:rgba(31, 221, 72, 0.534);
     border:5px double #080;
     color:#fff;
-    font-size:30px;
     font-weight:bold;
-    width:150px;
-    height:75px;
     padding:30px;
     text-align:center;
     margin:5px auto 5px auto;

@@ -14,7 +14,7 @@
         <script src="lib/PageLoading.js"></script>
         <title>登録・ログイン成功画面</title>
     </head>
-    <body id="wrapper" onload="changePageByTime('index.html',3000);">
+    <body id="wrapper" onload="changePageByTime('index.ejs','<%= lastCount * 1000 %>')">
         <header id="header-list">
             <div class="logo"><a href="index.ejs"><img id="home_logo" src="images/sample_logo001.png" alt="LOGO" title="メインロゴ" /></a></div>
             <div class="header-selection">
@@ -36,7 +36,8 @@
         </header>
         <main>
             <div id="successMsg">
-                成功
+                <p style="font-size:18px;"><%= lastCount %>秒後ページ移動します</p>
+                <h1>成功</h1>
             </div>
         </main>
         <footer>

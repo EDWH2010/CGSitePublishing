@@ -62,7 +62,7 @@ window.onload = function(){
           workUploadInit();
             break;
         case 'UserProperty':
-
+      
           break;
         case 'RegisterSuccess':
 
