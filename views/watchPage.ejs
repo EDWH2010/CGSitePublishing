@@ -37,6 +37,13 @@
             </div>
         </header>
         <main>
+            <div id="breadCrumbNav">
+                <ul id="breadNavList">
+                    <li onclick="changePage('index.ejs')">ホーム</li><span>&raquo</span>
+                    <li>作品閲覧</li>
+                </ul>
+            </div>
+
             <div id="SceneBlock-3D">
 
 
@@ -57,7 +64,7 @@
                     </div>
                 </div>
                 <article class="watch-article">
-                    <table name="watch-table" class="watch-table">
+                    <table id="watch-table" name="watch-table" class="watch-table">
                         <tr>
                             <td>
                                 <figure class="watch-block">

@@ -20,6 +20,18 @@ router.post('/workUploadPage.ejs/upload',(req,res)=>{
     let data = req.body;
   
     res.send(data);
+})
+.post('/workUploadPage.ejs/upload/initInsert',(req,res)=>{
+    if(req.body){
+        
+    }
+});
+
+router.post('/workUploadPage.ejs/inputEvent',(req,res)=>{
+    let data = req.body;
+    let sql = '';
+
+    res.send(data);
 });
 
 router.get('/referPage.ejs',(req,res)=>{

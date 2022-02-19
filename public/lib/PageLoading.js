@@ -26,6 +26,7 @@ window.onload = function(){
 
 
   userSelectionInit();
+  //breadCreateInit();
  switch(getPageName()){
         case 'index':
           slickInit();
@@ -62,7 +63,7 @@ window.onload = function(){
           workUploadInit();
             break;
         case 'UserProperty':
-      
+
           break;
         case 'RegisterSuccess':
 
@@ -71,6 +72,46 @@ window.onload = function(){
             alert('not found page');
             break;
     }
+}
+
+function changeToSimplePageName(pName){
+  let name = '';
+  switch(pName){
+    
+  }
+
+  return name;
+}
+
+function createBreadButton(pName){
+  let l = document.createElement('li');
+  l.innerText = pName;
+
+  return l;
+}
+
+function breadCreateInit(){
+  let $bList = $('#breadNavList');
+  $bList.empty();
+  let pathList = window.location.href.split('/');
+  
+  for(let i=0;i<pathList.length;i++){
+    let pName = pathList[i]
+    if(pName === '' || pName === 'https' || pName === 'http'){
+      continue;
+    }
+   let button = createBreadButton(changeToSimplePageName(pName));
+   $bList.append(button);
+
+    if(i == pathList.length-1){
+      continue;
+    }
+
+    let arrow = document.createElement('span');
+    arrow.innerHTML = '&raquo';
+    $bList.append(arrow);
+
+  }
 }
 
 

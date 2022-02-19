@@ -19,6 +19,7 @@
     </head>
     <body id="wrapper">
 
+
         <div id="members-block" style="display:none;" >
             <div id="members-headerList"></div>
             <table id="members-table" border="1" width="450px">
@@ -54,6 +55,13 @@
             </div>
         </header>
         <main>
+            <div id="breadCrumbNav">
+                <ul id="breadNavList">
+                    <li onclick="changePage('index.ejs')">ホーム</li><span>&raquo</span>
+                    <li>チャットルーム</li>
+                </ul>
+            </div>
+
             <article class="chat-article">
                 <div class="chat-header">
                     <div class="chat-buttonGroup">

@@ -39,7 +39,6 @@ function workUploadInit(){
     const fileArr = [];
     var resultData = null;
 
-    //alert(e.target.tagName);
     if($('.file-selectTable').length == 0){
       return;
     }
@@ -229,6 +228,8 @@ function watchPageInit(){
         exp:$(fcap).html()
       });
 
+
+
       alert('Get WorkData : ' + jdata);
       
       $.ajax({
@@ -288,9 +289,7 @@ function createCircleNumber(){
   circle.addEventListener('click',function(){
     $(this).parent().children('.selected').removeClass('selected');
     $(this).addClass('selected');
-/*
-    let num = $(this).html();
-    alert('called page ' + num);*/
+
 
   });
   $('div.number-list').append(circle);
@@ -298,12 +297,20 @@ function createCircleNumber(){
 }
 
 
-function updateNumberList(pName){
+function updateNumberList(pName,itemCount){
   $('div.number-list:first').empty();
   
   let $jTarget = null;
+
   if(pName == 'watchPage'){
     $jTarget = $('table.watch-table tr:first')
+
+    let itemArray = [];
+    let iCount = $('.watch-block').length;
+    $('.watch-block').each((index,element)=>{
+      
+    });
+    
   }else if(pName == 'index'){
     $jTarget = $('.work-list.read');
     //alert('index nmberList found');
@@ -311,6 +318,7 @@ function updateNumberList(pName){
     alert('not found target');
     return;
   }
+
 
    let count = $jTarget.children().length;
   let num = Math.ceil(count/4);

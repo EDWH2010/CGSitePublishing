@@ -35,6 +35,13 @@
             </div>
         </header>
         <main>
+            <div id="breadCrumbNav">
+                <ul id="breadNavList">
+                    <li onclick="changePage('index.ejs')">ホーム</li><span>&raquo</span>
+                    <li>成功</li>
+                </ul>
+            </div>
+
             <div id="successMsg">
                 <p style="font-size:18px;"><%= lastCount %>秒後ページ移動します</p>
                 <h1>成功</h1>
