@@ -275,7 +275,6 @@ function testUpload(){
     itemArray.push(tData);
   });
 
-
   $.ajax({
     url:'/watchPage.ejs/initInsert',
     method:'POST',
@@ -357,6 +356,8 @@ function updateWatchItem(table,rCount,cCount,itemArray){
     let start = i * cCount;
     for(let j=start;j<start+cCount;j++){
       let cell = row.insertCell();
+      if(j > itemArray.length-1)
+        break;
       cell.appendChild(createWatchBlock(itemArray[j]));
     }
   }
@@ -423,12 +424,17 @@ function updateNumberList(pName){
     return;
   }
 
-
    let count = $jTarget.children().length * 2;
   let num = Math.ceil(count/8);
 
   for(let i=0;i<num;i++){
-    createCircleNumber();
+    let circle = createCircleNumber();
+    circle.addEventListener('click',()=>{
+     // alert('clicked');
+      if(!$(this).hasClass('selected')){
+         catchWorkItems(i*8+1,(i+1)*8);
+      }
+    });
   }
   
   $('.number-list div.circle-number:first').addClass('selected');
