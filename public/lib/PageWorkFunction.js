@@ -195,61 +195,68 @@ function addMultiFileSet(){
 //watchPage Function
 
 function watchPageInit(){
-  $('.watch-block').hover(function(){
-    let img = $(this).find('img');
-    $(img).animate({
-      width:'+=15px',
-      height:'+=15px'
-    });
-  },function(){
-      let img = $(this).find('img');
-    $(img).animate({
-      width:'-=15px',
-      height:'-=15px'
-    });
-  });
-  
-  
-  $('.watch-block').click(function(){
-
-    let img = $(this).find('img');
-    let fcap = $(this).find('figcaption');
-    let title = $(this).find('h3');
-
-    if(sessionStorage){
-      if(sessionStorage.getItem('watchWork')!=null){
-        sessionStorage.clear();
-      }
-
-      const jdata = JSON.stringify({
-        workName:$(title).html(),
-        src:$(img).attr('src'),
-        alt:$(img).attr('alt'),
-        exp:$(fcap).html()
-      });
+  //updateWatchItem(document.getElementById('watch-table'),2,4,[]);
+  catchWorkItems(1,8);
+  $('.watch-block').hover(watchHoverIn,watchHoverOut);
+  $('.watch-block').click(watchBlockClick);
+}
 
 
-
-      alert('Get WorkData : ' + jdata);
-      
-      $.ajax({
-        method:'POST',
-        url:'/watchPage/work',
-        contentType:'application/json',
-        data:jdata,
-        success:function(response){
-          let wName = response.workName;
-         // console.log(name);
-          window.location.href = 'referPage.ejs?workName='+wName;
-        }
-      }).fail(function(err){
-        console.error(err);
-      });
-      
-      sessionStorage.setItem('watchWork',jdata);
-    }
+function watchHoverIn(){
+  let img = $(this).find('img');
+  $(img).animate({
+    width:'+=15px',
+    height:'+=15px'
   });
 }
+
+function watchHoverOut(){
+  let img = $(this).find('img');
+  $(img).animate({
+    width:'-=15px',
+    height:'-=15px'
+  });
+}
+
+function watchBlockClick(){
+  let img = $(this).find('img');
+  let fcap = $(this).find('figcaption');
+  let title = $(this).find('h3');
+
+  if(sessionStorage){
+    if(sessionStorage.getItem('watchWork')!=null){
+      sessionStorage.clear();
+    }
+
+    const jdata = JSON.stringify({
+      workName:$(title).html(),
+      src:$(img).attr('src'),
+      alt:$(img).attr('alt'),
+      exp:$(fcap).html()
+    });
+
+
+    alert('Get WorkData : ' + jdata);
+    
+    $.ajax({
+      method:'POST',
+      url:'/watchPage/work',
+      contentType:'application/json',
+      data:jdata,
+      success:function(response){
+        let wName = response.workName;
+       // console.log(name);
+        window.location.href = 'referPage.ejs?workName='+wName;
+      }
+    }).fail(function(err){
+      console.error(err);
+    });
+    
+    sessionStorage.setItem('watchWork',jdata);
+  }
+}
+
+
 
 function testUpload(){
   let itemArray = [];
@@ -268,7 +275,6 @@ function testUpload(){
     itemArray.push(tData);
   });
 
-  const packet = {};
 
   $.ajax({
     url:'/watchPage.ejs/initInsert',
@@ -282,16 +288,14 @@ function testUpload(){
   }).fail(function(err){
     console.error(err);
   });
-  //alert(JSON.stringify(itemArray));
 }
 
 function fileSearch(e){
   let name= e.target.name;
-  
+
   $.ajax({
 
   });
-
 }
 
 function catchWorkItems(i1,i2){
@@ -307,10 +311,12 @@ function catchWorkItems(i1,i2){
     data:JSON.stringify(sData),
     success:function(response){
       alert(JSON.stringify(response));
+      updateWatchItem(document.getElementById('watch-table'),2,4,response);
     }
   }).fail(function(err){
     console.error(err);
   });
+
 }
 
 function createWatchBlock(data){
@@ -337,19 +343,37 @@ function createWatchBlock(data){
   figure.appendChild(dImg);
   figure.appendChild(fDis);
 
+  figure.addEventListener('click',watchBlockClick);
+  $(figure).hover(watchHoverIn,watchHoverOut);
+
   return figure;
 }
 
-function insertWatchItem(table,rCount,cCount){
+function updateWatchItem(table,rCount,cCount,itemArray){
   clearWatchItem(table);
 
+  for(let i=0;i<rCount;i++){
+    let row = table.insertRow();
+    let start = i * cCount;
+    for(let j=start;j<start+cCount;j++){
+      let cell = row.insertCell();
+      cell.appendChild(createWatchBlock(itemArray[j]));
+    }
+  }
+
+  return table;
 }
 
+
+
 function clearWatchItem(table){
+  if(table.rows.length == 0)
+    return;
   let count = table.rows.length;
   for(let i=0;i<count;i++){
-    table.removeChild(table.rows[i]);
+    table.deleteRow(0);
   }
+
 }
 
 function filterEventEmit(element){
@@ -400,8 +424,8 @@ function updateNumberList(pName){
   }
 
 
-   let count = $jTarget.children().length;
-  let num = Math.ceil(count/4);
+   let count = $jTarget.children().length * 2;
+  let num = Math.ceil(count/8);
 
   for(let i=0;i<num;i++){
     createCircleNumber();

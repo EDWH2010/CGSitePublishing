@@ -44,21 +44,28 @@ router.post('/watchPage.ejs/inputEvent',(req,res)=>{
         });
     }
   
-
     res.send(data);
 });
 
 
 router.post('/watchPage.ejs/select',(req,res)=>{
     let data = req.body;
-    let sql = '';
+    let sql = 'SELECT * FROM workitem WHERE Id BETWEEN ? AND ?';
 
     if(req.body){
+        let first = req.body.first;
+        let last = req.body.last;
+       // res.send({F:first,L:last});
 
+        connector.query(sql,[first,last],function(err,results){
+            if(err) throw err;
+
+            res.send(results);
+        });
     }
    
 
-    res.send(data);
+   // res.send(data);
 });
 
 router.post('/watchPage/work',(req,res)=>{
