@@ -64,8 +64,6 @@ router.post('/watchPage.ejs/select',(req,res)=>{
         });
     }
    
-
-   // res.send(data);
 });
 
 router.post('/watchPage/work',(req,res)=>{
@@ -83,8 +81,13 @@ router.get('/workUploadPage.ejs',(req,res)=>{
 
 
 router.post('/workUploadPage.ejs/upload',(req,res)=>{
-    let data = req.body;
-  
+    let sql = 'INSERT INTO workitem (WorkName,WorkDiscription,WorkSource) VALUES (?,?,?)';
+
+
+    if(req.body){
+        let data = req.body;
+
+    }
     res.send(data);
 });
 

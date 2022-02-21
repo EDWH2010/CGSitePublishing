@@ -1,3 +1,4 @@
+const baseImagePath = 'images';
 
 //WorkUploadPage and workWatch
 function workUploadInit(){
@@ -46,12 +47,13 @@ function workUploadInit(){
     if($tList.length == 1){
 
 
+
     }else{
-      
       $tList.each((index,element)=>{
        // alert(element.tagName);
        let wName = $(element).find('input[type="text"]').val();
        let wDis = $(element).find('textarea').val();
+        let file = $(element).find('input[type="file"]').val();
 
        const wData = {
          name:wName,
@@ -70,8 +72,8 @@ function workUploadInit(){
       $.ajax({
         url:'/workUploadPage.ejs/upload',
         method:'POST',
-        contentType:'application/x-www-form-urlencoded',
-        data:{name:"HelloEdi",sex:"Man"},
+        contentType:'application/json',
+        data:resultData,
         success:function(response){
           console.log(response.name);
         }
@@ -83,6 +85,9 @@ function workUploadInit(){
   }
 
 }
+
+
+
 
 function detectWorkItem(value){
     let count=0;
@@ -195,7 +200,6 @@ function addMultiFileSet(){
 //watchPage Function
 
 function watchPageInit(){
-  //updateWatchItem(document.getElementById('watch-table'),2,4,[]);
   catchWorkItems(1,8);
   $('.watch-block').hover(watchHoverIn,watchHoverOut);
   $('.watch-block').click(watchBlockClick);
@@ -400,8 +404,6 @@ function createCircleNumber(){
   circle.addEventListener('click',function(){
     $(this).parent().children('.selected').removeClass('selected');
     $(this).addClass('selected');
-
-
   });
   $('div.number-list').append(circle);
   return circle;
@@ -451,3 +453,37 @@ function workUpload(){
 
 
 }
+
+
+
+
+
+function previewFile(file) {
+  // プレビュー画像を追加する要素
+  const preview = document.getElementById('preview');
+
+  // FileReaderオブジェクトを作成
+  const reader = new FileReader();
+
+  // ファイルが読み込まれたときに実行する
+  reader.onload = function (e) {
+    const imageUrl = e.target.result; // 画像のURLはevent.target.resultで呼び出せる
+    const img = document.createElement("img"); // img要素を作成
+    img.src = imageUrl; // 画像のURLをimg要素にセット
+    preview.appendChild(img); // #previewの中に追加
+  }
+
+  // いざファイルを読み込む
+  reader.readAsDataURL(file);
+}
+
+
+// <input>でファイルが選択されたときの処理
+const fileInput = document.getElementById('example');
+const handleFileSelect = () => {
+  const files = fileInput.files;
+  for (let i = 0; i < files.length; i++) {
+    previewFile(files[i]);
+  }
+}
+fileInput.addEventListener('change', handleFileSelect);
