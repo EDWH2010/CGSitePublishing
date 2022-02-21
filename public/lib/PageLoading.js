@@ -44,8 +44,8 @@ window.onload = function(){
            alert('chatRoom init');
             break;
         case 'newMemAdded':
-        //  localStorage.clear();
-         // NewMemAddedPageInit();
+         // localStorage.clear();
+          newMemAddedInit();
             break;
         case 'referPage':
            // alert('referPage');
