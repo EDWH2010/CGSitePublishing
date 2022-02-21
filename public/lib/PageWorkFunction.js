@@ -196,7 +196,7 @@ function addMultiFileSet(){
 
 function watchPageInit(){
   //updateWatchItem(document.getElementById('watch-table'),2,4,[]);
-  catchWorkItems(1,8);
+  //catchWorkItems(1,8);
   $('.watch-block').hover(watchHoverIn,watchHoverOut);
   $('.watch-block').click(watchBlockClick);
 }

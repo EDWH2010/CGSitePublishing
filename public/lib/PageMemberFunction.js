@@ -8,7 +8,6 @@ const SAVETYPE = {
 const MEMBERLIST = 'memberList';
 
 function sendDataServer(form){
-
      let name = form.nickname.value;
   let email = form.email.value;
   let password = form.password.value;
@@ -16,9 +15,30 @@ function sendDataServer(form){
     let usedtarget = form.usedtarget.value;
 
     let data = new Member(name,email,password,career,usedtarget);
-
 }
 
+function newMemAddedInit(){
+ // localStorage.clear();
+/*
+  if(localStorage && localStorage.getItem('memberList') == null){
+    alert('memlist init');
+    const data = {
+      name:'EDISON',
+      email:'edison@gmail.com'
+    };
+    let arr = new Array();
+    arr.push(data);
+    alert(JSON.stringify(arr));
+    localStorage.setItem('memberList',JSON.stringify(arr));
+  }*/
+
+  if(localStorage && localStorage.getItem('memberList')){ 
+    let arr = JSON.parse(localStorage.getItem('memberList'));
+    arr.forEach(function(val){
+      alert(val.name);
+    });
+  }
+}
 
 
 function getNewMemberData(form){
@@ -53,13 +73,26 @@ function getNewMemberData(form){
 function saveMember(data){
 
   if(localStorage != null){
-    let dataArray=[];
-    if(localStorage.getItem('memberList') == null){
-      localStorage.setItem('memberList',JSON.stringify(dataArray));
-    }
 
+/*
+    if(localStorage.getItem('memberList') == null){
+      let array = [];
+      localStorage.setItem('memberList',JSON.stringify(array));
+    }
     if(localStorage.getItem('memberList') != null){
-     
+      
+      if(!isMember(data.name)){
+         let array = JSON.parse(localStorage.getItem('memberList'));
+        array.push(data);
+       // alert(JSON.stringify(array));
+      //  localStorage.setItem('memberList',JSON.stringify(array));
+        alert('登録成功しました');
+        window.location.href = 'RigisterSuccess.ejs?lastCount='+3;
+      }else{
+           alert('会員の加入失敗しました');
+            window.location.reload();
+      }   */
+
       $.ajax({
         url:`newMemAdded.ejs/${data.name}`,
         method:'POST',
@@ -71,7 +104,7 @@ function saveMember(data){
             let array = JSON.parse(localStorage.getItem('memberList'));
             array.push(data);
 
-            localStorage.getItem('memberList',array);
+            localStorage.setItem('memberList',array);
             window.location.href = 'RigisterSuccess.ejs?lastCount='+3;
           }else{
             alert('会員の加入失敗しました');
@@ -82,13 +115,10 @@ function saveMember(data){
         console.error(err);
       });      
       
+
     }
-  }
-}
+ }
 
-function isDetectSameUser(data){
-
-}
 
 /*
 function registerMember(name,email,pass,career,usdtarget){
@@ -110,12 +140,14 @@ function registerMember(name,email,pass,career,usdtarget){
 
 //すべての会員の表示(テスト用)
 function getMembers(){
+  alert('clicked memberButton');
     if(localStorage != null){
         if(localStorage.getItem('memberList') != null){
             
             var arr = localStorage.getItem('memberList');
             var list = JSON.parse(arr);
 
+            alert(typeof list);
             list.forEach(function(value){
                 alert(value.name);
 
@@ -164,10 +196,9 @@ function detectIsRogin(){
 function isMember(uname){
   if(localStorage && localStorage.getItem('memberList')){
 
-    let members = JSON.toJSON(localStorage.getItem('memberList'));
+    let members = JSON.parse(localStorage.getItem('memberList'));
     members.forEach(function(data){
-
-      //alert(data.name);
+      alert(data.name);
       if(data.name == uname){
         return true;
       }
@@ -189,7 +220,6 @@ function getUserName(){
 function rogout(){
   localStorage.removeItem('rogin');
   window.location.href='index.ejs';
-
   alert('ログアウトしました');
 }
 
@@ -227,6 +257,16 @@ function rogin(form){
   }
   let rData = new RoginData(uname,pass);
 
+  /*
+  if(memberExist(rData)){
+    localStorage.setItem('rogin',JSON.stringify(rData)); 
+    alert('ログイン成功しました');
+    window.location.href = 'RigisterSuccess.ejs?lastCount='+(3).toString();
+  }else{
+    alert('ログイン失敗しました');
+  }
+*/
+  
   $.ajax({
     url:`/rogin.ejs/${rData.userName}`,
     method:'POST',
@@ -247,6 +287,7 @@ function rogin(form){
     console.error(err);
   });
   
+
 }
 
 
