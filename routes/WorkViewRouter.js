@@ -79,16 +79,38 @@ router.get('/workUploadPage.ejs',(req,res)=>{
    res.render('./workUploadPage');
 });
 
-
 router.post('/workUploadPage.ejs/upload',(req,res)=>{
-    let sql = 'INSERT INTO workitem (WorkName,WorkDiscription,WorkSource) VALUES (?,?,?)';
-
-
+    let sql = '';
+    let tArr = [];
+    let type = '';
     if(req.body){
         let data = req.body;
+        switch(typeof data){
+            case 'object':
+                type = 'object';
+                sql = 'INSERT INTO workitem (WorkName,WorkDiscription,WorkSource) VALUES (?,?,?)';
+                connector.query(sql,[data.workName,data.workDiscription,data.workSource],function(err,result){
+                    if(err) throw err;
+                });
+                break;
+            case 'Array':
+                type='Array';
+                 sql = 'INSERT INTO workitem (WorkName,WorkDiscription,WorkSource) VALUES ?';
 
+                data.forEach((item,index)=>{
+                    tArr[index] = [];
+
+                    tArr[index].push(item.workName);
+                    tArr[index].push(item.workDiscription);
+                    tArr[index].push(item.workSource);
+                });
+                connector.query(sql,[tArr],function(err,result){
+                    if(err) throw err; 
+                });
+                break;
+        }
     }
-    res.send(data);
+    res.send(type);
 });
 
 

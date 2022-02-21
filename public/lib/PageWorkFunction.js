@@ -1,4 +1,4 @@
-const baseImagePath = 'images';
+const baseImagePath = 'images/';
 
 //WorkUploadPage and workWatch
 function workUploadInit(){
@@ -36,35 +36,53 @@ function workUploadInit(){
 
 
   form.onsubmit = function(e){
+   // alert('submitted');
     e.preventDefault();
     const fileArr = [];
     var resultData = null;
-
     if($('.file-selectTable').length == 0){
       return;
     }
+
     $tList = $('.file-selectTable');
     if($tList.length == 1){
+      alert('one selecTable');
+      let wName = $tList.find('input[type="text"]').val();
+      let wDis = $tList.find('textarea').val();
+       let files = $tList.find('input[type="file"]').val();
 
+      let fname = convertAbsPathToLastPath(files)
+      console.log(fname);
 
+      resultData = JSON.stringify({
+        workName:wName,
+        workDiscription:wDis,
+        workSource:baseImagePath+fname
+      });
 
+      alert(resultData);
     }else{
       $tList.each((index,element)=>{
        // alert(element.tagName);
        let wName = $(element).find('input[type="text"]').val();
        let wDis = $(element).find('textarea').val();
-        let file = $(element).find('input[type="file"]').val();
+        let files = $(element).find('input[type="file"]').val();
 
+       // console.log(JSON.stringify(files));
+
+        let fname = convertAbsPathToLastPath(files);
        const wData = {
-         name:wName,
-         discription:wDis
+         workName:wName,
+         workDiscription:wDis,
+         workSource:baseImagePath+fname
        };
 
+       fileArr.push(wData);
        //alert(JSON.stringify(wData));
       }); 
-
-      return;
       resultData = JSON.stringify(fileArr);
+
+      alert(resultData);
     }
 
 
@@ -75,7 +93,10 @@ function workUploadInit(){
         contentType:'application/json',
         data:resultData,
         success:function(response){
-          console.log(response.name);
+          alert('Upload Successfully');
+          console.log(response);
+
+          window.location.reload();
         }
       }).fail((err)=>{
         console.log(err);
@@ -84,6 +105,11 @@ function workUploadInit(){
     }
   }
 
+}
+
+function convertAbsPathToLastPath(fPath){
+  let fArr = fPath.split('\\');
+  return fArr[fArr.length-1];
 }
 
 
@@ -454,9 +480,7 @@ function workUpload(){
 
 }
 
-
-
-
+/*
 
 function previewFile(file) {
   // プレビュー画像を追加する要素
@@ -486,4 +510,4 @@ const handleFileSelect = () => {
     previewFile(files[i]);
   }
 }
-fileInput.addEventListener('change', handleFileSelect);
+fileInput.addEventListener('change', handleFileSelect);*/
