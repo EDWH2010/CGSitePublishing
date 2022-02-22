@@ -31,13 +31,6 @@ function newMemAddedInit(){
     alert(JSON.stringify(arr));
     localStorage.setItem('memberList',JSON.stringify(arr));
   }*/
-
-  if(localStorage && localStorage.getItem('memberList')){ 
-    let arr = JSON.parse(localStorage.getItem('memberList'));
-    arr.forEach(function(val){
-      alert(val.name);
-    });
-  }
 }
 
 
@@ -61,6 +54,7 @@ function getNewMemberData(form){
     alert('入力されてない項目があります');
     return;
   }
+  
     let data = new Member(name,email,password,career,usedtarget);
     alert(data.name + '   ' + data.email);
     saveMember(data);
@@ -287,7 +281,6 @@ function rogin(form){
     console.error(err);
   });
   
-
 }
 
 

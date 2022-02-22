@@ -85,19 +85,21 @@ router.post('/workUploadPage.ejs/upload',(req,res)=>{
     let type = '';
     if(req.body){
         let data = req.body;
-        switch(typeof data){
-            case 'object':
-                type = 'object';
+        switch(data.DataType){
+            case 'Object':
+                type = 'Object';
+                res.send(type);
                 sql = 'INSERT INTO workitem (WorkName,WorkDiscription,WorkSource) VALUES (?,?,?)';
-                connector.query(sql,[data.workName,data.workDiscription,data.workSource],function(err,result){
+                connector.query(sql,[data.Result.workName,data.Result.workDiscription,data.Result.workSource],function(err,result){
                     if(err) throw err;
                 });
                 break;
             case 'Array':
                 type='Array';
+                res.send(type);
                  sql = 'INSERT INTO workitem (WorkName,WorkDiscription,WorkSource) VALUES ?';
 
-                data.forEach((item,index)=>{
+                data.workArray.forEach((item,index)=>{
                     tArr[index] = [];
 
                     tArr[index].push(item.workName);

@@ -40,6 +40,8 @@ function workUploadInit(){
     e.preventDefault();
     const fileArr = [];
     var resultData = null;
+    var packetData = {};
+
     if($('.file-selectTable').length == 0){
       return;
     }
@@ -54,13 +56,18 @@ function workUploadInit(){
       let fname = convertAbsPathToLastPath(files)
       console.log(fname);
 
-      resultData = JSON.stringify({
+      resultData = {
         workName:wName,
         workDiscription:wDis,
-        workSource:baseImagePath+fname
+        workSource:baseImagePath+fname,
+      };
+
+       packetData = JSON.stringify({
+        Result:resultData,
+        DataType:'Object'
       });
 
-      alert(resultData);
+      alert(packetData);
     }else{
       $tList.each((index,element)=>{
        // alert(element.tagName);
@@ -69,7 +76,6 @@ function workUploadInit(){
         let files = $(element).find('input[type="file"]').val();
 
        // console.log(JSON.stringify(files));
-
         let fname = convertAbsPathToLastPath(files);
        const wData = {
          workName:wName,
@@ -78,11 +84,14 @@ function workUploadInit(){
        };
 
        fileArr.push(wData);
-       //alert(JSON.stringify(wData));
       }); 
-      resultData = JSON.stringify(fileArr);
 
-      alert(resultData);
+       packetData = JSON.stringify({
+         workArray:fileArr,
+         DataType:'Array'
+       });
+
+      alert(packetData);
     }
 
 
@@ -91,7 +100,7 @@ function workUploadInit(){
         url:'/workUploadPage.ejs/upload',
         method:'POST',
         contentType:'application/json',
-        data:resultData,
+        data:packetData,
         success:function(response){
           alert('Upload Successfully');
           console.log(response);

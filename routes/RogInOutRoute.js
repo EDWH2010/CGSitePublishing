@@ -27,12 +27,7 @@ router.post('/rogin.ejs/:id',(req,res)=>{
    );
    
 }).post('/newMemAdded.ejs/:id',(req,res)=>{
-   // res.send(req.body);
-/*
-    connector.connect(function(err){
-        console.error(err);
-    });
-    */
+
    let sData = req.body;
    sData.exists = false;
 
@@ -46,9 +41,16 @@ router.post('/rogin.ejs/:id',(req,res)=>{
                 if(err){
                     console.error(err);
                 }
-                sData.exists=true;
-                res.send(sData);
             });
+            connector.query('INSERT INTO userdetails (UserName,Career,UserUsedTarget) VALUES (?,?,?)',
+            [sData.name,sData.career,sData.usdtarget],function(err,result){
+                if(err){
+                    console.error(err);
+                }
+            });
+
+            sData.exists=true;
+            res.send(sData);
         }else{
             res.send(sData);
         }

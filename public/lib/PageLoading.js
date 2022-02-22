@@ -8,7 +8,6 @@ function slickInit(){
     centerMode: true,
     variableWidth: true
   });
-
 }
 
 
@@ -21,9 +20,7 @@ window.onload = function(){
     }else{
       $(returnBtn).fadeOut(500);
     }
-  //  $('#testBlock').html(this.scrollY);
   });
-
 
   userSelectionInit();
   //breadCreateInit();
