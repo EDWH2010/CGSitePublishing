@@ -9,10 +9,11 @@ function chatRoomPageInit(){
             chatData = JSON.parse(sessionStorage.getItem('chatRoomData'));
       }
 
+      autoSendingMsg();
   $('#main-form').on('submit',function(e){
      e.preventDefault();
      //alert('submit message');
-    createOwnMsg(document.getElementById('chat-display')
+    createOwnMsg(getChatDisplay()
     ,$('#input-chatArea').val());
       
      $('#input-chatArea').val('');
@@ -51,7 +52,19 @@ function chatRoomPageInit(){
 
 }
 
+function getChatDisplay(){
+      return document.getElementById('chat-display');
+}
 
+function autoSendingMsg(){
+      const msgArr = ['Hey You!!','Are You OK?','I\'am so so','OKOK','............................','BYE'];
+      var i = 0;
+      setInterval(()=>{
+            createOtherMsg(getChatDisplay(),msgArr[i++]);
+            if(i > msgArr.length - 1)
+                  i=0;
+      },10000);
+}
 
 function createOwnMsg(disBlock,msg){
 

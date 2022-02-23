@@ -3,7 +3,7 @@ const url = require('url');
 const express = require('express');
 const ejs = require('ejs');
 
-const hasha = require('hasha');
+
 
 const InitRoot = require('./routes/PageInit.js');
 const chatRoot = require('./routes/ChatRoomSetting.js');

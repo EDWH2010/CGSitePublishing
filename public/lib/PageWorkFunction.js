@@ -113,6 +113,7 @@ function workUploadInit(){
       }
 
       localStorage.setItem('workList',JSON.stringify(wList));
+      alert('アップロード成功');
       window.location.reload();
     }
 
@@ -123,7 +124,7 @@ function workUploadInit(){
         contentType:'application/json',
         data:packetData,
         success:function(response){
-          alert('Upload Successfully');
+          alert('アップロード成功');
           console.log(response);
 
           window.location.reload();
@@ -503,8 +504,6 @@ function getLocalWorlItems(){
 
 
 function updateNumberList(pName){
-  $('div.number-list:first').empty();
-  
   let $jTarget = null;
 
   if(pName == 'watchPage'){
@@ -519,9 +518,11 @@ function updateNumberList(pName){
   }
 
    let count = getLocalWorlItems() == null ? 1 : getLocalWorlItems().length;
+   //alert("workItemCount : " +count);
    let tCount = getTableCellCount(document.getElementById('watch-table'));
   let num = Math.ceil(count/tCount);
 
+  $('div.number-list:first').empty();
   for(let i=0;i<num;i++){
     let circle = createCircleNumber();
     circle.addEventListener('click',()=>{
