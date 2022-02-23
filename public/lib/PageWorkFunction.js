@@ -20,7 +20,6 @@ function workUploadInit(){
         form.appendChild(createWorkTable(i));
       }
     }
-
     updateUploadButton();
   });
 
@@ -38,6 +37,7 @@ function workUploadInit(){
   form.onsubmit = function(e){
    // alert('submitted');
     e.preventDefault();
+
     const fileArr = [];
     var resultData = null;
     var packetData = {};
@@ -77,6 +77,7 @@ function workUploadInit(){
 
        // console.log(JSON.stringify(files));
         let fname = convertAbsPathToLastPath(files);
+
        const wData = {
          workName:wName,
          workDiscription:wDis,
@@ -95,8 +96,28 @@ function workUploadInit(){
     }
 
 
-    if(localStorage && localStorage.getItem('workList') == null){
-      $.ajax({
+    if(localStorage.getItem('workList') == null){
+      let wList = [];
+      localStorage.setItem('workList',JSON.stringify(wList));
+    }
+
+    if(localStorage.getItem('workList') != null){
+      let wList = JSON.parse(localStorage.getItem('workList'));
+      let pData = JSON.parse(packetData);
+      if(pData.DataType == 'Object'){
+        wList.push(pData.Result);
+      }else if(pData.DataType == 'Array'){
+        pData.workArray.forEach(function(item){
+          wList.push(item);
+        });
+      }
+
+      localStorage.setItem('workList',JSON.stringify(wList));
+      window.location.reload();
+    }
+
+/*
+       $.ajax({
         url:'/workUploadPage.ejs/upload',
         method:'POST',
         contentType:'application/json',
@@ -110,8 +131,8 @@ function workUploadInit(){
       }).fail((err)=>{
         console.log(err);
       });
+*/
 
-    }
   }
 
 }
@@ -120,8 +141,6 @@ function convertAbsPathToLastPath(fPath){
   let fArr = fPath.split('\\');
   return fArr[fArr.length-1];
 }
-
-
 
 
 function detectWorkItem(value){
@@ -232,10 +251,35 @@ function addMultiFileSet(){
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //watchPage Function
 
 function watchPageInit(){
-  catchWorkItems(1,8);
+  //catchWorkItems(1,8);
+
+  if(localStorage.getItem('workList')){
+    alert('GET : ' + localStorage.getItem('workList'));
+    let wList = JSON.parse(localStorage.getItem('workList'));
+    updateWatchItem(document.getElementById('watch-table'),2,4,wList);
+  }else{
+    clearWatchItem(document.getElementById('watch-table'));
+  }
+
   $('.watch-block').hover(watchHoverIn,watchHoverOut);
   $('.watch-block').click(watchBlockClick);
 }
@@ -257,6 +301,8 @@ function watchHoverOut(){
   });
 }
 
+
+
 function watchBlockClick(){
   let img = $(this).find('img');
   let fcap = $(this).find('figcaption');
@@ -273,7 +319,6 @@ function watchBlockClick(){
       alt:$(img).attr('alt'),
       exp:$(fcap).html()
     });
-
 
     alert('Get WorkData : ' + jdata);
     
@@ -292,10 +337,9 @@ function watchBlockClick(){
     });
     
     sessionStorage.setItem('watchWork',jdata);
+   // window.location.href='referPage.ejs';
   }
 }
-
-
 
 function testUpload(){
   let itemArray = [];
@@ -363,17 +407,17 @@ function createWatchBlock(data){
 
   let h3 = document.createElement('h3');
   h3.className = 'watch-title';
-  h3.innerHTML = data.WorkName;
+  h3.innerHTML = data.workName;
 
   let dImg = document.createElement('div');
   dImg.className = 'work-image';
   let wImg = document.createElement('img');
-  wImg.src = data.WorkSource;
-  wImg.alt = data.WorkName;
+  wImg.src = data.workSource;
+  wImg.alt = data.workName;
 
   let fDis = document.createElement('figcaption');
   fDis.className = 'watch-title';
-  fDis.innerHTML = data.WorkDiscription;
+  fDis.innerHTML = data.workDiscription;
 
   dImg.appendChild(wImg);
 
@@ -404,7 +448,9 @@ function updateWatchItem(table,rCount,cCount,itemArray){
   return table;
 }
 
-
+function getTableCellCount(table){
+  return table.rows.length * table.rows[0].cells.length;
+}
 
 function clearWatchItem(table){
   if(table.rows.length == 0)
@@ -445,6 +491,17 @@ function createCircleNumber(){
 }
 
 
+function getLocalWorlItems(){
+  if(localStorage && localStorage.getItem('workList')){
+    let wList = JSON.parse(localStorage.getItem('workList'));
+
+    return wList;
+  }
+
+  return null;
+}
+
+
 function updateNumberList(pName){
   $('div.number-list:first').empty();
   
@@ -461,16 +518,20 @@ function updateNumberList(pName){
     return;
   }
 
-   let count = $jTarget.children().length * 2;
-  let num = Math.ceil(count/8);
+   let count = getLocalWorlItems() == null ? 1 : getLocalWorlItems().length;
+   let tCount = getTableCellCount(document.getElementById('watch-table'));
+  let num = Math.ceil(count/tCount);
 
   for(let i=0;i<num;i++){
     let circle = createCircleNumber();
     circle.addEventListener('click',()=>{
+
      // alert('clicked');
+     /*
       if(!$(this).hasClass('selected')){
          catchWorkItems(i*8+1,(i+1)*8);
       }
+*/
     });
   }
   
@@ -478,16 +539,26 @@ function updateNumberList(pName){
 }
 
 
-function workSearch(name){
+/* ---------------------------------------------------------------referSetting------------------------------------------------*/ 
+function referPageInit(){
+  //alert('referPage loaded');
+  if(sessionStorage && sessionStorage.getItem('watchWork') != null){
+    let data = JSON.parse(sessionStorage.getItem('watchWork'));
+    
+    $('.refer-image img').attr({
+      src:data.src,
+      alt:data.alt
+    });
 
+    $('#work-infoActorName p:nth-child(2)').html(data.workName);
+    $('#work-fileType p:nth-child(2)').html('FILE');
+
+    $('#work-explanation p:nth-child(2)').html(data.exp);
+
+  }
 
 }
 
-
-function workUpload(){
-
-
-}
 
 /*
 

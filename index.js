@@ -33,8 +33,9 @@ const connector = require('./public/lib/backend/MysqlConnector.js');
 app.get('/', (req, res) => {
     console.log('Protocals : '+req.protocol);
     console.log('moved to ' + req.url);
-
-    res.render('./index',{like:3});
+    
+    res.status(200).render('./index');
+   // res.render('./index',{like:3});
 });
 
 app.get('/index.ejs', (req, res) => {

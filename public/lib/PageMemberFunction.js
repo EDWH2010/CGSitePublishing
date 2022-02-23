@@ -2,8 +2,6 @@ const SAVETYPE = {
   Local:0,
   Server:1
 }
-
-
 //new member added function
 const MEMBERLIST = 'memberList';
 
@@ -62,31 +60,47 @@ function getNewMemberData(form){
     return JSON.stringify(data);
 }
 
+function localMemberListInit(){
+  if(localStorage){
+    let array = [];
+    localStorage.setItem('memberList',JSON.stringify(array));
+  }else{
+    alert('No LocalStorage API');
+  }
+}
+
+function memberListExist(){
+  if(localStorage && localStorage.getItem('memberList'))
+    return true;
+  else
+    return false;
+}
+
 //save member data
 
 function saveMember(data){
 
   if(localStorage != null){
 
-/*
     if(localStorage.getItem('memberList') == null){
       let array = [];
       localStorage.setItem('memberList',JSON.stringify(array));
     }
+
     if(localStorage.getItem('memberList') != null){
       
       if(!isMember(data.name)){
          let array = JSON.parse(localStorage.getItem('memberList'));
         array.push(data);
        // alert(JSON.stringify(array));
-      //  localStorage.setItem('memberList',JSON.stringify(array));
+        localStorage.setItem('memberList',JSON.stringify(array));
         alert('登録成功しました');
         window.location.href = 'RigisterSuccess.ejs?lastCount='+3;
       }else{
            alert('会員の加入失敗しました');
             window.location.reload();
-      }   */
-
+      }   
+/*
       $.ajax({
         url:`newMemAdded.ejs/${data.name}`,
         method:'POST',
@@ -108,10 +122,10 @@ function saveMember(data){
       }).fail(function(err){
         console.error(err);
       });      
-      
-
+      */
     }
  }
+}
 
 
 /*
@@ -141,9 +155,9 @@ function getMembers(){
             var arr = localStorage.getItem('memberList');
             var list = JSON.parse(arr);
 
-            alert(typeof list);
+            //alert(typeof list);
             list.forEach(function(value){
-                alert(value.name);
+                //alert(value.name + "\nPASS : " + value.pass);
 
             });
             return list;
@@ -151,17 +165,6 @@ function getMembers(){
         return null;
     }
     return null;
-}
-
-
-
-function createMemberWindow(url){
-
-
-}
-
-function clearDataTable(table){
-
 }
 
 
@@ -173,7 +176,7 @@ function appendToDataTable(table,data){
     });
 }
 
-function clearAllMember(){
+function clearAllLocalData(){
   if(localStorage != null)
     localStorage.clear();
 }
@@ -234,14 +237,13 @@ function memberExist(data){
 
     return found; 
   }
-
-  alert(false);
+  //alert(false);
   return found;
 }
 
 
 function rogin(form){
-  //alert('clicked rogin');
+
   let uname = form.username.value;
   let pass = form.password.value;
 
@@ -251,7 +253,6 @@ function rogin(form){
   }
   let rData = new RoginData(uname,pass);
 
-  /*
   if(memberExist(rData)){
     localStorage.setItem('rogin',JSON.stringify(rData)); 
     alert('ログイン成功しました');
@@ -259,8 +260,10 @@ function rogin(form){
   }else{
     alert('ログイン失敗しました');
   }
-*/
-  
+
+
+
+    /*
   $.ajax({
     url:`/rogin.ejs/${rData.userName}`,
     method:'POST',
@@ -281,47 +284,5 @@ function rogin(form){
     console.error(err);
   });
   
-}
-
-
-
-/*
-function detectRoginData(uname,passwd){
-  if(localStorage == null){
-    return false;
-  }
-  if(localStorage.getItem('rogin') == null){
-    let data = localStorage.getItem('rogin');
-
-    let list = JSON.parse(data);
-
-  }
-
-
-}
 */
-
-function roginPageInit(){
-  
-}
-
-
-/* ---------------------------------------------------------------referSetting------------------------------------------------*/ 
-function referPageInit(){
-  //alert('referPage loaded');
-  if(sessionStorage && sessionStorage.getItem('watchWork') != null){
-    let data = JSON.parse(sessionStorage.getItem('watchWork'));
-
-    $('.refer-image img').attr({
-      src:data.src,
-      alt:data.alt
-    });
-
-    $('#work-infoActorName p:nth-child(2)').html(data.workName);
-    $('#work-fileType p:nth-child(2)').html('FILE');
-
-    $('#work-explanation p:nth-child(2)').html(data.exp);
-
-  }
-
 }

@@ -48,6 +48,22 @@ router.post('/watchPage.ejs/inputEvent',(req,res)=>{
 });
 
 
+router.post('/watchPage.ejs/workTotalCount',(req,res)=>{
+    if(req.body){
+        let data = req.body;
+        let sql = 'SELECT COUNT(*) FROM workitem';
+
+        connector.query(sql,function(err,result){
+            if(err) throw err;
+            
+            res.send(result);
+        });
+    }
+
+    res.send(data);
+});
+
+
 router.post('/watchPage.ejs/select',(req,res)=>{
     let data = req.body;
     let sql = 'SELECT * FROM workitem WHERE Id BETWEEN ? AND ?';

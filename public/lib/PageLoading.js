@@ -21,9 +21,12 @@ window.onload = function(){
       $(returnBtn).fadeOut(500);
     }
   });
+  
+ // localStorage.removeItem('workList');
+  //alert(localStorage.getItem('memberList'));
+  alert(localStorage.getItem('workList'));
 
   userSelectionInit();
-  //breadCreateInit();
  switch(getPageName()){
         case 'index':
           slickInit();
@@ -45,7 +48,7 @@ window.onload = function(){
           newMemAddedInit();
             break;
         case 'referPage':
-           // alert('referPage');
+          //  alert('referPage');
            referPageInit();
             break;
         case 'rogin':
@@ -150,6 +153,9 @@ function getPageName(){
 
     return fname.split('.')[0];
 }
+
+
+
 
 function addWorkItme(block){
     let item = document.createElement('div');
