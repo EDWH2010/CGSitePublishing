@@ -203,3 +203,13 @@ function getChatRoomData(name,pCount,type){
 
       return JSON.stringify(data); 
 }
+
+
+function contactUser(){
+      if(localStorage == null || localStorage.getItem('rogin') == null){
+           alert('ログインしてください');
+           return; 
+      }
+
+      window.location.href = 'chatRoom.ejs';
+}

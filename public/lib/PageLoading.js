@@ -24,7 +24,7 @@ window.onload = function(){
   
  // localStorage.removeItem('workList');
   //alert(localStorage.getItem('memberList'));
-  alert(localStorage.getItem('workList'));
+  //alert(localStorage.getItem('workList'));
 
   userSelectionInit();
  switch(getPageName()){
