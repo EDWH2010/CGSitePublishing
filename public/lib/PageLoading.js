@@ -23,6 +23,7 @@ window.onload = function(){
   });
   
  // localStorage.removeItem('workList');
+ //localStorage.removeItem('memberList');
   //alert(localStorage.getItem('memberList'));
   //alert(localStorage.getItem('workList'));
 
