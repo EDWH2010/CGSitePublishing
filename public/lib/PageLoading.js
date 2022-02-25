@@ -212,6 +212,11 @@ function userSelectionInit(){
     $('#user-image').attr('src','images/guest.png');
     $('#user-name').html(getUserName());
     $('#navSelection li[name="select-upload"]').show();
+
+    if($('#testRemoveWorkButton') === null)
+      return;
+
+      $('#testRemoveWorkButton').show();
   }else{
 
     $('#user-icon').hide();
@@ -219,6 +224,11 @@ function userSelectionInit(){
     $('.guest-button').show();
 
      $('#navSelection li[name="select-upload"]').hide();
+
+      if($('#testRemoveWorkButton') === null)
+        return;
+
+      $('#testRemoveWorkButton').hide();
   }
 }
 

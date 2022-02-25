@@ -1,5 +1,15 @@
 const baseImagePath = 'images/';
 
+
+function removeAllWorkItems(){
+  if(localStorage && localStorage.getItem('workList')){
+    localStorage.removeItem('workList');
+    alert('すべて投稿した作品を削除しました');
+    window.location.reload();
+  }
+}
+
+
 //WorkUploadPage and workWatch
 function workUploadInit(){
   const single = '単数',many='複数';
@@ -48,7 +58,7 @@ function workUploadInit(){
 
     $tList = $('.file-selectTable');
     if($tList.length == 1){
-      alert('one selecTable');
+     // alert('one selecTable');
       let wName = $tList.find('input[type="text"]').val();
       let wDis = $tList.find('textarea').val();
        let files = $tList.find('input[type="file"]').val();
