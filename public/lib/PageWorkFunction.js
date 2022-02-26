@@ -69,7 +69,7 @@ function workUploadInit(){
       resultData = {
         workName:wName,
         workDiscription:wDis,
-        workSource:baseImagePath+fname,
+        workSource:baseImagePath + fname,
       };
 
        packetData = JSON.stringify({
@@ -91,7 +91,7 @@ function workUploadInit(){
        const wData = {
          workName:wName,
          workDiscription:wDis,
-         workSource:baseImagePath+fname
+         workSource:baseImagePath + fname
        };
 
        fileArr.push(wData);
@@ -106,33 +106,48 @@ function workUploadInit(){
     }
 
 
-    if(localStorage.getItem('workList') == null){
-      let wList = [];
-      localStorage.setItem('workList',JSON.stringify(wList));
+    savePacketData(packetData);
+    window.location.reload();
+  }
+
+  $('#file-selection').on('change',function(e){
+    const fData = e.target.value;
+    alert(fData);
+    //console.log(e.target.value);
+    
+
+  });
+
+}
+
+function savePacketData(packet){
+  if(localStorage.getItem('workList') == null){
+    let wList = [];
+    localStorage.setItem('workList',JSON.stringify(wList));
+  }
+
+  if(localStorage.getItem('workList') != null){
+    let wList = JSON.parse(localStorage.getItem('workList'));
+    let pData = JSON.parse(packet);
+    if(pData.DataType == 'Object'){
+      wList.push(pData.Result);
+    }else if(pData.DataType == 'Array'){
+      pData.workArray.forEach(function(item){
+        wList.push(item);
+      });
     }
 
-    if(localStorage.getItem('workList') != null){
-      let wList = JSON.parse(localStorage.getItem('workList'));
-      let pData = JSON.parse(packetData);
-      if(pData.DataType == 'Object'){
-        wList.push(pData.Result);
-      }else if(pData.DataType == 'Array'){
-        pData.workArray.forEach(function(item){
-          wList.push(item);
-        });
-      }
+    localStorage.setItem('workList',JSON.stringify(wList));
+    alert('アップロード成功');
+  }
 
-      localStorage.setItem('workList',JSON.stringify(wList));
-      alert('アップロード成功');
-      window.location.reload();
-    }
 
-/*
+  /*
        $.ajax({
         url:'/workUploadPage.ejs/upload',
         method:'POST',
         contentType:'application/json',
-        data:packetData,
+        data:packet,
         success:function(response){
           alert('アップロード成功');
           console.log(response);
@@ -144,9 +159,45 @@ function workUploadInit(){
       });
 */
 
+}
+
+
+function getSubmitFileName(file){
+  const reader = new FileReader();
+
+
+  reader.onloadstart = function(){
+    console.log('loading start');
   }
 
+  reader.onprogress = function(e){
+    console.log(Math.round((e.loaded/e.total)*100) + '%');
+  }
+
+  reader.onload = function(){
+
+  }
+
+  reader.readAsDataURL(file);
+
 }
+
+function testSubmitFile(dta){
+  $.ajax({
+    url:'/workUploadPage.ejs/testSaveFile',
+    method:'POST',
+    contentType:'application/json',
+    data:dta,
+    success:function(response){
+      console.log(response);
+    }
+  }).fail(function(err){
+    console.log(err);
+  });
+}
+
+
+
 
 function convertAbsPathToLastPath(fPath){
   let fArr = fPath.split('\\');
@@ -452,6 +503,7 @@ function updateWatchItem(table,rCount,cCount,itemArray){
       let cell = row.insertCell();
       if(j > itemArray.length-1)
         break;
+
       cell.appendChild(createWatchBlock(itemArray[j]));
     }
   }

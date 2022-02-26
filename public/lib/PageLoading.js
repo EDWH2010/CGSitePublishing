@@ -13,6 +13,12 @@ function slickInit(){
 
 window.onload = function(){
   
+  const reader = new FileReader();
+
+  reader.onload = function(event){
+    alert(event.target.result);
+  }
+
   let returnBtn = createReturnTopButton();
   this.addEventListener('scroll',()=>{
     if(this.scrollY >= 150){

@@ -3,7 +3,10 @@ const router = require('express').Router();
 const hasha = require('hasha');
 const httpMsg = require('http-msgs');
 
+const fs = require('fs');
+
 const connector = require('../public/lib/backend/MysqlConnector.js');
+
 
 router.get('/watchPage.ejs',(req,res)=>{
     console.log('moved to ' + req.url);
@@ -131,6 +134,12 @@ router.post('/workUploadPage.ejs/upload',(req,res)=>{
     res.send(type);
 });
 
+
+router.post('/workUploadPage.ejs/testSaveFile',(req,res)=>{
+    if(req.body){
+        
+    }
+});
 
 router.get('/referPage.ejs',(req,res)=>{
    console.log('moved to ' + req.url);

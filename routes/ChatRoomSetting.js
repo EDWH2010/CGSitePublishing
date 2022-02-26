@@ -24,6 +24,15 @@ route.get('/chatRoom.ejs',(req,res)=>{
     res.render('chatRoom');
 });
 
+route.get('/chatRoom.ejs/:id',(req,res)=>{
+    console.log(`move to chatRoomPage id : ${req.params.id}`);
+    if(req.params){
+        
+    }
+    res.render('chatRoom',{id:req.params.id});
+});
+
+
 route.get('/chatRoomCreatedPage.ejs',(req,res)=>{
     console.log('move to chatRoomCreatedPage');
 
