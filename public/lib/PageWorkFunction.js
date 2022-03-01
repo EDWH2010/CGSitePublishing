@@ -48,6 +48,8 @@ function workUploadInit(){
    // alert('submitted');
     e.preventDefault();
 
+    const fReader = new FileReader();
+
     const fileArr = [];
     var resultData = null;
     var packetData = {};
@@ -57,6 +59,16 @@ function workUploadInit(){
     }
 
     $tList = $('.file-selectTable');
+
+  /*  fReader.onload = function(eObj){
+
+    }
+
+    fReader.readAsDataURL();
+*/
+
+    
+    
     if($tList.length == 1){
      // alert('one selecTable');
       let wName = $tList.find('input[type="text"]').val();
@@ -65,12 +77,14 @@ function workUploadInit(){
 
       let fname = convertAbsPathToLastPath(files)
       console.log(fname);
-
-      resultData = {
+    //alert(URL.createObjectURL(obj));
+   // let fPath = new Blob([files],{type:'image/jpeg, image/png'});
+    resultData = {
         workName:wName,
         workDiscription:wDis,
-        workSource:baseImagePath + fname,
+        workSource:baseImagePath +fname,
       };
+
 
        packetData = JSON.stringify({
         Result:resultData,
