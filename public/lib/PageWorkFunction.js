@@ -58,16 +58,7 @@ function workUploadInit(){
       return;
     }
 
-    $tList = $('.file-selectTable');
-
-  /*  fReader.onload = function(eObj){
-
-    }
-
-    fReader.readAsDataURL();
-*/
-
-    
+    $tList = $('.file-selectTable');    
     
     if($tList.length == 1){
      // alert('one selecTable');
@@ -77,8 +68,7 @@ function workUploadInit(){
 
       let fname = convertAbsPathToLastPath(files)
       console.log(fname);
-    //alert(URL.createObjectURL(obj));
-   // let fPath = new Blob([files],{type:'image/jpeg, image/png'});
+  
     resultData = {
         workName:wName,
         workDiscription:wDis,
@@ -124,15 +114,31 @@ function workUploadInit(){
     window.location.reload();
   }
 
+  const tReader = new FileReader();
+
   $('#file-selection').on('change',function(e){
-    const fData = e.target.value;
+    const fData = e.target.files[0];
     alert(fData);
-    //console.log(e.target.value);
-    
+        
 
   });
 
+  tReader.onload = function(){
+    
+  }
+  
+
 }
+
+function typedArrayToURL(typedArray, mimeType) {
+  return URL.createObjectURL(new Blob([typedArray.buffer], {type: mimeType}))
+}
+
+
+function turnToPacketData(){
+
+}
+
 
 function savePacketData(packet){
   if(localStorage.getItem('workList') == null){
@@ -177,22 +183,29 @@ function savePacketData(packet){
 
 
 function getSubmitFileName(file){
-  const reader = new FileReader();
+  
+  return new Promise((resolve, reject)=>{
+    const reader = new FileReader();
 
+    reader.onerror = function(err){
+      reject(err);
+    }
 
-  reader.onloadstart = function(){
-    console.log('loading start');
-  }
+    reader.onloadstart = function(){
+      console.log('loading start');
+    }
+  
+    reader.onprogress = function(e){
+      console.log(Math.round((e.loaded/e.total)*100) + '%');
+    }
+  
+    reader.onload = function(){
+  
+    }
+  
+    reader.readAsDataURL(file);
+  });
 
-  reader.onprogress = function(e){
-    console.log(Math.round((e.loaded/e.total)*100) + '%');
-  }
-
-  reader.onload = function(){
-
-  }
-
-  reader.readAsDataURL(file);
 
 }
 
@@ -209,8 +222,6 @@ function testSubmitFile(dta){
     console.log(err);
   });
 }
-
-
 
 
 function convertAbsPathToLastPath(fPath){

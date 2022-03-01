@@ -17,6 +17,7 @@
     "body-parser": "^1.19.1",
     "ejs": "^3.1.6",
     "express": "^4.17.2",
+    "express-ws": "^5.0.2",
     "hasha": "^5.2.2",
     "http-msgs": "^1.0.9",
     "jsdom": "^19.0.0",
