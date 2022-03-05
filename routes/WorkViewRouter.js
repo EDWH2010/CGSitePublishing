@@ -4,6 +4,7 @@ const hasha = require('hasha');
 const httpMsg = require('http-msgs');
 
 const fs = require('fs');
+const path = require('path');
 
 const connector = require('../public/lib/backend/MysqlConnector.js');
 
@@ -91,7 +92,8 @@ router.post('/watchPage/work',(req,res)=>{
 
     res.send(data);
     console.log(data);
-})
+});
+
 
 router.get('/workUploadPage.ejs',(req,res)=>{
     console.log('moved to ' + req.url);

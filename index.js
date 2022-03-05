@@ -4,7 +4,6 @@ const express = require('express');
 const ejs = require('ejs');
 
 
-
 const InitRoot = require('./routes/PageInit.js');
 const chatRoot = require('./routes/ChatRoomSetting.js');
 const rogRoot = require('./routes/RogInOutRoute.js');
@@ -47,5 +46,11 @@ app.get('/index.ejs', (req, res) => {
    res.render('./index');
 });
 
+
+app.get('/thumb(\.jpg)?',(req,res)=>{
+    let tPath = path.join(__dirname, 'thumb.jpg');
+    console.log(tPath);
+    res.sendFile(tPath);    
+});
 
 

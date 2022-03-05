@@ -41,15 +41,28 @@ function chatRoomPageInit(){
              });
     });
 
-
       $('#members-headerList').on('mouseup',function(e){
             console.log('mousedown event');
-
             $(this).css('background-color','#00ff00');
     });
 
+    const webSocket = new WebSocket(`ws://${window.location.host}/chatRoom.ejs`);
 
+    webSocket.onopen = function(){
+          console.log('websocket open');
 
+    }
+
+    webSocket.onmessage = function(){
+          console.log('receive message');
+
+    }
+
+    webSocket.onclose = function(){
+          console.log('webSocket close');
+
+    }
+    
 }
 
 function getChatDisplay(){

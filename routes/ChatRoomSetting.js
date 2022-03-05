@@ -1,27 +1,23 @@
 const route = require('express').Router();
 const server = require('./Server.js').Server;
 
-const io = require('socket.io')(server);
-
-io.on('connection',socket=>{
-    socket.send("Hello!");
-
-    socket.emit("greeting",{"ms":"jane"},Buffer.from([4,3,2,1]));
-
-    socket.on('message',(data)=>{
-        console.log(data);
-    });
-
-    socket.on('salutation',(elem1,elem2,elem3)=>{
-        console.log(elem1,elem2,elem3);
-    });
-    
-});
-
+const socketIO = require('socket.io');
+const io = socketIO(server);
 
 route.get('/chatRoom.ejs',(req,res)=>{
     console.log('move to chatRoomPage'); 
     res.render('chatRoom');
+
+
+    io.on("connection", socket => {
+        socket.on("disconnenpmcting", () => {
+          console.log(socket.rooms); // the Set contains at least the socket ID
+        });
+      
+        socket.on("disconnect", () => {
+          // socket.rooms.size === 0
+        });
+      });
 });
 
 route.get('/chatRoom.ejs/:id',(req,res)=>{
@@ -29,6 +25,12 @@ route.get('/chatRoom.ejs/:id',(req,res)=>{
     if(req.params){
         
     }
+
+    io.on('connect',socket=>{
+        socket.send("Hello!");
+        console.log(`io connection : ${req.params.id}`); 
+    });
+
     res.render('chatRoom',{id:req.params.id});
 });
 

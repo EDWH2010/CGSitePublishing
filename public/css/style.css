@@ -562,6 +562,11 @@ div.form-inputBlock{
     justify-content:center;
 }
 
+.file-preview{
+    width:300px;
+    height:150px;
+}
+
 /*success page*/
 
 #successMsg{
