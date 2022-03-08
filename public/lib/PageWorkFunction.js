@@ -41,7 +41,6 @@ function workUploadInit(){
          form.appendChild(createWorkTable(i));
         }
         updateUploadButton();
-
         //alert($('.file-selectTable').length);
   });
   form.onsubmit = sendWorkFormData;  
@@ -89,59 +88,47 @@ function sendWorkFormData(e){
       savePacketData(packetData);
       window.location.reload();
     }
-    /*
-  resultData = {
-      workName:wName,
-      workDiscription:wDis,
-      workSource:baseImagePath +fname,
-    };
-     packetData = JSON.stringify({
-      Result:resultData,
-      DataType:'Object'
-    });
-*/
-   
-  return;
+  
   }else{
     const fileArr = [];
     let len = $tList.length;
     let wCount = 0;
-   while(true){
-    const fReader = new FileReader();
 
-    fReader.onload = async function(){
-      let wName = $(element).find('input[type="text"]').val();
-      let wDis = $(element).find('textarea').val();
-       let files = $(element).find('input[type="file"]').get(0);
+    const fReaders = [];
+    for(let i=0;i<len;i++)
+      fReaders.push(new FileReader());
+   while(wCount < len){
+       let ele = $($tList[wCount]).find('input[type="file"]').get(0);
+    console.log('workInadex : ' + wCount);
+    fReaders[wCount].onload = function(){
+       let wName = $($tList[wCount]).find('input[type="text"]').val();
+       let wDis = $($tList[wCount]).find('textarea').val();
+       ele = $($tList[wCount]).find('input[type="file"]').get(0);
 
-     //  resultData = turnToMultiWorkData()
-       fileArr.push();
-      wCount++;
+       let result = turnToWorkSingleData(wName,wDis,this.result);
+      //alert(JSON.stringify(result));
+       fileArr.push(result);
+
+       if(wCount == len - 1){
+        packetData = JSON.stringify({
+          Result:fileArr,
+          DataType:'Array'
+        });
+     
+        alert(packetData);
+         
+       }
     }
-   
+    if(wCount >= len-1){
+      console.log('over fileLength');
+      continue;
+    }
+
+    fReaders[wCount++].readAsDataURL(ele.files[0]);
    }
-    $tList.each(async (index,element)=>{
-     
 
-    
-
-      //let fname = convertAbsPathToLastPath(files);
-
-     const wData = {
-       workName:wName,
-       workDiscription:wDis,
-       workSource:baseImagePath + fname
-     };
-     
-     fileArr.push(wData);
-    }); 
-
-     packetData = JSON.stringify({
-       workArray:fileArr,
-       DataType:'Array'
-     });
-
-    alert(packetData);
+   
+   return;
   }
  
 }

@@ -41,14 +41,6 @@ body{
 #breadNavList li:hover{
     color:#aDa;
 }
-/*
-#testBlock{
-    position:fixed;
-    height:50px;
-    background-color:#fff;
-    z-index:2;
-    left:75%;
-}*/
 
 #workDiscription{
     position:absolute;
@@ -258,30 +250,6 @@ main .work-item p{
     text-align:center;
 }
 
-.number-list .circle-number{
-    width:20px;
-    height:20px;
-    background-color:#fff;
-    border-radius:50%;
-    margin:0 5px;
-
-    cursor:pointer;
-    transition:.5s;
-}
-
-.number-list .circle-number.selected{
-    border:1px solid #000;
-}
-
-.number-list .circle-number.selected:hover{
-    border-color:#fff;
-}
-
-.number-list .circle-number:hover{
-    background-color:#555;
-    color:#fff;
-}
-
 main #other-info-block{
     background-color:#afa;
     width:100%;
@@ -428,6 +396,36 @@ div.circle{
     height:20px;
 }
 
+
+.number-list .circle-number{
+    width:20px;
+    height:20px;
+    background-color:#fff;
+    border-radius:50%;
+    margin:0 5px;
+
+    cursor:pointer;
+    transition:.5s;
+}
+
+.number-list .circle-number.selected{
+    border:1px solid #000;
+}
+
+.number-list .circle-number.selected:hover{
+    border-color:#fff;
+}
+
+.number-list .circle-number:hover{
+    background-color:#555;
+    color:#fff;
+}
+
+
+
+
+
+
 /*refer page*/
 .read-article{
     margin:auto;
@@ -497,6 +495,9 @@ div.work-readRight ul.work-infoList li p:nth-child(0){
 
 
 
+
+
+
 /*rogin page*/
 
 form#main-form button#roginbutton{
@@ -532,12 +533,18 @@ input[type='submit']:hover{
     background-color:#aaa;
 }
 
+
+
 /*chatroomCreatorPage*/
 
 div.form-inputBlock{
      margin-bottom:10px;   
     
 }
+
+
+
+
 
 /*workUploadPage*/
 
