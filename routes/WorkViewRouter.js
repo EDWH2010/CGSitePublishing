@@ -131,9 +131,11 @@ router.post('/workUploadPage.ejs/upload',(req,res)=>{
                     if(err) throw err; 
                 });
                 break;
+            default:
+                res.send(type);
+                break;
         }
     }
-    res.send(type);
 });
 
 

@@ -10,7 +10,7 @@ router.get('/rogin.ejs',(req,res)=>{
     res.render('./newMemAdded');
 });
 
-router.post('/rogin.ejs/:id',(req,res)=>{
+router.post('/rogin.ejs/:name',(req,res)=>{
     
    let data = req.body;
    data.exists = false;
@@ -26,7 +26,7 @@ router.post('/rogin.ejs/:id',(req,res)=>{
     }
    );
    
-}).post('/newMemAdded.ejs/:id',(req,res)=>{
+}).post('/newMemAdded.ejs/:name',(req,res)=>{
 
    let sData = req.body;
    sData.exists = false;

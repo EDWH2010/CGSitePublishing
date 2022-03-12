@@ -51,11 +51,6 @@ function updatePreview(view,img){
   view.append(img);
 }
 
-function getFormBlock(index){
-  return document.getElementsByClassName('form-block')[index];
-}
-
-
 function sendWorkFormData(e){
   e.preventDefault();
 
@@ -86,7 +81,6 @@ function sendWorkFormData(e){
       alert(packetData);
 
       savePacketData(packetData);
-      window.location.reload();
     }
   
   }else{
@@ -99,14 +93,14 @@ function sendWorkFormData(e){
       fReaders.push(new FileReader());
    while(wCount < len){
        let ele = $($tList[wCount]).find('input[type="file"]').get(0);
-    console.log('workInadex : ' + wCount);
-    fReaders[wCount].onload = function(){
+      console.log('workInadex : ' + wCount);
+      
+      fReaders[wCount].onload = function(){
        let wName = $($tList[wCount]).find('input[type="text"]').val();
        let wDis = $($tList[wCount]).find('textarea').val();
        ele = $($tList[wCount]).find('input[type="file"]').get(0);
 
        let result = turnToWorkSingleData(wName,wDis,this.result);
-      //alert(JSON.stringify(result));
        fileArr.push(result);
 
        if(wCount == len - 1){
@@ -133,6 +127,25 @@ function sendWorkFormData(e){
  
 }
 
+//データをサーバーに送って処理する
+function savePacketData(packet){
+  $.ajax({
+   url:'/workUploadPage.ejs/upload',
+   method:'POST',
+   contentType:'application/json',
+   data:packet,
+   success:function(response){
+     alert('アップロード成功');
+     console.log(response);
+
+     window.location.reload();
+   }
+ }).fail((err)=>{
+   console.log(err);
+ });
+
+}
+
 //一つのパケットにまとめる
 function turnToWorkSingleData(wName,wDis,wSource){  
   const resultData = {};
@@ -152,7 +165,7 @@ function turnToMultiWorkData(wArray){
 }
 
 //パケット形式でローカル保存やサーバー処理行います
-function savePacketData(packet){
+function saveDataToLocal(packet){
   if(localStorage.getItem('workList') == null){
     let wList = [];
     localStorage.setItem('workList',JSON.stringify(wList));
@@ -172,25 +185,9 @@ function savePacketData(packet){
     localStorage.setItem('workList',JSON.stringify(wList));
     alert('アップロード成功');
   }
-
-   /*
-       $.ajax({
-        url:'/workUploadPage.ejs/upload',
-        method:'POST',
-        contentType:'application/json',
-        data:packet,
-        success:function(response){
-          alert('アップロード成功');
-          console.log(response);
-
-          window.location.reload();
-        }
-      }).fail((err)=>{
-        console.log(err);
-      });
-*/
-
 }
+
+
 
 function previewFile(preview,file){
   const reader = new FileReader();
@@ -205,14 +202,11 @@ function previewFile(preview,file){
   reader.readAsDataURL(file);
 }
 
+
 function typedArrayToURL(typedArray, mimeType) {
   return URL.createObjectURL(new Blob([typedArray.buffer], {type: mimeType}));
 }
 
-
-function turnToPacketData(){
-
-}
 
 function getSubmitFileName(file){
   
@@ -237,9 +231,8 @@ function getSubmitFileName(file){
   
     reader.readAsDataURL(file);
   });
-
-
 }
+
 
 function testSubmitFile(dta){
   $.ajax({
@@ -381,24 +374,22 @@ function addMultiFileSet(){
 
 
 
-
-
-
+const ROWCOUNT = 2;
+const COLCOUNT = 4;
 
 
 //watchPage Function
 
 function watchPageInit(){
-  //catchWorkItems(1,8);
-
+  /*
   if(localStorage.getItem('workList')){
-    alert('GET : ' + localStorage.getItem('workList'));
     let wList = JSON.parse(localStorage.getItem('workList'));
     updateWatchItem(document.getElementById('watch-table'),2,4,wList);
   }else{
     clearWatchItem(document.getElementById('watch-table'));
   }
-
+*/
+  catchWorkItems(1,8);
   $('.watch-block').hover(watchHoverIn,watchHoverOut);
   $('.watch-block').click(watchBlockClick);
 }
@@ -456,7 +447,6 @@ function watchBlockClick(){
     });
     
     sessionStorage.setItem('watchWork',jdata);
-   // window.location.href='referPage.ejs';
   }
 }
 
@@ -498,6 +488,8 @@ function fileSearch(e){
 
   });
 }
+
+
 
 function catchWorkItems(i1,i2){
   const sData = {
@@ -550,6 +542,7 @@ function createWatchBlock(data){
   return figure;
 }
 
+
 function updateWatchItem(table,rCount,cCount,itemArray){
   clearWatchItem(table);
 
@@ -564,7 +557,6 @@ function updateWatchItem(table,rCount,cCount,itemArray){
       cell.appendChild(createWatchBlock(itemArray[j]));
     }
   }
-
   return table;
 }
 
@@ -579,7 +571,6 @@ function clearWatchItem(table){
   for(let i=0;i<count;i++){
     table.deleteRow(0);
   }
-
 }
 
 function filterEventEmit(element){
@@ -663,7 +654,6 @@ function catchLocalWorkData(first,last){
     return;
   }
 
-  
 }
 
 /* ---------------------------------------------------------------referSetting------------------------------------------------*/ 

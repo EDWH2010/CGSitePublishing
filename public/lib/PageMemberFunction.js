@@ -17,18 +17,6 @@ function sendDataServer(form){
 
 function newMemAddedInit(){
  // localStorage.clear();
-/*
-  if(localStorage && localStorage.getItem('memberList') == null){
-    alert('memlist init');
-    const data = {
-      name:'EDISON',
-      email:'edison@gmail.com'
-    };
-    let arr = new Array();
-    arr.push(data);
-    alert(JSON.stringify(arr));
-    localStorage.setItem('memberList',JSON.stringify(arr));
-  }*/
 }
 
 
@@ -60,6 +48,10 @@ function getNewMemberData(form){
     return JSON.stringify(data);
 }
 
+function detectIsEmail(eValue){
+  let detect = /(\w)+(@)(\w{1,})+/i;
+}
+
 function localMemberListInit(){
   if(localStorage){
     let array = [];
@@ -81,14 +73,12 @@ function memberListExist(){
 function saveMember(data){
 
   if(localStorage != null){
-
     if(localStorage.getItem('memberList') == null){
       let array = [];
       localStorage.setItem('memberList',JSON.stringify(array));
     }
-
     if(localStorage.getItem('memberList') != null){
-      
+      /*
       if(!isMember(data.name)){
          let array = JSON.parse(localStorage.getItem('memberList'));
         array.push(data);
@@ -99,31 +89,26 @@ function saveMember(data){
       }else{
            alert('会員の加入失敗しました');
             window.location.reload();
-      }   
-/*
-      $.ajax({
-        url:`newMemAdded.ejs/${data.name}`,
-        method:'POST',
-        contentType:'application/json',
-        data:JSON.stringify(data),
-        success:function(response){
-          if(response.exists){
-            alert('登録成功');
-            let array = JSON.parse(localStorage.getItem('memberList'));
-            array.push(data);
-
-            localStorage.setItem('memberList',array);
-            window.location.href = 'RigisterSuccess.ejs?lastCount='+3;
-          }else{
-            alert('会員の加入失敗しました');
-            window.location.reload();
-          }
-        }
-      }).fail(function(err){
-        console.error(err);
-      });      
-      */
+      }   */
     }
+
+    $.ajax({
+      url:`newMemAdded.ejs/${data.name}`,
+      method:'POST',
+      contentType:'application/json',
+      data:JSON.stringify(data),
+      success:function(response){
+        if(response.exists){
+          alert('登録成功');
+          window.location.href = 'RigisterSuccess.ejs?lastCount='+3;
+        }else{
+          alert('会員の加入失敗しました');
+          window.location.reload();
+        }
+      }
+    }).fail(function(err){
+      console.error(err);
+    });      
  }
 }
 
@@ -165,15 +150,6 @@ function getMembers(){
         return null;
     }
     return null;
-}
-
-
-function appendToDataTable(table,data){
-    let list = JSON.parse(data);
-
-    list.forEach(function(value){
-
-    });
 }
 
 function clearAllLocalData(){
@@ -252,18 +228,15 @@ function rogin(form){
     return;
   }
   let rData = new RoginData(uname,pass);
-
+/*
   if(memberExist(rData)){
     localStorage.setItem('rogin',JSON.stringify(rData)); 
     alert('ログイン成功しました');
     window.location.href = 'RigisterSuccess.ejs?lastCount='+(3).toString();
   }else{
     alert('ログイン失敗しました');
-  }
+  }*/
 
-
-
-    /*
   $.ajax({
     url:`/rogin.ejs/${rData.userName}`,
     method:'POST',
@@ -272,7 +245,7 @@ function rogin(form){
   }).done(function(response){
     if(response.exists === true){
       alert('ログイン成功しました');
-      if(localStorage != null){
+      if(localStorage && localStorage.getItem('rogin') == null){
         localStorage.setItem('rogin',JSON.stringify(rData)); 
       }
       window.location.href = 'RigisterSuccess.ejs?lastCount='+(3).toString();
@@ -284,5 +257,4 @@ function rogin(form){
     console.error(err);
   });
   
-*/
 }
