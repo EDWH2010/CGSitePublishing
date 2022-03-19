@@ -21,10 +21,11 @@ function workItemListInit(){
   let $readArea = $('.work-list.read');
 
   if($modal != null && $cap != null){
-    $($readArea , ' .imgSelector').bind('click',function(){
+    $('.work-list.read .imgSelector').bind('click',function(){
         $('.prev.prev-add').show();
           $('.next.next-add').show();
-
+          
+     // alert($('.work-list.read .imgSelector').index(this));
         var $imgBlock = $(this);
         var $img = $imgBlock.find('img');
 
