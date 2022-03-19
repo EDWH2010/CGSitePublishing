@@ -4,6 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <meta name="robots" content="none,noindex,nofollow">
+        <link rel="stylesheet" href="css/headerStyle.css" />
         <link rel="stylesheet" href="css/style.css" />
         <script type="text/javascript" src="lib/jquery-1.10.1.min.js"></script>
          <script src="lib/Three/three.js"></script>
@@ -33,6 +34,36 @@
                     <span id="user-name">ED0401</span>
                 </div>
                  <button class="member-button" onclick="" style="display:none;">ログアウト</button>
+            </div>
+
+            <button id="small-area-button" class="hide">-<br>-<br>-<br></button>
+            <div id="small-area">   
+                    <nav id="selection-list">
+                        <ul id="small-navSelection">
+                            <li name="small-select-userArea">
+                                <div class="member-button" onclick="rogout()" style="display:none;">ログアウト</div>
+                                <div class="guest-button" onclick="javascript:window.location.href='rogin.ejs'">ログイン</div>
+                                <div class="guest-button" onclick="javascript:window.location.href='newMemAdded.ejs'">新規会員登録</div>
+                            </li>
+                            <li name="select-search" onclick="changePage('watchPage.ejs')">捜索</li>
+                           <li name="select-upload" onclick="changePage('workUploadPage.ejs');" style="display:none;">作品投稿</li>
+                        </ul>
+                    </nav>
+            </div>
+
+            <button id="small-area-button" class="hide">-<br>-<br>-<br></button>
+            <div id="small-area">   
+                    <nav id="selection-list">
+                        <ul id="small-navSelection">
+                            <li name="small-select-userArea">
+                                <div class="member-button" onclick="rogout()" style="display:none;">ログアウト</div>
+                                <div class="guest-button" onclick="javascript:window.location.href='rogin.ejs'">ログイン</div>
+                                <div class="guest-button" onclick="javascript:window.location.href='newMemAdded.ejs'">新規会員登録</div>
+                            </li>
+                            <li name="select-search" onclick="changePage('watchPage.ejs')">捜索</li>
+                           <li name="select-upload" onclick="changePage('workUploadPage.ejs');" style="display:none;">作品投稿</li>
+                        </ul>
+                    </nav>
             </div>
         </header>
         <main>

@@ -176,9 +176,36 @@ function getArticle(className){
     return document.getElementsByClassName(className)[0];
 }
 
+function headerInit(){ 
+  userSelectionInit();
+  smallListInit();
+}
 
+function smallListInit(){
+  $('#small-area-button').click(function(){
+    if($(this).hasClass('hide')){
+      $(this).html('&times');
+    }
+    else{
+      $(this).html(createMenuIcon());
+    }
+  });
+}
+
+function createMenuIcon(){
+  let container = document.createElement('div');
+  for(var i=0;i<3;i++){
+    let p = document.createElement('p');
+    p.innerHTML = '-';
+
+    container.appendChild(p);
+  }
+
+  return container;
+}
 
 function userSelectionInit(){
+
   if(detectIsRogin()){
     $('#user-icon').show();
     $('.guest-button').hide();
@@ -209,6 +236,11 @@ function userSelectionInit(){
       $('#testRemoveWorkButton').hide();
   }
 }
+
+
+
+
+
 
 //-------------------------------------------------------------------------------------
 

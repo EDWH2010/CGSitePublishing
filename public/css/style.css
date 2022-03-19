@@ -6,12 +6,13 @@ body{
     background-position:60% 50%;
     background-attachment: fixed;
     
-    margin:0;
-    padding:0;
+   
 }
 
 *{
     box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 #breadCrumbNav{
@@ -80,82 +81,6 @@ body{
     min-height:100%;
     padding:0;
     margin:0 auto;
-}
-
-#header-list{
-    position:absolute;
-    width:100%;
-    display:flex;
-    justify-content: space-between;
-    background-color: #12551d;
-    padding:0;
-    
-    z-index:2;
-}
-
-img#home_logo{
-    position:absolute;
-    left:0;
-    top:0;
-    width:100px;
-    height:100px;
-}
-
-.header-selection{
-    width:70%;
-}
-
-.selection-list ul{
-    list-style:none;
-    display:flex;
-    justify-content:space-around;
-    
-}
-
-.selection-list ul li{
-    text-align:center;
-    color:#fff;
-    font-size:20px;
-    font-weight:bold;
-    transition:0.5s;
-}
-
-.selection-list ul li:hover{
-    color:#aaa;
-    cursor:pointer;
-}
-#user-icon{
-    color:#fff;
-    font-weight:bold;
-}
-
-#user-image{
-    width:20px;
-    height:20px;
-    border-radius:50%;
-    background-color:#fff;
-    padding:3px;
-}
-
-.user-selection{
-    margin-top:auto;
-    margin-bottom:auto;
-    font-size:16px;
-}
-
-.user-selection button.guest-button,button.member-button{
-    border-width:0;
-    margin:0 10px;
-    background-color:#000;
-    color:#fff;
-    border-radius:5px;
-    font-size:18px;
-    font-weight:bold;
-}
-
-.user-selection button.guest-button:hover,button.member-button:hover{
-    background-color:#fff;
-    color:#000;
 }
 
 
