@@ -108,7 +108,8 @@ function saveMember(data){
       }
     }).fail(function(err){
       console.error(err);
-    });      
+    });   
+
  }
 }
 
@@ -257,4 +258,20 @@ function rogin(form){
     console.error(err);
   });
   
+}
+
+
+function detectRightPassword(form){
+  if(form.password.value === form.cpassword.value){
+      $('#pass-error').hide();
+  }else{
+  $('#pass-error').show();
+  }
+}
+function detectRightEmail(form){
+   if(form.email.value === form.cemail.value){
+      $('#email-error').hide();
+  }else{
+      $('#email-error').show();
+  }
 }

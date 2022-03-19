@@ -72,8 +72,8 @@ window.onload = function(){
         case 'UserProperty':
 
           break;
-        case 'RegisterSuccess':
-
+        case 'RigisterSuccess':
+          alert('registerSuccessPage loaded');
           break;
         default:
             alert('not found page');
@@ -113,7 +113,6 @@ function breadCreateInit(){
     if(i == pathList.length-1){
       continue;
     }
-
     let arrow = document.createElement('span');
     arrow.innerHTML = '&raquo';
     $bList.append(arrow);
@@ -162,8 +161,6 @@ function getPageName(){
 }
 
 
-
-
 function addWorkItme(block){
     let item = document.createElement('div');
     item.className = 'work-item';
@@ -179,32 +176,7 @@ function getArticle(className){
     return document.getElementsByClassName(className)[0];
 }
 
-function detectRightPassword(form){
-    if(form.password.value === form.cpassword.value){
-        $('#pass-error').hide();
-    }else{
-    $('#pass-error').show();
-    }
-}
-function detectRightEmail(form){
-     if(form.email.value === form.cemail.value){
-        $('#email-error').hide();
-    }else{
-        $('#email-error').show();
-    }
-}
 
-function resetImageTable(table){
-  for(let i=0;i<table.rows.length;i++){
-    for(let j=0;j<table.rows[i].cells.length;j++){
-      let cell = table.rows[i].cells[j];
-      cell.removeChild(cell.childNodes[0]);
-      let img = document.createElement('img');
-      cell.appendChild(img);
-
-    }
-  }
-}
 
 function userSelectionInit(){
   if(detectIsRogin()){

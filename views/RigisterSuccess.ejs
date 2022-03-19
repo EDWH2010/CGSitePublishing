@@ -10,12 +10,11 @@
          <script src="lib/slick/slick.js"></script>
         <script src="lib/ChatData.js"></script>
         <script src="lib/Member.js"></script>
-        <script src="lib/excelTest.js"></script>
         <script src="lib/PageMemberFunction.js"></script>
         <script src="lib/PageLoading.js"></script>
         <title>登録・ログイン成功画面</title>
     </head>
-    <body id="wrapper" onload="changePageByTime('index.ejs','<%= lastCount * 1000 %>')">
+    <body id="wrapper" onload="changePageByTime('index.ejs','<%=lastCount*1000 %>')">
         <header id="header-list">
             <div class="logo"><a href="index.ejs"><img id="home_logo" src="images/sample_logo001.png" alt="LOGO" title="メインロゴ" /></a></div>
             <div class="header-selection">
@@ -52,5 +51,7 @@
                 <small>Copy Rights &copy Reserved</small>
             </div>
         </footer>
+
+       
     </body>
 </html>

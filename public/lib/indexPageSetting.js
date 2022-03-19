@@ -168,3 +168,6 @@ function changeModal(src,alt,discription,type){
       $('.modal').show();
     }
 }
+
+
+

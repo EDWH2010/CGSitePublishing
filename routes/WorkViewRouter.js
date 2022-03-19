@@ -94,6 +94,19 @@ router.post('/watchPage/work',(req,res)=>{
     console.log(data);
 });
 
+router.post('/watchPage/GetTotalWorkItems',(req,res)=>{
+    let total =0 ;
+    let sql = 'SELECT COUNT(*) FROM workitems';
+ 
+    connector.query(sql,[],function(err,result){
+        if(err) throw err;
+         total = result;
+        res.send(total);
+    });
+    
+ });
+
+
 
 router.get('/workUploadPage.ejs',(req,res)=>{
     console.log('moved to ' + req.url);
@@ -137,7 +150,6 @@ router.post('/workUploadPage.ejs/upload',(req,res)=>{
         }
     }
 });
-
 
 router.post('/workUploadPage.ejs/testSaveFile',(req,res)=>{
     if(req.body){

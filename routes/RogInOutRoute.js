@@ -68,6 +68,12 @@ router.get('/RigisterSuccess.ejs',(req,res)=>{
     res.render('./RigisterSuccess',{lastCount:lCount});
 });
 
+router.get('/RigisterSuccess(\.ejs)?/LastCount',(req,res)=>{
+    if(req.query){
+        res.send(req.query);
+        //console.log(`Get LastCount Value : ${req.query.lastCount}`);
+    }
+});
 
 router.get('/RigisterSuccess.ejs/:type',(req,res)=>{
     let type = req.params.type;

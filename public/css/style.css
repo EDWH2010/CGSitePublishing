@@ -5,6 +5,7 @@ body{
     background-color:#fff;
     background-position:60% 50%;
     background-attachment: fixed;
+    
     margin:0;
     padding:0;
 }
@@ -42,6 +43,9 @@ body{
     color:#aDa;
 }
 
+
+
+
 #workDiscription{
     position:absolute;
     text-align:center;
@@ -49,7 +53,6 @@ body{
     bottom:10%;
 
 }
-
 
 #threeScene{
     position:fixed;
