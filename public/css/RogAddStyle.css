@@ -1,0 +1,74 @@
+
+/*new member added page*/
+
+.form-block{
+    background-color:rgba(100,220,50,0.5);
+    width:600px;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+    padding:75px;
+    margin:100px auto;
+
+    border:3px solid rgba(30,220,30,1);
+    box-shadow:0 0 10px 2px rgba(20,150,20,1);
+}
+
+.form-block h2{
+    font-size:24px;
+    text-align:center;
+}
+
+.form-block table{
+    table-layout:auto;
+}
+
+
+.form-block td{
+    padding:5px 10px;
+}
+
+#main-form table{
+    border-collapse:separate;
+    border-spacing:5px 10px;
+}
+
+
+
+
+/*rogin page*/
+
+form#main-form button#roginbutton{
+    border-width:0;
+}
+
+form#main-form div#rogin-block{
+    border-width:0;
+}
+
+form#main-form{
+    position:relative;
+    margin:auto;
+    padding:0;
+}
+
+form#main-form div.chat-submitButton{
+    float:right;
+    margin-bottom:50px;
+}
+
+form#main-form .chat-submitButton 
+input[type='submit']{
+    width:80px;
+    height:30px;
+    border-width:0;
+
+    transition:0.5s;
+}
+
+form#main-form .chat-submitButton 
+input[type='submit']:hover{
+    background-color:#aaa;
+}
+

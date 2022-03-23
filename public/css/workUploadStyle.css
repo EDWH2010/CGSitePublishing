@@ -1,0 +1,16 @@
+/*workUploadPage*/
+
+#work-uploadTypeBlock{
+    display:flex;
+    justify-content:center;
+}
+
+#work-uploadCount{
+    display:flex;
+    justify-content:center;
+}
+
+.file-preview{
+    width:300px;
+    height:150px;
+}

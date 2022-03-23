@@ -1,0 +1,110 @@
+
+/*watch page*/
+
+table.watch-table div.work-image{
+    position:relative;
+    width:350px;
+    height:250px;
+    border:10px double #383;
+    box-shadow:0 0 10px 5px #fff;
+     overflow:hidden;
+}
+
+table.watch-table div.work-image img{
+    width:500px;
+    height:350px;
+   position:absolute;
+   left:-30%;
+   top:-20%;
+}
+
+.watch-block h3{
+    font-size:24px;
+}
+
+.watch-block figcaption{
+    border:3px solid #000;
+    background-color:rgba(50,180,55,0.8);
+    width:70%;
+    margin:10px auto;
+}
+
+div.watch-main{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.main-search{
+    margin:10px auto;
+}
+
+#search-filter{
+    padding:5px 10px;
+    margin-top:5px;
+    margin-bottom:5px;
+    background-color:#585;
+    border:1px solid #040;
+    color:#fff;
+}
+
+
+.watch-block img{
+    border:5px solid #fff;
+}
+
+.watch-block h3{
+    color:#fff;
+    text-align:center;
+}
+
+table.watch-table figcaption{
+    color:#fff;
+    text-align:center;
+}
+
+div.work-list{
+    display:flex;
+    flex-direction:row;
+}
+
+div.work-item{
+    display:inline-block;
+    border:5px solid #fff;
+    width:250px;
+    height:225px;
+}
+
+
+
+div.circle{
+    background-color:#fff;
+    border-radius:15px;
+    width:20px;
+    height:20px;
+}
+
+
+.number-list .circle-number{
+    width:20px;
+    height:20px;
+    background-color:#fff;
+    border-radius:50%;
+    margin:0 5px;
+
+    cursor:pointer;
+    transition:.5s;
+}
+
+.number-list .circle-number.selected{
+    border:1px solid #000;
+}
+
+.number-list .circle-number.selected:hover{
+    border-color:#fff;
+}
+
+.number-list .circle-number:hover{
+    background-color:#555;
+    color:#fff;
+}

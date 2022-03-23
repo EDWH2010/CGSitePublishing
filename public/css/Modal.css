@@ -28,15 +28,20 @@
   padding:0;
 }
 
+span.prev.prev-add,span.next.next-add{
+  z-index:1;
+}
+
 #workOutBlock{
+  position:absolute;
+  left:35%;
   padding: 0; /**/
   margin:auto;
 }
 
 /* Modal Content (Image) */
 .modal-content {
-  position:absolute;
-  left:35%;
+ 
   display: block;
   width: 80%;
   max-width: 600px;
@@ -60,10 +65,7 @@
 }
 
 #workDiscription{
-  position:absolute;
-  display:block;
-  top:85%;
-  left:50%;
+  top:95%;
   color:#fff;
   font-weight:bold;
 }

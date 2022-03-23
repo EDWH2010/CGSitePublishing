@@ -18,7 +18,9 @@ route.get('/chatRoom.ejs',(req,res)=>{
           // socket.rooms.size === 0
         });
       });
+
 });
+
 
 route.get('/chatRoom.ejs/:id',(req,res)=>{
     console.log(`move to chatRoomPage id : ${req.params.id}`);

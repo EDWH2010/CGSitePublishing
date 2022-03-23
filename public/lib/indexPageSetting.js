@@ -1,4 +1,3 @@
-
 let readIndex=0;
 
 function headerListInit(){
@@ -15,19 +14,20 @@ function headerListInit(){
 }
 
 
+//作品リストのInitialized
 function workItemListInit(){
-  let $modal = $('.modal:eq(0)');
+   let $modal = $('.modal:eq(0)');
    let $cap = $('#caption');
-  let $readArea = $('.work-list.read');
 
   if($modal != null && $cap != null){
     $('.work-list.read .imgSelector').bind('click',function(){
-        $('.prev.prev-add').show();
-          $('.next.next-add').show();
+       $('.prev.prev-add').show();
+       $('.next.next-add').show();
           
-     // alert($('.work-list.read .imgSelector').index(this));
         var $imgBlock = $(this);
         var $img = $imgBlock.find('img');
+        readIndex = $('.work-item.imgSelector').index(this);
+      //  alert('get Index : '+readIndex);
 
         changeModal($img.attr('src'),$img.attr('alt'),'Discription Test','read');
     });
@@ -48,13 +48,41 @@ function workItemListInit(){
   
 }
 
-function expandWorkItem(count){
+
+function nextImage($iList,cur){
+  let target = cur+1;
+  let children = $iList.children();
+
+  if(target > children.length-1){
+    target=0;
+  }
+  readIndex=target;
+
+    let img = getReadImage($iList,readIndex);
+    changeModal($(img).attr('src'),$(img).attr('alt')
+    ,'Discription Test','read');
+}
+
+function prevImage($iList,cur){
+    let target = cur-1;
+    if(target < 0){
+      target = $iList.children().length-1;
+    }
+
+    readIndex=target;
+    let img = getReadImage($iList,readIndex);
+    
+    changeModal($(img).attr('src'),$(img).attr('alt')
+    ,'Discription Test','read');
+}
+
+
+async function expandWorkItem(count){
   let $workList = $('.work-list.read');
   let expIndex = $workList.children().length;
+/*
+await
 
-  /*$.ajax({
-
-  });
 */
   for(let i = expIndex;i<expIndex + count;i++){
       let item = createIndexWorkItem('images/sample_image001.jpg','dummy' + i,'DiscriptionTest' + i);
@@ -81,13 +109,23 @@ function createIndexWorkItem(src,title,dis){
 
   wItem.appendChild(wImg);
   wItem.appendChild(disItem);
+  wItem.addEventListener('click',function(){
+    $('.prev.prev-add').show();
+    $('.next.next-add').show();
+       
+     var $imgBlock = $(this);
+     var $img = $imgBlock.find('img');
+
+     readIndex = $('.work-item.imgSelector').index(this);
+    // alert('get Index : '+readIndex);
+     changeModal($img.attr('src'),$img.attr('alt'),'Discription Test','read');
+  });
 
   return wItem;
 }
 
 
 function displayItemListInit(){
-
   let $list = $('.work-list.display');
   if($list != null){
     let children = $list.children();
@@ -113,33 +151,7 @@ function displayItemListInit(){
   }
 }
 
-function nextImage($iList,cur){
-  let target = cur+1;
-  let children = $iList.children();
 
-  if(target > children.length-1){
-    target=0;
-  }
-  readIndex=target;
-  //alert('readIndex : ' + readIndex);
-
-    let img = getReadImage($iList,readIndex);
-    changeModal($(img).attr('src'),$(img).attr('alt')
-    ,'Discription Test','read');
-}
-
-function prevImage($iList,cur){
-    let target = cur-1;
-    if(target < 0){
-      target = $iList.children().length-1;
-    }
-
-    readIndex=target;
-    let img = getReadImage($iList,readIndex);
-    
-    changeModal($(img).attr('src'),$(img).attr('alt')
-    ,'Discription Test','read');
-}
 
 function getReadImage($list,target){
   let block = $list.children()[target];
@@ -163,6 +175,9 @@ function changeModal(src,alt,discription,type){
     $('#caption').html(alt);
     $('#workDiscription').html(discription);  
   
+  if(type=='set')
+    return;
+
   if(type == 'read'){
       $('.modal.read').show();
     }else if(type == 'display'){

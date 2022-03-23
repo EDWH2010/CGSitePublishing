@@ -59,7 +59,7 @@
             </div>
 
             <article class="read-article">
-                <div><h1>ReferPage</h1></div>
+                <div id="refer-title"><h1>ReferPage</h1></div>
                 <div id="read-articleBody">
                     <div class="work-readLeft">
                             <div class="refer-image">
@@ -98,9 +98,14 @@
             </article>
            
             <div id="comment-area">
-                <div class="comment-block">
-
-                </div>
+                <form name="commentForm" method="POST">
+                    <div class="comment-block">
+                        <textArea id="comment-input-area" cols="80" rows="20"></textArea>
+                    </div>
+                    <div>
+                        <input type="submit" value="コメント" />
+                    </div>
+                </form>
             </div>
         </main>
         <footer>
