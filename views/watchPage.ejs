@@ -69,6 +69,7 @@
         </header>
         <main>
             <div id="breadCrumbNav">
+                <button onclick="getWorkItemsCount();">GET WorkItemsCount</button>
                 <ul id="breadNavList">
                     <li onclick="changePage('index.ejs')">ホーム</li><span>&raquo</span>
                     <li>作品閲覧</li>
@@ -79,11 +80,11 @@
 
 
             </div>
-            <button id="testRemoveWorkButton" onclick="removeAllWorkItems();">作品削除</button>
+           <!-- <button id="testRemoveWorkButton" onclick="removeAllWorkItems();">作品削除</button>-->
             <div class="watch-main">
                 <div class="main-search">
                     <input id="keyword-search" type="search" name="search" placeholder="キーワードを入力"/>
-                    <input id="search-button" type="button" value="サーチ" onclick="" />
+                    <input id="search-button" type="button" value="絞り込み" onclick="" />
                     <button id="filterBox-show" value="boxShow" onclick="filterEventEmit(this);">サーチ条件On</button>
                     <div name="filterBox" id="search-filter" style="display:none;">
                         <input type="checkbox" name="texture" onchange="" />

@@ -5,15 +5,9 @@ const COLCOUNT = 4;
 //捜索画面のロード
 function watchPageInit(){
     alert('searchPage loaded');
-  /*
-  if(localStorage.getItem('workList')){
-    let wList = JSON.parse(localStorage.getItem('workList'));
-    updateWatchItem(document.getElementById('watch-table'),2,4,wList);
-  }else{
-    clearWatchItem(document.getElementById('watch-table'));
-  }
-*/
+
   catchWorkItems(1,8);
+  updateNumberList('watchPage');
   $('.watch-block').hover(watchHoverIn,watchHoverOut);
   $('.watch-block').click(watchBlockClick);
 }
@@ -63,7 +57,7 @@ function watchBlockClick(){
       data:jdata,
       success:function(response){
         let wName = response.workName;
-       // console.log(name);
+        sessionStorage.setItem('whName',wName);
         window.location.href = 'referPage.ejs?workName='+wName;
       }
     }).fail(function(err){
@@ -114,8 +108,9 @@ function fileSearch(e){
 }
 
 
-
+//データベースからCG作品をキャッチします
 function catchWorkItems(i1,i2){
+  alert('catch item');
   const sData = {
     first:i1,
     last:i2
@@ -125,16 +120,42 @@ function catchWorkItems(i1,i2){
     url:'/watchPage.ejs/select',
     method:'POST',
     contentType:'application/json',
-    data:JSON.stringify(sData),
-    success:function(response){
-      alert(JSON.stringify(response));
+    data:JSON.stringify(sData)
+  }).done(function(response){
+    alert(response);
       updateWatchItem(document.getElementById('watch-table'),2,4,response);
-    }
   }).fail(function(err){
     console.error(err);
   });
 
 }
+
+function updateWatchItem(table,rCount=ROWCOUNT,cCount=COLCOUNT,itemArray){
+  clearWatchItem(table);
+
+  for(let i=0;i<rCount;i++){
+    let row = table.insertRow();
+    let start = i * cCount;
+    for(let j=start;j<start+cCount;j++){
+      let cell = row.insertCell();
+      if(j > itemArray.length-1)
+        break;
+
+      cell.appendChild(createWatchBlock(itemArray[j]));
+    }
+  }
+  return table;
+}
+
+function clearWatchItem(table){
+  if(table.rows.length == 0)
+    return;
+  let count = table.rows.length;
+  for(let i=0;i<count;i++){
+    table.deleteRow(0);
+  }
+}
+
 
 function createWatchBlock(data){
   let figure = document.createElement('figure');
@@ -167,38 +188,11 @@ function createWatchBlock(data){
 }
 
 
-function updateWatchItem(table,rCount=ROWCOUNT,cCount=COLCOUNT,itemArray){
-  clearWatchItem(table);
-
-  for(let i=0;i<rCount;i++){
-    let row = table.insertRow();
-    let start = i * cCount;
-    for(let j=start;j<start+cCount;j++){
-      let cell = row.insertCell();
-      if(j > itemArray.length-1)
-        break;
-
-      cell.appendChild(createWatchBlock(itemArray[j]));
-    }
-  }
-  return table;
-}
-
 function getTableCellCount(table){
   return table.rows.length * table.rows[0].cells.length;
 }
 
-function clearWatchItem(table){
-  if(table.rows.length == 0)
-    return;
-  let count = table.rows.length;
-  for(let i=0;i<count;i++){
-    table.deleteRow(0);
-  }
-}
-
 function filterEventEmit(element){
-  //alert('filter event occured');
     if(element.value == 'boxShow'){
       element.value='boxHide';
       element.innerHTML = 'サーチ条件Off';
@@ -209,6 +203,70 @@ function filterEventEmit(element){
       $('#search-filter').hide();
     }
 }
+
+function itemFilter(e){
+  let val = e.target.value;
+  $.ajax({
+    method:'POST',
+    url:'/watchPage.ejs/SearchWorkItem',
+    contentType:'application/json',
+    data:JSON.stringify({key:val}),
+    success:function(res){
+      console.log(res);
+    }
+  }).fail(err=>{
+    console.log(err);
+  });
+
+
+}
+
+function getLocalWorlItems(){
+  if(localStorage && localStorage.getItem('workList')){
+    let wList = JSON.parse(localStorage.getItem('workList'));
+    return wList;
+  }
+
+  return null;
+}
+
+async function updateNumberList(pName){
+  let $jTarget = null;
+  if(pName == 'watchPage'){
+    $jTarget = $('table.watch-table tr:first');
+  }else{
+    alert('not found target');
+    return;
+  }
+
+  let val = 8;
+
+   //alert("workItemCount : " +count);
+   let tCount = ROWCOUNT * COLCOUNT;
+  let num = Math.ceil(val/tCount);
+
+  $('div.number-list:first').empty();
+  for(let i=0;i<num;i++){
+    let circle = createCircleNumber();
+    circle.addEventListener('click',()=>{
+      if(!$(this).hasClass('selected')){
+         catchWorkItems(i*tCount+1,(i+1)*tCount);
+      }
+    });
+  }
+  
+  $('.number-list div.circle-number:first').addClass('selected');
+}
+
+function catchLocalWorkData(first,last){
+  let wDataArr = JSON.parse(localStoarge.getItem('workList'));
+  if(first > wDataArr.length-1){
+    alert('can\'t catch work data');
+    return;
+  }
+
+}
+
 
 
 function createCircleNumber(){
@@ -223,62 +281,4 @@ function createCircleNumber(){
   });
   $('div.number-list').append(circle);
   return circle;
-}
-
-
-function getLocalWorlItems(){
-  if(localStorage && localStorage.getItem('workList')){
-    let wList = JSON.parse(localStorage.getItem('workList'));
-    return wList;
-  }
-
-  return null;
-}
-
-
-function updateNumberList(pName){
-  let $jTarget = null;
-
-  if(pName == 'watchPage'){
-    $jTarget = $('table.watch-table tr:first');
-
-  }else if(pName == 'index'){
-    $jTarget = $('.work-list.read');
-    //alert('index nmberList found');
-  }else{
-    alert('not found target');
-    return;
-  }
-
-   let count = (async function(){
-
-    
-   })();
-
-   //alert("workItemCount : " +count);
-   let tCount = ROWCOUNT * COLCOUNT;
-  let num = Math.ceil(count/tCount);
-
-  $('div.number-list:first').empty();
-  for(let i=0;i<num;i++){
-    let circle = createCircleNumber();
-    circle.addEventListener('click',()=>{
-
-      if(!$(this).hasClass('selected')){
-         catchWorkItems(i*tCount+1,(i+1)*tCount);
-      }
-
-    });
-  }
-  
-  $('.number-list div.circle-number:first').addClass('selected');
-}
-
-function catchLocalWorkData(first,last){
-  let wDataArr = JSON.parse(localStoarge.getItem('workList'));
-  if(first > wDataArr.length-1){
-    alert('can\'t catch work data');
-    return;
-  }
-
 }

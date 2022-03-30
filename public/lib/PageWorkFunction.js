@@ -1,12 +1,33 @@
 const baseImagePath = 'images/';
 
 
+function getWorkItemsCount(){
+  
+  $.ajax({
+    url:'/watchPage.ejs/workTotalCount',
+    method:'POST',
+    contentType:'application/json',
+    data:JSON.stringify({}),
+    success:function(response){
+      console.log(response);
+    }
+  }).fail(err=>{
+    console.log(err);
+  });
+
+}
+
 function removeAllWorkItems(){
-  if(localStorage && localStorage.getItem('workList')){
-    localStorage.removeItem('workList');
-    alert('すべて投稿した作品を削除しました');
-    window.location.reload();
-  }
+  $.ajax({
+    url:'/watchPage.ejs/workRemoveAll',
+    method:'POST',
+    contentType:'application/json',
+    data:JSON.stringify({}),
+    success:function(response){
+      console.log(response);
+    }
+  });
+
 }
 
 
@@ -68,7 +89,6 @@ function sendWorkFormData(e){
     let wName = $tList.find('input[type="text"]').val();
     let wDis = $tList.find('textarea').val();
      let ele = $tList.find('input[type="file"]').get(0);
-    //console.log(ele.files[0]);
        
     let fReader = new FileReader();
 
@@ -91,40 +111,7 @@ function sendWorkFormData(e){
     let len = $tList.length;
     let wCount = 0;
 
-    const fReaders = [];
-    for(let i=0;i<len;i++)
-      fReaders.push(new FileReader());
-   while(wCount < len){
-       let ele = $($tList[wCount]).find('input[type="file"]').get(0);
-      console.log('workInadex : ' + wCount);
-      
-      fReaders[wCount].onload = function(){
-       let wName = $($tList[wCount]).find('input[type="text"]').val();
-       let wDis = $($tList[wCount]).find('textarea').val();
-       ele = $($tList[wCount]).find('input[type="file"]').get(0);
 
-       let result = turnToWorkSingleData(wName,wDis,this.result);
-       fileArr.push(result);
-
-       if(wCount == len - 1){
-        packetData = JSON.stringify({
-          Result:fileArr,
-          DataType:'Array'
-        });
-     
-        alert(packetData);
-         
-       }
-    }
-    if(wCount >= len-1){
-      console.log('over fileLength');
-      continue;
-    }
-
-    fReaders[wCount++].readAsDataURL(ele.files[0]);
-   }
-
-   
    return;
   }
  
@@ -167,7 +154,7 @@ function turnToMultiWorkData(wArray){
   return resultData;
 }
 
-//パケット形式でローカル保存やサーバー処理行います
+//パケット形式でローカル保存する
 function saveDataToLocal(packet){
   if(localStorage.getItem('workList') == null){
     let wList = [];
@@ -194,32 +181,6 @@ function saveDataToLocal(packet){
 
 function typedArrayToURL(typedArray, mimeType) {
   return URL.createObjectURL(new Blob([typedArray.buffer], {type: mimeType}));
-}
-
-
-function getSubmitFileName(file){
-  
-  return new Promise((resolve, reject)=>{
-    const reader = new FileReader();
-
-    reader.onerror = function(err){
-      reject(err);
-    }
-
-    reader.onloadstart = function(){
-      console.log('loading start');
-    }
-  
-    reader.onprogress = function(e){
-      console.log(Math.round((e.loaded/e.total)*100) + '%');
-    }
-  
-    reader.onload = function(){
-  
-    }
-  
-    reader.readAsDataURL(file);
-  });
 }
 
 
@@ -343,26 +304,6 @@ function createWorkTable(index){
 
   return table;
 
-}
-
-
-function addMultiFileSet(){
-  let sTable = document.createElement('table');
-  let row1 = sTable.insertRow();
-  let row2 = sTable.insertRow();
-}
-
-
-function resetImageTable(table){
-  for(let i=0;i<table.rows.length;i++){
-    for(let j=0;j<table.rows[i].cells.length;j++){
-      let cell = table.rows[i].cells[j];
-      cell.removeChild(cell.childNodes[0]);
-      let img = document.createElement('img');
-      cell.appendChild(img);
-
-    }
-  }
 }
 
 

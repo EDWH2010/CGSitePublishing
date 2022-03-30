@@ -21,11 +21,6 @@ window.onload = function(){
       $(returnBtn).fadeOut(500);
     }
   });
-  
- // localStorage.removeItem('workList');
- //localStorage.removeItem('memberList');
-  //alert(localStorage.getItem('memberList'));
-  //alert(localStorage.getItem('workList'));
 
   userSelectionInit();
  switch(getPageName()){
@@ -56,9 +51,7 @@ window.onload = function(){
            // alert('rogin');   
             break;
         case 'watchPage':
-          updateNumberList('watchPage');
           watchPageInit();
-           // alert('watchPage');
             break;
         case 'workUploadPage':
           workUploadInit();

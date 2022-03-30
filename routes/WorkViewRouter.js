@@ -55,7 +55,7 @@ router.post('/watchPage.ejs/inputEvent',(req,res)=>{
 router.post('/watchPage.ejs/workTotalCount',(req,res)=>{
     if(req.body){
         let data = req.body;
-        let sql = 'SELECT COUNT(*) FROM workitem';
+        let sql = 'SELECT COUNT(*) AS `Cnt` FROM workitem';
 
         connector.query(sql,function(err,result){
             if(err) throw err;
@@ -67,6 +67,12 @@ router.post('/watchPage.ejs/workTotalCount',(req,res)=>{
     res.send(data);
 });
 
+router.post('/watchPage.ejs/SearchWorkItem',(req,res)=>{
+    if(req.body){
+        let k = req.body.key;
+        let sql = 'SELECT * from ';
+    }
+});
 
 router.post('/watchPage.ejs/select',(req,res)=>{
     let data = req.body;
@@ -75,8 +81,10 @@ router.post('/watchPage.ejs/select',(req,res)=>{
     if(req.body){
         let first = req.body.first;
         let last = req.body.last;
-       // res.send({F:first,L:last});
-
+       
+        console.log("first value : " + first);
+        console.log("last Value : " + last);
+        
         connector.query(sql,[first,last],function(err,results){
             if(err) throw err;
 
