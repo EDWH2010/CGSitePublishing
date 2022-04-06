@@ -13,7 +13,6 @@
          <script src="lib/Three/three.js"></script>
          <script src="lib/slick/slick.js"></script>
         <script src="lib/ChatData.js"></script>
-       
         <title>CGSharingCite(HOME)</title>
     </head>
     <body id="wrapper">
@@ -83,7 +82,7 @@
            <!-- <button id="testRemoveWorkButton" onclick="removeAllWorkItems();">作品削除</button>-->
             <div class="watch-main">
                 <div class="main-search">
-                    <input id="keyword-search" type="search" name="search" placeholder="キーワードを入力"/>
+                    <input id="keyword-search" type="search" name="search" placeholder="キーワードを入力" oninput="console.log('inputed some text');";/>
                     <input id="search-button" type="button" value="絞り込み" onclick="" />
                     <button id="filterBox-show" value="boxShow" onclick="filterEventEmit(this);">サーチ条件On</button>
                     <div name="filterBox" id="search-filter" style="display:none;">

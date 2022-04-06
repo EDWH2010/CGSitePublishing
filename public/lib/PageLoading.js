@@ -10,7 +10,6 @@ function slickInit(){
   });
 }
 
-
 window.onload = function(){
   
   let returnBtn = createReturnTopButton();

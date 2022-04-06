@@ -2,17 +2,17 @@ const baseImagePath = 'images/';
 
 
 function getWorkItemsCount(){
-  
   $.ajax({
     url:'/watchPage.ejs/workTotalCount',
     method:'POST',
     contentType:'application/json',
-    data:JSON.stringify({}),
-    success:function(response){
-      console.log(response);
-    }
+    data:JSON.stringify({})
+  }).done(function(response){
+   // console.log(response);
+   alert('現在の作品数は : ' + response.Results.length);
+   
   }).fail(err=>{
-    console.log(err);
+    console.error(err);
   });
 
 }
@@ -62,16 +62,9 @@ function workUploadInit(){
          form.appendChild(createWorkTable(i));
         }
         updateUploadButton();
-        //alert($('.file-selectTable').length);
   });
   
   form.onsubmit = sendWorkFormData;  
-}
-
-
-function updatePreview(view,img){
-  view.empty();
-  view.append(img);
 }
 
 function sendWorkFormData(e){
@@ -84,7 +77,8 @@ function sendWorkFormData(e){
     return;
   }
 
-  $tList = $('.file-selectTable');    
+  $tList = $('.file-selectTable');
+
   if($tList.length == 1){
     let wName = $tList.find('input[type="text"]').val();
     let wDis = $tList.find('textarea').val();
@@ -103,15 +97,24 @@ function sendWorkFormData(e){
       });
       alert(packetData);
 
+      return;
       savePacketData(packetData);
     }
   
   }else{
-    const fileArr = [];
-    let len = $tList.length;
-    let wCount = 0;
+  
+    $tList.each(function(i){
+      let wName = $(this).find('input[type="text"]').val();
+      let wDis = $(this).find('textarea').val();
+       let ele = $(this).find('input[type="file"]').get(0);
 
+       let dta = new Blob([ele.files[0]],{type:'image/*'});
+        let src = URL.createObjectURL(dta);
 
+        alert(src);
+        return;
+    });
+  
    return;
   }
  

@@ -97,14 +97,25 @@ function testUpload(){
   }).fail(function(err){
     console.error(err);
   });
+  
 }
+
 
 function fileSearch(e){
   let name= e.target.name;
-
+  let con = e.target.value;
+  
   $.ajax({
+    url:'',
+    method:'POST',
+    contentType:'application/json',
+    data:JSON.stringify({})
+  }).done(function(response){
 
+  }).fail(function(err){
+    console.error(err);
   });
+
 }
 
 

@@ -53,24 +53,29 @@ router.post('/watchPage.ejs/inputEvent',(req,res)=>{
 
 
 router.post('/watchPage.ejs/workTotalCount',(req,res)=>{
-    if(req.body){
-        let data = req.body;
-        let sql = 'SELECT COUNT(*) AS `Cnt` FROM workitem';
+    let sql = 'SELECT * FROM workitem';
+    connector.query(sql,function(err,results,fields){
+        if(err) throw err;
 
-        connector.query(sql,function(err,result){
-            if(err) throw err;
-            
-            res.send(result);
-        });
-    }
+        const data = {
+            Results:results,
+            Fields:fields
+        };
+        res.send(data);
+    });
 
-    res.send(data);
 });
 
 router.post('/watchPage.ejs/SearchWorkItem',(req,res)=>{
     if(req.body){
         let k = req.body.key;
-        let sql = 'SELECT * from ';
+        let sql = `SELECT * from workitem WHERE WorkName LIKE "%${k}%"`;
+
+        connector.query(sql,[k],function(err,results){
+            if(err) throw err;
+
+            res.send(results);
+        });
     }
 });
 
@@ -101,19 +106,6 @@ router.post('/watchPage/work',(req,res)=>{
     res.send(data);
     console.log(data);
 });
-
-router.post('/watchPage/GetTotalWorkItems',(req,res)=>{
-    let total =0 ;
-    let sql = 'SELECT COUNT(*) FROM workitems';
- 
-    connector.query(sql,[],function(err,result){
-        if(err) throw err;
-         total = result;
-        res.send(total);
-    });
-    
- });
-
 
 
 router.get('/workUploadPage.ejs',(req,res)=>{
