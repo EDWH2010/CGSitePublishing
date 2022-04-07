@@ -133,7 +133,7 @@ router.post('/workUploadPage.ejs/upload',(req,res)=>{
                 res.send(type);
                  sql = 'INSERT INTO workitem (WorkName,WorkDiscription,WorkSource) VALUES ?';
 
-                data.workArray.forEach((item,index)=>{
+                data.Result.workArray.forEach((item,index)=>{
                     tArr[index] = [];
 
                     tArr[index].push(item.workName);

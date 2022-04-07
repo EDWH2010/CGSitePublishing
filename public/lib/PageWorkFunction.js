@@ -31,7 +31,7 @@ function removeAllWorkItems(){
 }
 
 
-//WorkUploadPage and workWatch
+//WorkUploadPage and workWatch(作品閲覧画面のローディング)
 function workUploadInit(){
   const single = '単数',many='複数';
 
@@ -39,6 +39,7 @@ function workUploadInit(){
 
   $('#work-uploadCount').hide();
 
+  //
   $('input[name="fileSelect"]').on('change',(e)=>{
     if($(e.target).val() == single){
       $('#work-uploadCount').hide();
@@ -67,6 +68,7 @@ function workUploadInit(){
   form.onsubmit = sendWorkFormData;  
 }
 
+//作品のアップロード
 function sendWorkFormData(e){
   e.preventDefault();
 
@@ -95,6 +97,7 @@ function sendWorkFormData(e){
         Result:resultData,
         DataType:'Object'
       });
+
       alert(packetData);
 
       return;
@@ -102,7 +105,9 @@ function sendWorkFormData(e){
     }
   
   }else{
-  
+     resultData = {};
+     resultData.workArray = new Array();
+
     $tList.each(function(i){
       let wName = $(this).find('input[type="text"]').val();
       let wDis = $(this).find('textarea').val();
@@ -111,10 +116,19 @@ function sendWorkFormData(e){
        let dta = new Blob([ele.files[0]],{type:'image/*'});
         let src = URL.createObjectURL(dta);
 
-        alert(src);
-        return;
+        const rData = turnToWorkSingleData(wName,wDis,src);
+
+        alert(JSON.stringify(rData));
+        resultData.workArray.push(rData);
+
     });
-  
+
+     packetData = JSON.stringify({
+      Result:resultData,
+      DataType:'Array'
+    });
+    
+    savePacketData(packetData);
    return;
   }
  
@@ -157,7 +171,7 @@ function turnToMultiWorkData(wArray){
   return resultData;
 }
 
-//パケット形式でローカル保存する
+//パケット形式でローカル環境で保存する
 function saveDataToLocal(packet){
   if(localStorage.getItem('workList') == null){
     let wList = [];

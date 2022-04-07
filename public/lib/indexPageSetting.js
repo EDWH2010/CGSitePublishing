@@ -4,7 +4,7 @@ function headerListInit(){
   const header = document.getElementById('header-list');
 
   window.addEventListener('scroll',(e)=>{
-    console.log('YOffset : ' + e.pageY);
+    //console.log('YOffset : ' + e.pageY);
     if(e.pageY >= 300){
       header.setAttribute('position','fixed');
     }else{
@@ -57,7 +57,6 @@ function nextImage($iList,cur){
     target=0;
   }
   readIndex=target;
-
     let img = getReadImage($iList,readIndex);
     changeModal($(img).attr('src'),$(img).attr('alt')
     ,'Discription Test','read');
@@ -80,10 +79,7 @@ function prevImage($iList,cur){
 async function expandWorkItem(count){
   let $workList = $('.work-list.read');
   let expIndex = $workList.children().length;
-/*
-await
 
-*/
   for(let i = expIndex;i<expIndex + count;i++){
       let item = createIndexWorkItem('images/sample_image001.jpg','dummy' + i,'DiscriptionTest' + i);
       $workList.append(item);
@@ -185,5 +181,7 @@ function changeModal(src,alt,discription,type){
     }
 }
 
+//データベースから作品データを取得
+function getWorkItemDataDB(){
 
-
+}
