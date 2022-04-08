@@ -70,7 +70,7 @@ function watchBlockClick(){
 
 function testUpload(){
   let itemArray = [];
-  let iCount = $('.watch-block').length;
+  
   $('.watch-block').each((index,element)=>{
     let img = $(element).find('img');
     let fcap = $(element).find('figcaption');
@@ -120,12 +120,21 @@ function fileSearch(e){
 
 
 //データベースからCG作品をキャッチします
-function catchWorkItems(i1,i2){
-  alert('catch item');
+async function catchWorkItems(i1,i2){
+//  alert('catch item');
+  let total = 0;
   const sData = {
     first:i1,
     last:i2
   };
+/*
+ let res = await fetch('/watchPage.ejs/workTotalCount',
+  {method:'POST'}).then(res=>{
+
+  }).catch(err=>{
+    console.error(err);
+  });
+  */
 
   $.ajax({
     url:'/watchPage.ejs/select',
@@ -140,6 +149,8 @@ function catchWorkItems(i1,i2){
   });
 
 }
+
+
 
 function updateWatchItem(table,rCount=ROWCOUNT,cCount=COLCOUNT,itemArray){
   clearWatchItem(table);

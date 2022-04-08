@@ -57,11 +57,7 @@ router.post('/watchPage.ejs/workTotalCount',(req,res)=>{
     connector.query(sql,function(err,results,fields){
         if(err) throw err;
 
-        const data = {
-            Results:results,
-            Fields:fields
-        };
-        res.send(data);
+        res.send(results.length);
     });
 
 });

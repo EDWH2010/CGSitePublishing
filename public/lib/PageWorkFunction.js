@@ -118,7 +118,7 @@ function sendWorkFormData(e){
 
         const rData = turnToWorkSingleData(wName,wDis,src);
 
-        alert(JSON.stringify(rData));
+        //alert(JSON.stringify(rData));
         resultData.workArray.push(rData);
 
     });
@@ -133,6 +133,7 @@ function sendWorkFormData(e){
   }
  
 }
+
 
 //データをサーバーに送って処理する
 function savePacketData(packet){
@@ -160,13 +161,6 @@ function turnToWorkSingleData(wName,wDis,wSource){
   resultData.workName = wName;
   resultData.workDiscription = wDis;
   resultData.workSource = wSource;
-
-  return resultData;
-}
-
-function turnToMultiWorkData(wArray){
-  const resultData = {};
-  resultData.workArray = wArray;
 
   return resultData;
 }
