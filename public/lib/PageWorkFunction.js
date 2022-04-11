@@ -135,6 +135,7 @@ function sendWorkFormData(e){
 }
 
 
+
 //データをサーバーに送って処理する
 function savePacketData(packet){
   $.ajax({
@@ -215,7 +216,7 @@ function convertAbsPathToLastPath(fPath){
   return fArr[fArr.length-1];
 }
 
-
+//
 function detectWorkItem(value){
     let count=0;
     switch(value){
