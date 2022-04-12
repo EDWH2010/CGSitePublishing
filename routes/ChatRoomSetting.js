@@ -10,13 +10,19 @@ route.get('/chatRoom.ejs',(req,res)=>{
 
 
     io.on("connection", socket => {
-        socket.on("disconnenpmcting", () => {
+        socket.on("disconnecting", () => {
           console.log(socket.rooms); // the Set contains at least the socket ID
         });
       
         socket.on("disconnect", () => {
-          // socket.rooms.size === 0
+
+
         });
+      });
+
+      io.on("greetings",function(data, fn){
+        var answer = confirm(data.message);
+        fn(answer);
       });
 
 });
