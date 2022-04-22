@@ -16,7 +16,7 @@ route.get('/chatRoom.ejs',(req,res)=>{
       
         socket.on("disconnect", () => {
 
-
+          
         });
       });
 
