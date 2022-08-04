@@ -1,6 +1,6 @@
 # これはCG投稿サイトです。
 
-！[This is Index Page](./thumb.jpg)
+！[これはホームページ画面になります](./thumb.jpg)
 
 ## コンセプト：
 
